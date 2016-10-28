@@ -7,7 +7,6 @@
 git clone https://github.com/PassionZale/iMall.git
 cd iMall/
 cp .env.example .env
-#在.env中配置好数据库连接后，继续执行以下步骤
 composer update
 php artisan key:generate
 php artisan make:migration
