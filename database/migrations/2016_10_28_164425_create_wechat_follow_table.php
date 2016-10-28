@@ -24,6 +24,7 @@ class CreateWechatFollowTable extends Migration
             $table->string('headimgurl');
             $table->string('remark');
             $table->integer('groupid');
+            $table->enum('is_subscribed', ['未关注', '关注']);
             $table->timestamps();
         });
     }

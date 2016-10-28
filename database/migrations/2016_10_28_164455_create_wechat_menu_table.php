@@ -25,7 +25,7 @@ class CreateWechatMenuTable extends Migration
             // view 类型需要设置的跳转链接
             $table->string('url');
             // click 类型需要设置的关键词
-            $table->string('keyword');
+            $table->string('key');
             // 一级菜单
             $table->integer('parent_button')->default(0);
             // 菜单排序
