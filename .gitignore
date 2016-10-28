@@ -1,1 +1,25 @@
+
+#Homestead
+Homestead.yaml
+Homestead.json
+
+## NetBeans, Vim, WebStorm, PHPStorm
+nbproject/
 .idea/
+*.swp
+*.swo
+*.swn
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+## Application
+.env
+.DS_Store
+/vendor
+/node_modules
+/public/storage
