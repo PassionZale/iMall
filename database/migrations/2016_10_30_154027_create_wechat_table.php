@@ -24,6 +24,7 @@ class CreateWechatTable extends Migration
             $table->string('app_id');
             // App Secret
             $table->string('app_secret');
+            // 安全模式必填
             $table->string('encodingaeskey');
             // 校验token
             $table->string('token');
