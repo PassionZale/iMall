@@ -1,0 +1,16 @@
+// CMS 基本变量
+$defaultFontColor: #333;
+$whiteFontColor:#fff;
+$baseColor: #3eb94e;
+$baseBorderColor: #e7e7eb !default;
+body {
+  font-family: "Lucida Grande", "Microsoft JhengHei", "Microsoft YaHei";
+}
+
+.fa-btn {
+  margin-right: 6px;
+}
+
+#scriptTag {
+  display: none;
+}

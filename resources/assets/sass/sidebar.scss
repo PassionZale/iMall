@@ -1,0 +1,47 @@
+// 左侧菜单导航样式
+#menu {
+  // 覆盖无序列表默认样式
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid $baseBorderColor;
+  border-left: 1px solid $baseBorderColor;
+  border-bottom: 1px solid $baseBorderColor;
+  li {
+    list-style-type: none;
+    &.metismenu-item {
+      border-top: 1px solid $baseBorderColor;
+      padding: 15px;
+      &.active {
+        & > a {
+          color: $baseColor;
+        }
+      }
+      ul {
+        margin: 10px 0 0 0;
+        padding: 0;
+        li {
+          padding: 10px;
+          &.active {
+            background-color: $baseColor;
+            a{
+              color: $whiteFontColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 覆盖菜单中超链接的样式
+  a {
+    color: $defaultFontColor;
+    text-decoration: none;
+    display: block;
+  }
+  .sidebar-nav-item-icon {
+    padding-right: 5px;
+  }
+  .sidebar-nav-title {
+    padding-left: 5px;
+  }
+}

@@ -13,5 +13,5 @@
 @endsection
 
 @section('scriptTag')
-    <i id="scriptTag">{{asset('js/admin/sidebar.js')}}</i>
+    <i id="scriptTag">{{asset('js/admin/index.js')}}</i>
 @endsection

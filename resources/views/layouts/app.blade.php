@@ -24,22 +24,14 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="//cdn.bootcss.com/metisMenu/2.5.2/metisMenu.min.css" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
     <!-- JavaScripts -->
     <script data-main="{{ asset('js/admin-frame.js') }}" src="{{ asset('js/require.min.js') }}"></script>
     <style>
-        body {
-            font-family: 'Lato';
-        }
 
-        .fa-btn {
-            margin-right: 6px;
-        }
 
-        .navbar-brand {
-            padding: 10px;
-        }
     </style>
 </head>
 <body id="app-layout">
@@ -58,7 +50,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img alt="iMall" src="{{asset('favicon.png')}}"/>
+                iMall
             </a>
         </div>
 
@@ -85,44 +77,44 @@
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-2">
-            <nav class="sidebar-nav">
-                <ul class="metismenu" id="menu">
-                    <li class="active">
-                        <a href="#">
-                            <span class="sidebar-nav-item">控制台</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" aria-expanded="false">
-                            <span class="sidebar-nav-item">公众号管理</span>
-                            <span class="fa arrow fa-fw"></span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-nav-item-icon fa fa-circle-thin fa-fw"></span>
-                                    基础设置
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-nav-item-icon fa fa-circle-thin fa-sm"></span>
-                                    菜单设置
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="sidebar-nav-item-icon fa fa-circle-o fa-fw"></span>
-                                    粉丝管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+            <ul class="metismenu" id="menu">
+                <li class="metismenu-item ">
+                    <a href="#">
+                        <span class="sidebar-nav-item-icon fa fa-dashboard fa-lg"></span>
+                        <span class="sidebar-nav-item">控制台</span>
+                    </a>
+                </li>
+                <li class="metismenu-item active">
+                    <a href="#">
+                        <span class="sidebar-nav-item-icon fa fa-wechat fa-lg"></span>
+                        <span class="sidebar-nav-item">公众号管理</span>
+                        <span class="fa arrow fa-fw"></span>
+                    </a>
+                    <ul>
+                        <li class="active">
+                            <a href="#">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                基本信息
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                菜单设置
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                粉丝列表
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <div class="col-md-10">
             @yield('content')

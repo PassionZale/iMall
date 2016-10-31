@@ -10,7 +10,7 @@ Route::auth();
 
 Route::get('/', 'HomeController@index');
 
-Route::any('/wechat','WechatController@serve');
+Route::any('/wechat',['as'=>'wechat'],'WechatController@serve');
 
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     Route::get('/user', function () {

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "89c5d94031875ff82a8abc64517d3f51",
-    "content-hash": "45537843063cf37e8c6c3d24669445c7",
+    "hash": "e38d646f6187e9e1852243866f08dee5",
+    "content-hash": "b13600efa941459ac742c0a6f4e452af",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -676,6 +676,48 @@
                 "laravel"
             ],
             "time": "2016-08-26 11:44:52"
+        },
+        {
+            "name": "lavary/laravel-menu",
+            "version": "v1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lavary/laravel-menu.git",
+                "reference": "1617add78aa8ec8e4657aba3d88d2b86fc534b9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/lavary/laravel-menu/1617add78aa8ec8e4657aba3d88d2b86fc534b9f.zip",
+                "reference": "1617add78aa8ec8e4657aba3d88d2b86fc534b9f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.0",
+                "illuminate/view": ">=5.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Lavary\\Menu\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lavary",
+                    "email": "mrl.8081@gmail.com"
+                }
+            ],
+            "description": "A quick way to create menus in Laravel 5",
+            "homepage": "https://github.com/lavary/laravel-menu",
+            "keywords": [
+                "laravel"
+            ],
+            "time": "2016-09-12 13:17:45"
         },
         {
             "name": "league/flysystem",

@@ -7,13 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,7 +18,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::check()){
-            return view('home');
+            return view('home')->with(['menu'=>$this->menu]);
         }else{
             return Redirect::action('Auth\AuthController@showLoginForm');
         }
