@@ -1,4 +1,4 @@
-@extends('layouts.slide')
+@extends('layouts.app')
 
 @section('content')
 

@@ -8,11 +8,7 @@
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::any('/wechat','WechatController@serve');
 
