@@ -8,6 +8,17 @@
 3. node:v6.2.0
 4. npm:3.8.9
 
+## Composer 、NPM配置
+``` shell
+#启动composer中国镜像服务
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+#启动npm淘宝源
+npm config set registry https://registry.npm.taobao.org
+#如果上一步配置正确这个命令会有字符串response
+npm info underscore
+#接下来，设置node-sass
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+```
 
 ## 安装步骤
 > 安装Composer Package

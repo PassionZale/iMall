@@ -87,14 +87,14 @@
                         <span class="sidebar-nav-item">控制台</span>
                     </a>
                 </li>
-                <li class="metismenu-item active">
+                <li class="metismenu-item">
                     <a href="#">
                         <span class="sidebar-nav-item-icon fa fa-wechat fa-lg"></span>
                         <span class="sidebar-nav-item">公众号管理</span>
                         <span class="fa arrow fa-fw"></span>
                     </a>
                     <ul>
-                        <li class="active">
+                        <li>
                             <a href="#">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 基本信息
