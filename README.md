@@ -1,6 +1,7 @@
 # iMall
 基于Laravel5.2，Vue.js1.0的微信商城
 
+![演示](http://oewvb9bk1.bkt.clouddn.com/imall_start.gif "iMall")
 
 ## 环境要求
 1. PHP≥5.59
