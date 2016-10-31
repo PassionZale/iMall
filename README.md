@@ -25,7 +25,6 @@ php artisan migrate
 ``` shell
 cd iMall/
 npm install
-gulp copyfiles
-gulp mixless
-npm run build
+#编译sass
+gulp
 ```
