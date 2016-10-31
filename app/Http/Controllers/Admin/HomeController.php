@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class HomeController extends BaseController
     public function index()
     {
         if(Auth::check()){
-            return view('home')->with(['menu'=>$this->menu]);
+            return view('home');
         }else{
             return Redirect::action('Auth\AuthController@showLoginForm');
         }
