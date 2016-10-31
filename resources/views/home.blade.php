@@ -11,3 +11,7 @@
     </div>
 
 @endsection
+
+@section('scriptTag')
+    <i id="scriptTag">{{asset('js/admin/sidebar.js')}}</i>
+@endsection
