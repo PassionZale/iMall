@@ -18,7 +18,8 @@ class HomeController extends BaseController
     public function index()
     {
         if(Auth::check()){
-            return view('home');
+            // TODO 查询相关公众号报表数据
+            return view('index');
         }else{
             return Redirect::action('Auth\AuthController@showLoginForm');
         }

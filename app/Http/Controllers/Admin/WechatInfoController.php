@@ -3,20 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
+use App\Wechat;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-class WechatController extends Controller
+class WechatInfoController extends BaseController
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Wechat $wechat)
     {
-        //
+        return view('wechat.index');
     }
 
     /**

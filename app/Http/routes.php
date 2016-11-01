@@ -13,9 +13,11 @@ Route::get('/', 'Admin\HomeController@index');
 
 Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],function(){
     // 公众号管理
-    Route::resource('wechat', 'WechatController', ['except' => ['create', 'edit']]);
-    Route::resource('wechatMenu', 'WechatMenuController', ['except' => ['create', 'edit']]);
-    Route::resource('wechatFollow', 'WechatFollowController', ['except' => ['create', 'edit']]);
+    Route::group(['prefix'=>'wechat'],function (){
+        Route::resource('info', 'WechatInfoController', ['except' => ['create', 'edit']]);
+        Route::resource('menu', 'WechatMenuController', ['except' => ['create', 'edit']]);
+        Route::resource('follow', 'WechatFollowController', ['except' => ['create', 'edit']]);
+    });
 });
 
 Route::any('/wechat', 'WechatController@serve');

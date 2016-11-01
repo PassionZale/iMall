@@ -9,8 +9,8 @@
     <meta name="description" content="微信商城：iMall,基于Laravel5.2和vue.js">
     <meta name="keywords" content="微信商城,laravel5.2,vue.js,vuex,vue-router,vue-resource">
     <!-- Favicon -->
-    <link rel="icon" href="favicon.png" mce_href="favicon.png" type="image/png">
-    <link rel="shortcut icon" href="favicon.ico" mce_href="favicon.ico" type=”image/x-icon”>
+    <link rel="icon" href="{{asset('favicon.png')}}" mce_href="{{asset('favicon.png')}}" type="image/png">
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" mce_href="{{asset('favicon.ico')}}" type=”image/x-icon”>
 
     <!--[if lte IE 9]>
     <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
@@ -81,32 +81,32 @@
     <div class="row">
         <div class="col-md-2">
             <ul class="metismenu" id="menu">
-                <li class="metismenu-item ">
-                    <a href="#">
+                <li class="metismenu-item {{ request()->is('/') ? 'active' : '' }}">
+                    <a href="/">
                         <span class="sidebar-nav-item-icon fa fa-dashboard fa-lg"></span>
                         <span class="sidebar-nav-item">控制台</span>
                     </a>
                 </li>
-                <li class="metismenu-item">
+                <li class="metismenu-item {{request()->is('admin/wechat/*') ? 'active' : ''}}">
                     <a href="#">
                         <span class="sidebar-nav-item-icon fa fa-wechat fa-lg"></span>
                         <span class="sidebar-nav-item">公众号管理</span>
                         <span class="fa arrow fa-fw"></span>
                     </a>
                     <ul>
-                        <li>
-                            <a href="#">
+                        <li class="{{request()->is('admin/wechat/info') ? 'active' : ''}}">
+                            <a href="{{url('admin/wechat/info')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 基本信息
                             </a>
                         </li>
-                        <li>
+                        <li class="{{request()->is('admin/wechat/menu') ? 'active' : ''}}">
                             <a href="#">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 菜单设置
                             </a>
                         </li>
-                        <li>
+                        <li class="{{request()->is('admin/wechat/follow') ? 'active' : ''}}">
                             <a href="#">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 粉丝列表
