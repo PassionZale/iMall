@@ -8,10 +8,10 @@
 
 Route::auth();
 
+// 控制台
+Route::get('/', 'Admin\HomeController@index');
 
 Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],function(){
-    // 控制台
-    Route::get('/', 'HomeController@index');
     // 公众号管理
     Route::resource('wechat', 'WechatController', ['except' => ['create', 'edit']]);
     Route::resource('wechatMenu', 'WechatMenuController', ['except' => ['create', 'edit']]);
