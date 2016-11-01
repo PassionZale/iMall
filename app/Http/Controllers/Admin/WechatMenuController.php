@@ -16,7 +16,29 @@ class WechatMenuController extends BaseController
      */
     public function index()
     {
-        return view('wechat.menu.index');
+        $list = WechatMenu::get();
+        // 取出一级菜单 $level_one_menu
+        foreach ($list as $index => $menu) {
+            if ($menu['parent_button'] != 0) {
+                continue;
+            }
+            $level_one_menu[$menu['id']] = $menu;
+            unset ($list [$index]);
+        }
+        // 合并二级菜单至一级菜单中
+        foreach ($level_one_menu as $item) {
+            foreach ($list as $key => $value) {
+                if ($value['parent_button'] != $item['id']) {
+                    continue;
+                }
+                $value['name'] = '│─── ' . $value['name'];
+                $level_two_menu[] = $value;
+                unset($list[$key]);
+            }
+            $menus = array_merge($level_one_menu, $level_two_menu);
+        }
+
+        return view('wechat.menu.index')->with(['menus' => $menus]);
     }
 
     /**
@@ -46,8 +68,8 @@ class WechatMenuController extends BaseController
             if ($count >= 3) {
                 return Redirect::to('admin/wechat/menu')->withError('菜单新增失败，一级菜单至多设置3个！');
             }
-            if($type != 3){
-                return Redirect::to('admin/wechat/menu')->withError('菜单新增失败，一级菜单类型不能为“无事件”！');
+            if ($type != 3) {
+                return Redirect::to('admin/wechat/menu')->withError('菜单新增失败，一级菜单类型必须为“无事件”！');
             }
         } else {
             if ($type == 3) {
@@ -87,6 +109,7 @@ class WechatMenuController extends BaseController
      */
     public function edit($id)
     {
+        dd(WechatMenu::find($id));
         return view('wechat.menu.edit');
     }
 
@@ -111,5 +134,6 @@ class WechatMenuController extends BaseController
     public function destroy($id)
     {
         //
+        dd('删除'.$id);
     }
 }

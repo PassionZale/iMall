@@ -6,57 +6,50 @@
         <div class="panel-heading">菜单列表</div>
 
         <div class="panel-body">
-            <a href="{{url('admin/wechat/menu/create')}}" class="btn btn-primary"><i class="fa fa-btn fa-plus"></i>新增</a>
-            <table class="table table-responsive">
-                <thead>
-                <tr>
-                    <th>序号</th>
-                    <th>菜单名称</th>
-                    <th>类型</th>
-                    <th>关联关键词</th>
-                    <th>关联链接</th>
-                    <th>排序</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>aa</td>
-                    <td>cc</td>
-                    <td>dd</td>
-                    <td>bb</td>
-                    <td>dd</td>
-                    <td>
-                        <a class="edit-btn">修改</a>
-                        <a class="del-btn">删除</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>aa</td>
-                    <td>cc</td>
-                    <td>dd</td>
-                    <td>bb</td>
-                    <td>dd</td>
-                    <td>
-                        <a class="edit-btn">修改</a>
-                        <a class="del-btn">删除</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <nav class="text-center">
-                <ul class="pagination">
-                    <li class="disabled"><a href="#">«</a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">»</a></li>
-                </ul>
-            </nav>
+            <a href="{{url('admin/wechat/menu/create')}}" class="btn btn-primary"><i
+                        class="fa fa-btn fa-plus"></i>新增</a>
+            @if(!empty($menus))
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th class="text-left">菜单名称</th>
+                        <th>类型</th>
+                        <th>关联关键词</th>
+                        <th>关联链接</th>
+                        <th>排序</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($menus as $menu)
+                        <tr>
+                            <td class="text-left">{{$menu->name}}</td>
+                            <td>
+                                @if($menu->type == 'view')
+                                    跳转视图
+                                @elseif($menu->type == 'click')
+                                    点击推事件
+                                @else
+                                    一级菜单
+                                @endif
+                            </td>
+                            <td>{{$menu->key}}</td>
+                            <td>{{$menu->url}}</td>
+                            <td>{{$menu->sort}}</td>
+                            <td>
+                                <a href="{{url('admin/wechat/menu/'.$menu->id.'/edit')}}" class="edit-btn">修改</a>
+                                <form action="{{url('admin/wechat/menu/'.$menu->id)}}" method="post" class="del-form">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    {{csrf_field()}}
+                                    <button type="submit" class="del-btn">删除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
+
         </div>
     </div>
 
