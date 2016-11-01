@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Wechat;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
 
 class WechatInfoController extends BaseController
 {
@@ -47,7 +48,9 @@ class WechatInfoController extends BaseController
         $wechat->encodingaeskey = $request->input('encodingaeskey');
         $wechat->token = $request->input('token');
         $wechat->url = url('/wechat');
-        $wechat->save();
+        if($wechat->save()){
+            return Redirect::to('admin/wechat/info')->withSuccess('公众号信息录入成功');
+        }
     }
 
     /**
@@ -89,7 +92,9 @@ class WechatInfoController extends BaseController
         $wechat->app_secret = $request->input('app_secret');
         $wechat->encodingaeskey = $request->input('encodingaeskey');
         $wechat->token = $request->input('token');
-        $wechat->save();
+        if($wechat->save()){
+            return Redirect::to('admin/wechat/info')->withSuccess('公众号信息修改成功');
+        }
     }
 
     /**
