@@ -13,9 +13,10 @@ class WechatInfoController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Wechat $wechat)
+    public function index()
     {
-        return view('wechat.index');
+        $info = Wechat::first();
+        return view('wechat.index')->with(['info'=>$info]);
     }
 
     /**
@@ -36,7 +37,17 @@ class WechatInfoController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $wechat = new Wechat();
+        $wechat->wechat_name = $request->input('wechat_name');
+        $wechat->wechat_account = $request->input('wechat_account');
+        $wechat->wechat_original_account = $request->input('wechat_original_account');
+        $wechat->app_id = $request->input('app_id');
+        $wechat->app_secret = $request->input('app_secret');
+        $wechat->encodingaeskey = $request->input('encodingaeskey');
+        $wechat->token = $request->input('token');
+        $wechat->url = url('/wechat');
+        $wechat->save();
     }
 
     /**
@@ -70,7 +81,15 @@ class WechatInfoController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $wechat = Wechat::find($id);
+        $wechat->wechat_name = $request->input('wechat_name');
+        $wechat->wechat_account = $request->input('wechat_account');
+        $wechat->wechat_original_account = $request->input('wechat_original_account');
+        $wechat->app_id = $request->input('app_id');
+        $wechat->app_secret = $request->input('app_secret');
+        $wechat->encodingaeskey = $request->input('encodingaeskey');
+        $wechat->token = $request->input('token');
+        $wechat->save();
     }
 
     /**

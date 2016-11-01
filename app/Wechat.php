@@ -10,7 +10,4 @@ class Wechat extends Model
 
     protected $guarded = [];
 
-    protected $hidden = [
-        'token', 'app_id', 'app_secret', 'encodingaeskey'
-    ];
 }
