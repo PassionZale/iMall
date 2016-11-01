@@ -1,0 +1,18 @@
+table {
+  th, td {
+    text-align: center;
+  }
+  a {
+    padding:5px 10px;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    &.edit-btn {
+      color: #3c763d;
+    }
+    &.del-btn {
+      color: #a94442;
+    }
+  }
+}

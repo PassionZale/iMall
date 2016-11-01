@@ -17,7 +17,7 @@ class WechatInfoController extends BaseController
     public function index()
     {
         $info = Wechat::first();
-        return view('wechat.index')->with(['info'=>$info]);
+        return view('wechat.info.index')->with(['info'=>$info]);
     }
 
     /**
@@ -50,6 +50,8 @@ class WechatInfoController extends BaseController
         $wechat->url = url('/wechat');
         if($wechat->save()){
             return Redirect::to('admin/wechat/info')->withSuccess('公众号信息录入成功');
+        }else{
+            return Redirect::to('admin/wechat/info')->withError('公众号信息录入失败');
         }
     }
 
@@ -94,6 +96,8 @@ class WechatInfoController extends BaseController
         $wechat->token = $request->input('token');
         if($wechat->save()){
             return Redirect::to('admin/wechat/info')->withSuccess('公众号信息修改成功');
+        }else{
+            return Redirect::to('admin/wechat/info')->withError('公众号信息修改失败');
         }
     }
 

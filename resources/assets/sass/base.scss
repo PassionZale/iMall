@@ -1,6 +1,6 @@
 // CMS 基本变量
 $defaultFontColor: #333;
-$whiteFontColor:#fff;
+$whiteFontColor: #fff;
 $baseColor: #3eb94e;
 $baseBorderColor: #e7e7eb !default;
 body {
@@ -13,4 +13,11 @@ body {
 
 #scriptTag {
   display: none;
+}
+
+.__hide__{
+  display: none;
+}
+.__show__{
+  display: block;
 }

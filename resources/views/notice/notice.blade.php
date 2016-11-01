@@ -3,7 +3,7 @@
         <div class="alert alert-success">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>
-                <i class="fa fa-check-circle fa-lg fa-fw"></i> Success.
+                <i class="fa fa-check fa-lg fa-fw"></i> Success.
             </strong>
             {{ Session::get('success') }}
         </div>
@@ -11,7 +11,7 @@
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>
-                <i class="fa fa-check-circle fa-lg fa-fw"></i> Error.
+                <i class="fa fa-warning fa-lg fa-fw"></i> Error.
             </strong>
             {{ Session::get('error') }}
         </div>

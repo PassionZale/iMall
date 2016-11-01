@@ -100,14 +100,14 @@
                                 基本信息
                             </a>
                         </li>
-                        <li class="{{request()->is('admin/wechat/menu') ? 'active' : ''}}">
-                            <a href="#">
+                        <li class="{{request()->is('admin/wechat/menu*') ? 'active' : ''}}">
+                            <a href="{{url('admin/wechat/menu')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 菜单设置
                             </a>
                         </li>
                         <li class="{{request()->is('admin/wechat/follow') ? 'active' : ''}}">
-                            <a href="#">
+                            <a href="{{url('admin/wechat/follow')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 粉丝列表
                             </a>
