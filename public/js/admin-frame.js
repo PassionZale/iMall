@@ -2,8 +2,8 @@ var scriptTag = document.getElementById('scriptTag');
 if (scriptTag) {
     requirejs.config({
         paths: {
-            jquery: 'lib/jquery/jquery-2.1.1.min',
-            bootstrap: 'lib/bootstrap/bootstrap.min',
+            jquery: '//cdn.bootcss.com/jquery/2.2.1/jquery.min',
+            bootstrap: '//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min',
             metisMenu:'//cdn.bootcss.com/metisMenu/2.5.2/metisMenu.min'
         },
         shim: {

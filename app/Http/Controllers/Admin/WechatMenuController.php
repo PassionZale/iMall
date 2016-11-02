@@ -130,7 +130,21 @@ class WechatMenuController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $type = $request->input('type');
+        $parent_button = $request->input('parent_button');
+        $menu = WechatMenu::find($id);
+
+        $menu->sort = $request->input('sort');
+        $menu->name = $request->input('name');
+        $menu->type = $type;
+        $menu->url = $request->input('url');
+        $menu->key = $request->input('key');
+        $menu->parent_button = $parent_button;
+        if ($menu->save()) {
+            return Redirect::to('admin/wechat/menu')->withSuccess('菜单修改成功');
+        } else {
+            return Redirect::to('admin/wechat/menu')->withError('菜单修改失败');
+        }
     }
 
     /**

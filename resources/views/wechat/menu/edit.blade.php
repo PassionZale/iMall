@@ -6,8 +6,9 @@
         <div class="panel-heading">新增菜单</div>
 
         <div class="panel-body">
-            <form action="{{url('admin/wechat/menu')}}" method="post">
+            <form action="{{url('admin/wechat/menu/'.$menu->id)}}" method="post">
                 {{csrf_field()}}
+                <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
                     <label>菜单排序：</label>
                     <input value="{{$menu->sort}}" name="sort" type="text" class="form-control"
@@ -33,9 +34,9 @@
                 <div class="form-group">
                     <label>菜单类型：</label>
                     <select name="type" class="form-control" id="menu-type-select">
-                        <option value="1" {{$menu->type == 1 ? "selected" : ''}}>跳转视图</option>
-                        <option value="2" {{$menu->type == 2 ? "selected" : ''}}>点击推事件</option>
-                        <option value="3" {{$menu->type == 3 ? "selected" : ''}}>无事件的一级菜单</option>
+                        <option value="1" {{$menu->type == "view" ? "selected" : ''}}>跳转视图</option>
+                        <option value="2" {{$menu->type == "click" ? "selected" : ''}}>点击推事件</option>
+                        <option value="3" {{$menu->type == "none" ? "selected" : ''}}>无事件的一级菜单</option>
                     </select>
                 </div>
                 <div class="form-group __hide__" id="menu-url">
