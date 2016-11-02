@@ -22,7 +22,7 @@ npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
 ```
 
 ## 安装步骤
-> 安装Composer Package
+### 安装Composer Package
 ``` shell
 git clone https://github.com/PassionZale/iMall.git
 cd iMall/
@@ -33,10 +33,15 @@ php artisan key:generate
 php artisan migrate
 ```
 
-> 安装NPM Package
+### 安装NPM Package
 ``` shell
 cd iMall/
 npm install
 #编译sass
 gulp
 ```
+
+>人生不是接力跑，是马拉松，努力会有回报
+
+
+>加油，年轻没有失败
