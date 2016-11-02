@@ -17,18 +17,18 @@
         }
       }
       ul {
-        margin: 0;
+        margin: 15px 0 0 0;
         padding: 0;
         li {
-          margin-top:5px;
+          margin-top: 5px;
           padding: 10px;
-          &:hover{
+          &:hover {
             background-color: #f5f5f5;
             border-color: #ddd;
           }
-          &.active{
+          &.active {
             background-color: $baseColor;
-            a{
+            a {
               color: $whiteFontColor;
             }
           }

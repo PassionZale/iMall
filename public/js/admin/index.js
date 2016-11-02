@@ -1,5 +1,3 @@
-requirejs(['jquery','bootstrap','metisMenu'],function($){
-    $(function () {
-        $('#menu').metisMenu();
-    });
+requirejs(['jquery', 'bootstrap', 'metisMenu'], function ($) {
+    $('#menu').metisMenu();
 });

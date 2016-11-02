@@ -112,6 +112,99 @@
                         </li>
                     </ul>
                 </li>
+                <li class="metismenu-item">
+                    <a href="">
+                        <span class="sidebar-nav-item-icon fa fa-shopping-bag fa-lg"></span>
+                        <span class="sidebar-nav-item">店铺管理</span>
+                        <span class="fa arrow fa-fw"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                商铺配置
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                轮播图
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                合作伙伴
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="metismenu-item">
+                    <a href="">
+                        <span class="sidebar-nav-item-icon fa fa-product-hunt fa-lg"></span>
+                        <span class="sidebar-nav-item">商品管理</span>
+                        <span class="fa arrow fa-fw"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                专题
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                分类
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                商品
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="metismenu-item">
+                    <a href="">
+                        <span class="sidebar-nav-item-icon fa fa-align-justify fa-lg"></span>
+                        <span class="sidebar-nav-item">订单管理</span>
+                        <span class="fa arrow fa-fw"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                待发货订单
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                待支付订单
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                已发货订单
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                已收货订单
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                已关闭订单
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="col-md-10">
