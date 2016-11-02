@@ -16,7 +16,7 @@ class WechatMenuController extends BaseController
      */
     public function index()
     {
-        $list = WechatMenu::orderBy('sort','asc')->get();
+        $list = WechatMenu::orderBy('parent_button', 'asc')->orderBy('sort', 'asc')->get();
         $menus = array();
 
         if (count($list)) {
@@ -31,16 +31,17 @@ class WechatMenuController extends BaseController
 
             // 合并二级菜单至一级菜单中
             foreach ($level_one_menu as $item) {
-                $level_two_menu = array();
+                $menus[] = $item;
+                $two_menu = array();
                 foreach ($list as $key => $value) {
                     if ($value['parent_button'] != $item['id']) {
                         continue;
                     }
                     $value['name'] = '│─── ' . $value['name'];
-                    $level_two_menu[] = $value;
+                    $two_menu[] = $value;
                     unset($list[$key]);
                 }
-                $menus = array_merge($level_one_menu, $level_two_menu);
+                $menus = array_merge($menus, $two_menu);
             }
         }
 
