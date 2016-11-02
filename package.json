@@ -4,9 +4,10 @@
     "prod": "gulp --production",
     "dev": "gulp watch"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "gulp": "^3.9.1",
-    "laravel-elixir": "^5.0.0",
-    "bootstrap-sass": "^3.0.0"
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.2.0"
   }
 }

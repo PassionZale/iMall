@@ -1,3 +1,5 @@
 requirejs(['jquery', 'bootstrap', 'metisMenu'], function ($) {
-    $('#menu').metisMenu();
+    $(function () {
+        $('#menu').metisMenu({toggle: false});
+    });
 });
