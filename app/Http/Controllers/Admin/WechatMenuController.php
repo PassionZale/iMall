@@ -16,26 +16,32 @@ class WechatMenuController extends BaseController
      */
     public function index()
     {
-        $list = WechatMenu::get();
-        // 取出一级菜单 $level_one_menu
-        foreach ($list as $index => $menu) {
-            if ($menu['parent_button'] != 0) {
-                continue;
-            }
-            $level_one_menu[$menu['id']] = $menu;
-            unset ($list [$index]);
-        }
-        // 合并二级菜单至一级菜单中
-        foreach ($level_one_menu as $item) {
-            foreach ($list as $key => $value) {
-                if ($value['parent_button'] != $item['id']) {
+        $list = WechatMenu::orderBy('sort','asc')->get();
+        $menus = array();
+
+        if (count($list)) {
+            // 取出一级菜单 $level_one_menu
+            foreach ($list as $index => $menu) {
+                if ($menu['parent_button'] != 0) {
                     continue;
                 }
-                $value['name'] = '│─── ' . $value['name'];
-                $level_two_menu[] = $value;
-                unset($list[$key]);
+                $level_one_menu[$menu['id']] = $menu;
+                unset ($list [$index]);
             }
-            $menus = array_merge($level_one_menu, $level_two_menu);
+
+            // 合并二级菜单至一级菜单中
+            foreach ($level_one_menu as $item) {
+                $level_two_menu = array();
+                foreach ($list as $key => $value) {
+                    if ($value['parent_button'] != $item['id']) {
+                        continue;
+                    }
+                    $value['name'] = '│─── ' . $value['name'];
+                    $level_two_menu[] = $value;
+                    unset($list[$key]);
+                }
+                $menus = array_merge($level_one_menu, $level_two_menu);
+            }
         }
 
         return view('wechat.menu.index')->with(['menus' => $menus]);
@@ -75,18 +81,18 @@ class WechatMenuController extends BaseController
             if ($type == 3) {
                 return Redirect::to('admin/wechat/menu')->withError('菜单新增失败，二级菜单类型不能为“无事件”！');
             }
-            $menu = new WechatMenu();
-            $menu->sort = $request->input('sort');
-            $menu->name = $request->input('name');
-            $menu->type = $request->input('type');
-            $menu->url = $request->input('url');
-            $menu->key = $request->input('key');
-            $menu->parent_button = $request->input('parent_button');
-            if ($menu->save()) {
-                return Redirect::to('admin/wechat/menu')->withSuccess('菜单新增成功');
-            } else {
-                return Redirect::to('admin/wechat/menu')->withError('菜单新增失败');
-            }
+        }
+        $menu = new WechatMenu();
+        $menu->sort = $request->input('sort');
+        $menu->name = $request->input('name');
+        $menu->type = $type;
+        $menu->url = $request->input('url');
+        $menu->key = $request->input('key');
+        $menu->parent_button = $parent_button;
+        if ($menu->save()) {
+            return Redirect::to('admin/wechat/menu')->withSuccess('菜单新增成功');
+        } else {
+            return Redirect::to('admin/wechat/menu')->withError('菜单新增失败');
         }
     }
 
@@ -133,7 +139,18 @@ class WechatMenuController extends BaseController
      */
     public function destroy($id)
     {
-        //
-        dd('删除'.$id);
+        $menu = WechatMenu::find($id);
+        if ($menu) {
+            // 删除菜单
+            $menu->delete();
+            $child_menu = WechatMenu::where('parent_button', '=', $id)->count();
+            if ($child_menu) {
+                // 若存在二级菜单，则删除二级菜单
+                WechatMenu::where('parent_button', '=', $id)->delete();
+            }
+            return Redirect::to('admin/wechat/menu')->withSuccess('菜单删除成功');
+        } else {
+            return Redirect::to('admin/wechat/menu')->withError('删除失败，未找到对应菜单');
+        }
     }
 }

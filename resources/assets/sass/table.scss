@@ -2,19 +2,23 @@ table {
   th, td {
     text-align: center;
   }
-  // TODO 分离del-form a的&样式
-  a, .del-form {
+  .del-form {
+    display: inline-block;
+  }
+  .edit-btn, .del-btn {
     display: inline-block;
     padding: 5px 10px;
+    border: none;
+    background-color: transparent;
     &:hover {
       cursor: pointer;
       text-decoration: underline;
     }
-    &.edit-btn {
-      color: #3c763d;
-    }
-    &.del-btn {
-      color: #a94442;
-    }
+  }
+  .edit-btn {
+    color: #3c763d;
+  }
+  .del-btn {
+    color: #a94442;
   }
 }

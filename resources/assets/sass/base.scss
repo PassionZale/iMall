@@ -3,8 +3,55 @@ $defaultFontColor: #333;
 $whiteFontColor: #fff;
 $baseColor: #3eb94e;
 $baseBorderColor: #e7e7eb !default;
+
+// scrollbar样式
+::-webkit-scrollbar {
+  padding-left: 1px;
+  background-color: #eee;
+  overflow: visible;
+  width: 7px;
+  height: 7px;
+  margin-top: 1px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #34495e;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  min-height: 15px;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb:vertical:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: 1px solid #fff;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+// 去除浏览器表单焦点outline样式
+input,select,textarea,button:focus{
+  outline: 0 none !important;
+}
+
+// 单行文字溢出时出现省略号，需设定宽度
+.fn-text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 body {
-  font-family: "Lucida Grande", "Microsoft JhengHei", "Microsoft YaHei";
+  //font-family: "Lucida Grande", "Microsoft JhengHei", "Microsoft YaHei";
+  font-family: 'Microsoft YaHei','\5FAE\8F6F\96C5\9ED1','Hiragino Sans GB', tahoma,arial,sans-serif;
 }
 
 .fa-btn {

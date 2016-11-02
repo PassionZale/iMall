@@ -41,7 +41,7 @@
                                 <form action="{{url('admin/wechat/menu/'.$menu->id)}}" method="post" class="del-form">
                                     <input type="hidden" name="_method" value="DELETE">
                                     {{csrf_field()}}
-                                    <button type="submit" class="del-btn">删除</button>
+                                    <button title="若为一级菜单，将会同时删除所属全部二级菜单" type="submit" class="del-btn">删除</button>
                                 </form>
                             </td>
                         </tr>
