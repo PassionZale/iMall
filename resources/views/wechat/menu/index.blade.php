@@ -6,8 +6,12 @@
         <div class="panel-heading">菜单列表</div>
 
         <div class="panel-body">
-            <a href="{{url('admin/wechat/menu/create')}}" class="btn btn-primary"><i
-                        class="fa fa-btn fa-plus"></i>新增</a>
+            <a href="{{url('admin/wechat/menu/create')}}" class="btn btn-primary">
+                <i class="fa fa-btn fa-plus"></i>新增
+            </a>
+            <a href="#" class="btn btn-warning">
+                <i class="fa fa-btn fa-send"></i>生成菜单
+            </a>
             @if(!empty($menus))
                 <table class="table table-responsive">
                     <thead>

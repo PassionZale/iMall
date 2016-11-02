@@ -116,8 +116,9 @@ class WechatMenuController extends BaseController
      */
     public function edit($id)
     {
-        dd(WechatMenu::find($id));
-        return view('wechat.menu.edit');
+        $menu = WechatMenu::findOrFail($id);
+        $parent_menu = WechatMenu::where('parent_button', '=', 0)->get();
+        return view('wechat.menu.edit')->with(['menu' => $menu,'parent_menu'=>$parent_menu]);
     }
 
     /**
