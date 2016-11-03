@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],fun
     });
 });
 
+Route::get('/wechat/debug','WechatController@debug');
+
 Route::any('/wechat', 'WechatController@serve');
 
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
