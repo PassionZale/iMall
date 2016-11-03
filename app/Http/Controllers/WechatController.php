@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Log;
 use EasyWeChat\Foundation\Application;
 use App\WechatFollow;
+use App\WechatMenu;
 
 /**
  * Class WechatController
@@ -24,10 +25,7 @@ class WechatController extends Controller
 
     public function debug()
     {
-        $openid = 'orhIDvxpqL9woREoYLYCKZGrD52k';
-        $app = app('wechat');
-//		dd($app->access_token->getToken());
-        dd($app->user->get($openid));
+
     }
 
     public function serve()
@@ -38,9 +36,10 @@ class WechatController extends Controller
         $userApi = $wechat->user;
 
         $server->setMessageHandler(function ($message) use ($userApi) {
+			// 获取当前粉丝openId
+			$openid = $message->FromUserName;
+
             if ($message->MsgType == 'event') {
-				// 获取当前粉丝openId
-				$openid = $message->FromUserName;
                 switch ($message->Event) {
                     case'subscribe':
 						// 判断当前粉丝是否以前关注过
@@ -76,7 +75,7 @@ class WechatController extends Controller
                         break;
                 }
             } else {
-                $user = $userApi->get($message->FromUserName);
+                $user = $userApi->get($openid);
                 return 'Hi,' . $user->nickname . ', iMall还在开发中.';
             }
         });

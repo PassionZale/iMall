@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\WechatMenu;
 use Illuminate\Support\Facades\Redirect;
+use EasyWeChat\Foundation\Application;
 
 class WechatMenuController extends BaseController
 {
@@ -65,7 +66,39 @@ class WechatMenuController extends BaseController
      * 生成公众号菜单
      */
     public function pushMenu(){
-        dd(WechatMenu::all());
+		$wechat = app('wechat');
+		$buttons = array();
+		$menus = WechatMenu::where('parent_button','=',0)->orderBy('parent_button','asc')->orderBy('sort','asc')->get();
+		
+		foreach($menus as $i=>$menu){
+			if($menu->type == 'none'){
+				$buttons[$i] = ['name'=>$menu->name];
+				$buttons[$i]['sub_button'] = array();
+				$sub_menus = WechatMenu::where('parent_button','=',$menu->id)->orderBy('sort','asc')->get();
+				foreach($sub_menus as $k=>$sub){
+					if($sub->type == 'view'){
+						$buttons[$i]['sub_button'][$k] = ['type'=>$sub->type, 'name'=>$sub->name, 'url'=>$sub->url];
+					}else{
+						$buttons[$i]['sub_button'][$k] = ['type'=>$sub->type, 'name'=>$sub->name, 'key'=>$sub->key];
+					}
+				}
+			}elseif($menu->type == 'view'){
+				$buttons[$i] = ['type'=>$menu->type, 'name'=>$menu->name, 'url'=>$menu->url];
+			}elseif($menu->type == 'click'){
+				$buttons[$i] = ['type'=>$menu->type, 'name'=>$menu->name, 'key'=>$menu->key];
+			}	
+		}
+	
+		$wechat->menu->destroy();
+	
+		$response = $wechat->menu->add($buttons);
+		
+		if($response->errmsg == 'ok'){
+            return Redirect::to('admin/wechat/menu')->withSuccess('菜单发送成功,5分钟之内公众号菜单会自动刷新');
+		}else{
+            return Redirect::to('admin/wechat/menu')->withError('菜单发送失！错误原因：' . $response->errmsg);
+		}
+	
     }
 
     /**
