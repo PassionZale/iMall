@@ -1,6 +1,12 @@
 table {
+  tr{
+    cursor: pointer;
+  }
   th, td {
-    text-align: center;
+    //text-align: center;
+    &.limit-width {
+      max-width: 200px !important;
+    }
   }
   .del-form {
     display: inline-block;
