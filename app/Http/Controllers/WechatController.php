@@ -39,21 +39,23 @@ class WechatController extends Controller
 
         $server->setMessageHandler(function ($message) use ($userApi) {
             if ($message->MsgType == 'event') {
+				// 获取当前粉丝openId
+				$openid = $message->FromUserName;
                 switch ($message->Event) {
                     case'subscribe':
-                        // 获取当前粉丝openId
-                        $oldFollow = WechatFollow::where('openid', '=', $message->FromUserName)->get();
+						// 判断当前粉丝是否以前关注过
+                        $oldFollow = WechatFollow::where('openid', '=', $openid)->first();
                         if ($oldFollow) {
-                            $oldFollow->is_subscribed = "2";
-                            $oldFollow->save();
+							WechatFollow::where('openid', '=', $openid)->update(['is_subscribed'=>2]);
+							return '欢迎回来，' . $oldFollow->nickname . '。';
                         } else {
                             // 获取当前粉丝基本信息
-                            $user = $userApi->get($openId);
+                            $user = $userApi->get($openid);
                             // 录入数据库
                             $follow = new WechatFollow();
-                            $follow->openid = $openId;
+                            $follow->openid = $openid;
                             $follow->nickname = $user->nickname;
-                            $follow->sex = $user->sex + 1;
+                            $follow->sex = ($user->sex + 1);
                             $follow->language = $user->language;
                             $follow->city = $user->city;
                             $follow->country = $user->country;
@@ -63,15 +65,11 @@ class WechatController extends Controller
                             $follow->groupid = $user->groupid;
                             $follow->is_subscribed = 2;
                             $follow->save();
+				            return '欢迎，' . $user->nickname . '。';
                         }
-                        return '欢迎，' . $user->nickname . '。';
                         break;
                     case 'unsubscribe':
-                        $follow = WechatFollow::where('openid', '=', $message->FromUserName)->get();
-                        if ($follow) {
-                            $follow->is_subscribed = "1";
-                            $follow->save();
-                        }
+						WechatFollow::where('openid', '=', $openid)->update(['is_subscribed'=>1]);
                         break;
                     default:
                         return '';

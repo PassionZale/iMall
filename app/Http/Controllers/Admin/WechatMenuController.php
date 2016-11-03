@@ -75,9 +75,6 @@ class WechatMenuController extends BaseController
             if ($count >= 3) {
                 return Redirect::to('admin/wechat/menu')->withError('菜单新增失败，一级菜单至多设置3个！');
             }
-            if ($type != 3) {
-                return Redirect::to('admin/wechat/menu')->withError('菜单新增失败，一级菜单类型必须为“无事件”！');
-            }
         } else {
             if ($type == 3) {
                 return Redirect::to('admin/wechat/menu')->withError('菜单新增失败，二级菜单类型不能为“无事件”！');
