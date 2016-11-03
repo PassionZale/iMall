@@ -61,6 +61,14 @@ class WechatMenuController extends BaseController
     }
 
     /**
+     * 发送菜单至微信
+     * 生成公众号菜单
+     */
+    public function pushMenu(){
+        dd(WechatMenu::all());
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request

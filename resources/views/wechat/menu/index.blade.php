@@ -9,9 +9,12 @@
             <a href="{{url('admin/wechat/menu/create')}}" class="btn btn-primary">
                 <i class="fa fa-btn fa-plus"></i>新增
             </a>
-            <a href="#" class="btn btn-warning">
+            <button id="push-menu-btn" class="btn btn-warning" type="button">
                 <i class="fa fa-btn fa-send"></i>生成菜单
-            </a>
+            </button>
+            <form id="push-menu-form" class="__hide__" method="post" action="{{url('admin/wechat/pushMenu')}}">
+                {{csrf_field()}}
+            </form>
             @if(!empty($menus))
                 <table class="table table-responsive">
                     <thead>
@@ -60,5 +63,5 @@
 @endsection
 
 @section('scriptTag')
-    <i id="scriptTag">{{asset('js/admin/index.js')}}</i>
+    <i id="scriptTag">{{asset('js/admin/wechat/menuIndex.js')}}</i>
 @endsection
