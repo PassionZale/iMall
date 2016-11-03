@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Log;
 use EasyWeChat\Foundation\Application;
+use EasyWeChat\Message\Text;
 
 /**
  * Class WechatController
@@ -20,18 +21,32 @@ class WechatController extends Controller
      * @param Application $wechat
      * @return mixed
      */
-    public function serve(Application $wechat)
+    public function serve()
     {
         Log::info('request arrived');
 
         $wechat = app('wechat');
-        $wechat->server->setMessageHandler(function ($message) {
-            return "欢迎关注 overtrue！";
+        $server = $app->server;
+
+        $server->setMessageHandler(function ($message) {
+            if ($message->MsgType == 'event') {
+                switch ($message->Event) {
+                    case'subscribe':
+                        $user = $message->FromUserName;
+                        Text::setAttribute('content',"$user，欢迎关注iMall");
+                        break;
+                    case 'unsubscribe':
+                        break;
+                    default:
+                        Text::setAttribute('content','iMall还在开发中...');
+                }
+            }
         });
 
         Log::info('return response');
-        return $wechat->server->serve();
+        $response = $wechat->server->serve();
+        return $response;
     }
 
-    
+
 }
