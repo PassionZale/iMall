@@ -25,27 +25,29 @@ class WechatController extends Controller
     {
         Log::info('request arrived');
 
-        $wechat = app('wechat');
+        $app = app('wechat');
         $server = $app->server;
 
         $server->setMessageHandler(function ($message) {
             if ($message->MsgType == 'event') {
                 switch ($message->Event) {
                     case'subscribe':
-                        $user = $message->FromUserName;
-                        Text::setAttribute('content',"$user，欢迎关注iMall");
+						return '欢迎。';
                         break;
                     case 'unsubscribe':
                         break;
                     default:
-                        Text::setAttribute('content','iMall还在开发中...');
+						return '';
+						break;
                 }
-            }
+            }else{
+					
+				return 'iMall还在开发中...Comming soon';
+			}
         });
 
         Log::info('return response');
-        $response = $wechat->server->serve();
-        return $response;
+		return $server->serve();
     }
 
 
