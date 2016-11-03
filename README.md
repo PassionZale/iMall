@@ -26,6 +26,7 @@ npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
 ``` shell
 git clone https://github.com/PassionZale/iMall.git
 cd iMall/
+git update-index --assume-unchanged config/wechat.php
 cp .env.example .env
 #在.env中配置好数据库连接后，继续执行以下步骤
 composer update
