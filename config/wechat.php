@@ -16,9 +16,9 @@ return [
     /*
      * 账号基本信息，请从微信公众平台/开放平台获取
      */
-    'app_id'  => env('WECHAT_APPID', 'your-app-id'),         // AppID
-    'secret'  => env('WECHAT_SECRET', 'your-app-secret'),     // AppSecret
-    'token'   => env('WECHAT_TOKEN', 'your-token'),          // Token
+    'app_id'  => env('WECHAT_APPID', 'wxe0c8630c5b3761ef'),         // AppID
+    'secret'  => env('WECHAT_SECRET', 'e93abbe556a4aede7ceb0e3b310e5eaf'),     // AppSecret
+    'token'   => env('WECHAT_TOKEN', 'iMall'),          // Token
     'aes_key' => env('WECHAT_AES_KEY', ''),                    // EncodingAESKey
 
     /*
@@ -39,10 +39,10 @@ return [
      * scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
      * callback：OAuth授权完成后的回调页地址(如果使用中间件，则随便填写。。。)
      */
-    // 'oauth' => [
-    //     'scopes'   => array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_userinfo'))),
-    //     'callback' => env('WECHAT_OAUTH_CALLBACK', '/examples/oauth_callback.php'),
-    // ],
+//     'oauth' => [
+//         'scopes'   => array_map('trim', explode(',', env('WECHAT_OAUTH_SCOPES', 'snsapi_userinfo'))),
+//         'callback' => env('WECHAT_OAUTH_CALLBACK', '/examples/oauth_callback.php'),
+//     ],
 
     /*
      * 微信支付
