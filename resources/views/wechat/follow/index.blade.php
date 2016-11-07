@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="panel panel-default">
         <div class="panel-heading">粉丝列表</div>
 
@@ -43,5 +42,5 @@
 @endsection
 
 @section('scriptTag')
-    <i id="scriptTag">{{asset('js/admin/wechat/menuIndex.js')}}</i>
+    <i id="scriptTag">{{asset('js/admin/follow/followIndex.js')}}</i>
 @endsection
