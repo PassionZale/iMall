@@ -28,7 +28,7 @@ Route::any('/wechat', 'WechatController@serve');
 
 // 微信商城首页
 Route::group(['prefix'=>'mall','middleware' => ['web', 'wechat.oauth'],'namespace'=>'Mall'],function(){
-    Route::get('/','MallController@index');
+    Route::get('/','IndexController@index');
     Route::get('/user', function () {
         session('wechat.oauth_user'); // 拿到授权用户资料
     });
