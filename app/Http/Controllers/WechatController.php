@@ -47,16 +47,16 @@ class WechatController extends Controller
                         // 判断当前粉丝是否以前关注过
                         $oldFollow = WechatFollow::where('openid', '=', $openid)->first();
                         if ($oldFollow) {
-                            $follow->nickname = $user->nickname;
-                            $follow->sex = ($user->sex + 1);
-                            $follow->language = $user->language;
-                            $follow->city = $user->city;
-                            $follow->country = $user->country;
-                            $follow->province = $user->province;
-                            $follow->headimgurl = $user->headimgurl;
-                            $follow->remark = $user->remark;
-                            $follow->groupid = $user->groupid;
-                            $follow->is_subscribed = 2;
+                            $follow['nickname'] = $user->nickname;
+                            $follow['sex'] = ($user->sex + 1);
+                            $follow['language'] = $user->language;
+                            $follow['city'] = $user->city;
+                            $follow['country'] = $user->country;
+                            $follow['province'] = $user->province;
+                            $follow['headimgurl'] = $user->headimgurl;
+                            $follow['remark'] = $user->remark;
+                            $follow['groupid'] = $user->groupid;
+                            $follow['is_subscribed'] = 2;
                             WechatFollow::where('openid', '=', $openid)->update($follow);
                             return '欢迎回来，' . $user->nickname . '。';
                         } else {
