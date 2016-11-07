@@ -21,13 +21,22 @@ Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],fun
     });
 });
 
+// DEBUG
 Route::get('/wechat/debug','WechatController@debug');
 
 Route::any('/wechat', 'WechatController@serve');
 
-Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+// 微信商城首页
+Route::group(['prefix'=>'mall','middleware' => ['web', 'wechat.oauth'],'namespace'=>'Mall'],function(){
+    Route::get('/','MallController@index');
     Route::get('/user', function () {
         session('wechat.oauth_user'); // 拿到授权用户资料
     });
 });
+
+//Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+//    Route::get('/user', function () {
+//        session('wechat.oauth_user'); // 拿到授权用户资料
+//    });
+//});
 
