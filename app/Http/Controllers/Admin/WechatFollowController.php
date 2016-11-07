@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\WechatFollow;
 
 class WechatFollowController extends BaseController
 {
@@ -14,7 +15,8 @@ class WechatFollowController extends BaseController
      */
     public function index()
     {
-        //
+        $follows = WechatFollow::paginate(10);
+        return view('wechat.follow.index')->with(['follows'=>$follows]);
     }
 
     /**
