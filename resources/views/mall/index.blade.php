@@ -1,2 +1,2 @@
 <?php
-dd($user);
+var_dump($user);
