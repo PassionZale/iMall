@@ -24,17 +24,14 @@ Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],fun
 // DEBUG
 Route::get('/wechat/debug','WechatController@debug');
 
+// 与微信服务器交互请求
 Route::any('/wechat', 'WechatController@serve');
 
-// 微信商城首页
+// 微信商城
 Route::group(['prefix'=>'mall','middleware' => ['web', 'wechat.oauth'],'namespace'=>'Mall'],function(){
+    // OAuth2.0 授权 snsapi_userinfo
     Route::get('/user', 'IndexController@oauth');
+    // 首页
     Route::get('/','IndexController@index');
 });
-
-//Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
-//    Route::get('/user', function () {
-//        session('wechat.oauth_user'); // 拿到授权用户资料
-//    });
-//});
 
