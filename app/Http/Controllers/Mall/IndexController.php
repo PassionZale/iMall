@@ -12,8 +12,8 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $app = new Application($config);
-        $oauth = $app->oauth;
+        $wechat = app('wechat');
+        $oauth = $wechat->oauth;
         // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
         return view('mall.index')->with(['user' => $user]);
