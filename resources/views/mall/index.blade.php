@@ -1,2 +1,2 @@
 <?php
-dd($follow);
+dd($user);
