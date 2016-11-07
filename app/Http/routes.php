@@ -35,3 +35,6 @@ Route::group(['prefix'=>'mall','middleware' => ['web', 'wechat.oauth'],'namespac
     Route::get('/','IndexController@index');
 });
 
+Route::group(['prefix'=>'api','middleware'=>'web','namespace'=>'Api'],function(){
+    Route::get('userinfo','UserController@userinfo');
+});

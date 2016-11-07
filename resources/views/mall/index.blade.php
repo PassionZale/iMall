@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>iMall</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <meta id="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Zhang Lei">
     <meta name="description" content="微信商城：iMall,基于Laravel5.2和vue.js">

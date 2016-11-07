@@ -17,8 +17,6 @@ class IndexController extends Controller
 
     public function index()
     {
-        // 获取 OAuth 授权结果用户信息
-        $user =  session('wechat.oauth_user');
-        return view('mall.index')->with(['user' => $user]);
+        return view('mall.index');
     }
 }
