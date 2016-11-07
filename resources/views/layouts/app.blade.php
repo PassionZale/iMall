@@ -27,10 +27,7 @@
 
     <!-- JavaScripts -->
     <script data-main="{{ asset('js/admin-frame.js') }}" src="{{ asset('js/require.min.js') }}"></script>
-    <style>
 
-
-    </style>
 </head>
 <body id="app-layout">
 <nav class="navbar navbar-default navbar-static-top">

@@ -24,3 +24,4 @@ nbproject/
 /node_modules
 /public/storage
 .gitignore
+public/js/mall/
