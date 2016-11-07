@@ -1,6 +1,6 @@
 <template>
-    <h1>{{user.nickname}}</h1>
-    <router-view></router-view>
+    <h1>iMall</h1>
+    <router-view :user></router-view>
 </template>
 
 <script>
@@ -9,7 +9,6 @@
         replace: false,
         data(){
             return{
-                msg:'iMall',
                 user:''
             }
         },
@@ -18,13 +17,16 @@
         },
         methods:{
             fecthUser:function(){
-                this.$http.get('/api/userinfo').then(function(response){
-                    let user = {openid:'',nickname:'',avatar:''};
-                    localStorage.setItem('user.openid', response.data.id);
-                    localStorage.setItem('user.nickname',  response.data.nickname);
-                    localStorage.setItem('user.avatar', response.data.avatar);
-                    this.user = localStorage.getItem('user');
-                });
+                let userInfo = {};
+                userInfo = localStorage.getItem(userInfo);
+                if(userInfo){
+                    this.user = JSON.parse(userInfo);
+                }else{
+                    this.$http.get('/api/userinfo').then(function(response){
+                        localStorage.setItem('userInfo', JSON.stringify(response.data));
+                        this.user = JSON.parse(localStorage.getItem('userInfo'));
+                    });
+                }
             }
         }
     }

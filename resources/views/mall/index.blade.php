@@ -26,11 +26,10 @@
     <link href="//cdn.bootcss.com/metisMenu/2.5.2/metisMenu.min.css" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
-    <!-- JavaScripts -->
-    <script src="{{ asset('js/mall/app.js') }}"></script>
-
 </head>
 <body>
 
+<!-- JavaScripts -->
+<script src="{{ asset('js/mall/app.js') }}"></script>
 </body>
 </html>
