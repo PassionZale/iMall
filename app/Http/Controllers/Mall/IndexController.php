@@ -10,12 +10,15 @@ use EasyWeChat\Foundation\Application;
 
 class IndexController extends Controller
 {
+    public function oauth(){
+        session('wechat.oauth_user');
+        return redirect()->to('mall');
+    }
+
     public function index()
     {
-        $wechat = app('wechat');
-        $oauth = $wechat->oauth;
         // 获取 OAuth 授权结果用户信息
-        $user = $oauth->user();
+        $user =  session('wechat.oauth_user');
         return view('mall.index')->with(['user' => $user]);
     }
 }
