@@ -1,0 +1,20 @@
+{
+  "name": "iMall",
+  "description": "",
+  "main": "",
+  "authors": [
+    "whouu <whouu@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/PassionZale/iMall",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery.pep": "^0.6.8"
+  }
+}
