@@ -23,8 +23,10 @@
 
     <!-- Styles -->
     <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//cdn.bootcss.com/metisMenu/2.5.2/metisMenu.min.css" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('js/lib/jquery/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/lib/jquery-drag/jquery.drag.min.js') }}"></script>
 
 </head>
 <body>

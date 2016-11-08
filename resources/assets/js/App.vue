@@ -1,11 +1,14 @@
 <template>
-    <h1>iMall</h1>
-    <router-view :user></router-view>
+    <Tool></Tool>
+    <router-view></router-view>
 </template>
 
 <script>
-
+    import Tool from './components/common/Tool.vue'
     export default{
+        components:{
+            Tool
+        },
         replace: false,
         data(){
             return{
@@ -30,5 +33,4 @@
             }
         }
     }
-
 </script>
