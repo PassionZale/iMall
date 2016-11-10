@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="draggable"></div>
+        <img id="tool" src="/images/icons/icon-tool.png"/>
     </div>
 </template>
 
@@ -8,21 +8,22 @@
 .container {
   padding: 10px;
   border: 2px solid #F90;
-  height: 200px;
+  height: 500px;
 }
-.draggable {
-  width: 140px;
-  height: 140px;
-  background: #F90;
-  border-radius: 10px;
-  margin: 0 10px 10px 0;
-  float: left;
+#tool{
+    display:block;
+    width:24px;
+    height:24px;
+    border:1px solid #d7d7d7;
+    background-color:#F90;
+    border-radius:50%;
+    float:left;
 }
-.draggable.is-pointer-down {
+#tool.is-pointer-down {
   background: #09F;
-  z-index: 2; /* above other draggies */
+  z-index: 999;
 }
-.draggable.is-dragging { opacity: 0.7; }
+#tool.is-dragging { opacity: 0.7; }
 </style>
 
 <script>
@@ -46,10 +47,16 @@ export default{
             this.historyRecord = localStorage.getItem('historyRecord');
         },
         initDND: function(){
-            var $draggables = $('.draggable').draggabilly({
-                // contain to parent element
+            let self = this;
+            let $draggables = $('#tool').draggabilly({
                 containment: true
             });
+            $draggables.on('staticClick',function(event,pointer){
+                self.showMask(event,pointer);
+            });
+        },
+        showMask:function(){
+            console.log(444);
         }
     }
 }

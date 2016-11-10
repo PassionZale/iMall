@@ -33,7 +33,7 @@ module.exports = {
             test: /\.(png|jpg|gif|svg)$/,
             loader: 'url',
             query: {
-                limit: 10000,
+                limit: 8192,
                 name: '[name].[ext]?[hash]'
             }
         }]
@@ -42,8 +42,11 @@ module.exports = {
         historyApiFallback: true,
         noInfo: true
     },
-    devtool: '#eval-source-map'
-}
+    devtool: '#eval-source-map',
+    plugins: [
+        new webpack.OldWatchingPlugin()
+    ]
+};
 
 if (process.env.NODE_ENV === 'production') {
     module.exports.devtool = '#source-map';
@@ -61,4 +64,4 @@ if (process.env.NODE_ENV === 'production') {
         }),
         new webpack.optimize.OccurenceOrderPlugin()
     ])
-}
+};
