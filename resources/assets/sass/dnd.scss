@@ -1,5 +1,5 @@
 // 工具按钮
-#tool {
+#dnd-icon {
   width: 24px;
   height: 24px;
   border: 1px solid #0080ff;
@@ -16,17 +16,18 @@
     height: 36px;
   }
   &.is-pointer-down {
-    background: #09F;
+    background: #0099FF;
   }
 }
 
-#mask {
-  height: 100%;
-  width: 100%;
+#dnd-mask {
+  z-index: 800;
   position: fixed;
   top: 0;
-  z-index: 800;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
   opacity: 0.3;
-  filter: alpha(opacity=30);
-  background-color: #000;
+  transition: opacity .15s linear;
 }

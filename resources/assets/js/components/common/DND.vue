@@ -1,6 +1,6 @@
 <template>
-    <img id="tool" src="/images/icons/icon-tool.png"/>
-    <div id="mask" v-show="show" @click="toggleMask()">
+    <img  v-show="dnd.show"  id="dnd-icon" src="/images/icons/icon-tool.png"/>
+    <div  v-show="mask.show"  id="dnd-mask" @click="toggleMask()">
 
     </div>
 </template>
@@ -9,9 +9,12 @@
 export default{
     data(){
         return {
-            historyRecord:[],
-            title:'最近浏览过的商品',
-            show:false
+            dnd:{
+               show:true
+            },
+            mask:{
+                show:false
+            }
         }
     },
     created(){
@@ -23,11 +26,11 @@ export default{
     },
     methods:{
         initTool: function(){
-            this.historyRecord = localStorage.getItem('historyRecord');
+
         },
         initDND: function(){
             let self = this;
-            let $dnd = $('#tool').draggabilly({
+            let $dnd = $('#dnd-icon').draggabilly({
                 containment: true,
             });
             // TOOL ICON staticClick event
@@ -40,7 +43,8 @@ export default{
             });
         },
         toggleMask:function(){
-            this.show = !this.show;
+            this.dnd.show = !this.dnd.show;
+            this.mask.show = !this.mask.show;
         }
     }
 }
