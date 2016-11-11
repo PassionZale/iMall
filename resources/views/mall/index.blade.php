@@ -22,8 +22,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            width:100%;
+            height:100%;
+        }
+    </style>
 
 </head>
 <body>
