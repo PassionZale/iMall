@@ -22,14 +22,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <style>
-        body{
-            margin:0;
-            padding:0;
-            width:100%;
-            height:100%;
-        }
-    </style>
+    <link href="{{asset('css/mall.css')}}" rel="stylesheet">
 
 </head>
 <body>

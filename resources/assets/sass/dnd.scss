@@ -1,0 +1,32 @@
+// 工具按钮
+#tool {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #0080ff;
+  background-color: #0080ff;
+  border-radius: 50%;
+  z-index: 900;
+  top: 120px;
+  left: 5px;
+  float: right;
+  &.is-dragging {
+    opacity: 0.7;
+    border: none;
+    width: 36px;
+    height: 36px;
+  }
+  &.is-pointer-down {
+    background: #09F;
+  }
+}
+
+#mask {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 800;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  background-color: #000;
+}

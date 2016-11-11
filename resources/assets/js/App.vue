@@ -1,13 +1,13 @@
 <template>
-    <Tool></Tool>
+    <d-n-d></d-n-d>
     <router-view></router-view>
 </template>
 
 <script>
-    import Tool from './components/common/Tool.vue'
+    import DND from './components/common/DND.vue'
     export default{
         components:{
-            Tool
+            DND
         },
         replace: false,
         data(){

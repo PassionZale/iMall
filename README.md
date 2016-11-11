@@ -38,8 +38,13 @@ php artisan migrate
 ``` shell
 cd iMall/
 npm install
+#若出现以下，且NPM未报错
+> node-sass@3.11.2 install /usr/share/nginx/html/iMall/node_modules/node-sass
+> node scripts/install.js
+#执行以下命令
+npm install npm install node-sass@3.11.2 /usr/share/nginx/html/iMall/node_modules/node-sass
 #编译sass
-gulp
+gulp mixsass
 ```
 
 >人生不是接力跑，是马拉松，努力会有回报
