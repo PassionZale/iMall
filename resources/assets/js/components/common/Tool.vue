@@ -28,10 +28,9 @@
 }
 #tool.is-dragging { opacity: 0.7; }
 #mask{
-    height:100%;
+    height:500px;
     width:100%;
     position:fixed;
-    _position:absolute;
     top:0;
     z-index:800;
     opacity:0.3;
