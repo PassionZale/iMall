@@ -1,3 +1,7 @@
+<style>
+@import '~vux/dist/vux.css';
+</style>
+
 <template>
     <d-n-d></d-n-d>
     <router-view></router-view>

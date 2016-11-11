@@ -1,18 +1,18 @@
 // 工具按钮
 #dnd-icon {
+  position: relative;
   width: 24px;
   height: 24px;
-  border: 1px solid #0080ff;
   background-color: #0080ff;
   border-radius: 50%;
   z-index: 900;
-  top: 120px;
+  top: 400px;
   left: 5px;
   float: right;
   opacity: 0.6;
   &.is-dragging {
     opacity: 1;
-    border: none;
+    border: 1px solid #0080ff;
     width: 36px;
     height: 36px;
   }
@@ -24,11 +24,10 @@
 #dnd-mask {
   z-index: 800;
   position: fixed;
-  top: 0;
+  top: 80%;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #000000;
-  opacity: 0.3;
+  background-color: #333333;
   transition: opacity .15s linear;
 }

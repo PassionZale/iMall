@@ -1,7 +1,7 @@
 <template>
-    <img  v-show="dnd.show"  id="dnd-icon" src="/images/icons/icon-tool.png"/>
-    <div  v-show="mask.show"  id="dnd-mask" @click="toggleMask()">
-
+    <img v-show="dnd.show"  id="dnd-icon" src="/images/icons/icon-tool.png"/>
+    <div v-show="mask.show"  id="dnd-mask" @click="toggleMask()">
+        <p>最近浏览的商品</p>
     </div>
 </template>
 
@@ -43,7 +43,6 @@ export default{
             });
         },
         toggleMask:function(){
-            this.dnd.show = !this.dnd.show;
             this.mask.show = !this.mask.show;
         }
     }

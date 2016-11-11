@@ -21,6 +21,8 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.2.0",
     "json-loader": "^0.5.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
     "stylus-loader": "^2.3.1",
     "url-loader": "^0.5.7",
     "vue-hot-reload-api": "^2.0.6",
@@ -36,6 +38,7 @@
     "stylus": "^0.54.5",
     "vue": "^1.0.26",
     "vue-resource": "^0.9.3",
-    "vue-router": "^0.7.13"
+    "vue-router": "^0.7.13",
+    "vux": "^0.1.3"
   }
 }
