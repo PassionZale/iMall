@@ -9,8 +9,9 @@
   top: 120px;
   left: 5px;
   float: right;
+  opacity: 0.6;
   &.is-dragging {
-    opacity: 0.7;
+    opacity: 1;
     border: none;
     width: 36px;
     height: 36px;
