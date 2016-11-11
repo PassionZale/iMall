@@ -1,6 +1,6 @@
 <template>
     <img id="tool" src="/images/icons/icon-tool.png"/>
-    <div id="mask" v-show="show">
+    <div id="mask" v-show="show" @click="toggleMask()">
 
     </div>
 </template>
@@ -32,14 +32,14 @@ export default{
             });
             // TOOL ICON staticClick event
             $dnd.on('staticClick', function(event, pointer){
-                self.show = !self.show;
+                self.toggleMask();
             });
             // TOOL ICON dragEnd event
             $dnd.on('dragEnd', function(event, pointer){
                 $(pointer.target).css({left:5});
             });
         },
-        showMask:function(event,pointer){
+        toggleMask:function(){
             this.show = !this.show;
         }
     }
