@@ -15,6 +15,7 @@
                         <th>所在地</th>
                         <th>状态</th>
                         <th>关注时间</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,9 @@
                             <td>{{$follow->country}} {{$follow->province}} {{$follow->city}}</td>
                             <td>{{$follow->is_subscribed}}</td>
                             <td>{{$follow->created_at}}</td>
+                            <td>
+                                <a data-openid="{{$follow->openid}}" href="#" class="refresh-btn" title="更新">更新</a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -42,5 +46,5 @@
 @endsection
 
 @section('scriptTag')
-    <i id="scriptTag">{{asset('js/admin/follow/followIndex.js')}}</i>
+    <i id="scriptTag">{{asset('js/admin/wechat/followIndex.js')}}</i>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\WechatFollow;
+use EasyWeChat\Foundation\Application;
 
 class WechatFollowController extends BaseController
 {
@@ -16,7 +17,30 @@ class WechatFollowController extends BaseController
     public function index()
     {
         $follows = WechatFollow::paginate(10);
-        return view('wechat.follow.index')->with(['follows'=>$follows]);
+        return view('wechat.follow.index')->with(['follows' => $follows]);
+    }
+
+    public function refresh(Request $request)
+    {
+        $openid = $request->input('openid');
+        $follow = WechatFollow::where('openid', '=', $openid)->first();
+        if ($follow) {
+            $wechat = app('wechat');
+            $userApi = $wechat->user;
+            // 重新获取粉丝基础信息
+            $user = $userApi->get($openid);
+            $data['nickname'] = $user->nickname;
+            $data['sex'] = ($user->sex + 1);
+            $data['language'] = $user->language;
+            $data['city'] = $user->city;
+            $data['country'] = $user->country;
+            $data['province'] = $user->province;
+            $data['headimgurl'] = $user->headimgurl;
+            $data['remark'] = $user->remark;
+            $data['groupid'] = $user->groupid;
+            WechatFollow::where('openid', '=', $openid)->update($data);
+            return view('wechat.follow.index')->withSuccess($follow['nickname'] . '信息更新成功！');
+        }
     }
 
     /**
@@ -32,7 +56,7 @@ class WechatFollowController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +67,7 @@ class WechatFollowController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +78,7 @@ class WechatFollowController extends BaseController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +89,8 @@ class WechatFollowController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,7 +101,7 @@ class WechatFollowController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
