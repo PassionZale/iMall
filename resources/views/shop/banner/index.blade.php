@@ -24,7 +24,7 @@
                     @foreach($banners as $banner)
                         <tr>
                             <td>
-                                <img class="headimgurl" alt="轮播图" src="{{$banner->img_url}}"/>
+                                <img class="banner-img-url" alt="轮播图" src="{{$banner->img_url}}"/>
                             </td>
                             <td>
                                 {{$banner->redirect_url}}

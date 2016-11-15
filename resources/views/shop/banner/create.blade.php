@@ -5,7 +5,7 @@
         <div class="panel-heading">新增轮播图</div>
 
         <div class="panel-body">
-            <form action="{{url('admin/shop/banner')}}" method="post">
+            <form action="{{url('admin/shop/banner')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label>排序：</label>
@@ -17,9 +17,9 @@
                 </div>
                 <div class="form-group">
                     <label>图片：</label>
-                    <input name="img_url" type="file" class="form-control">
+                    <input name="file" type="file" class="form-control" required>
                 </div>
-                <div class="form-group __hide__" id="menu-url">
+                <div class="form-group">
                     <label>链接：</label>
                     <input name="redirect_url" type="text" class="form-control" placeholder="">
                 </div>

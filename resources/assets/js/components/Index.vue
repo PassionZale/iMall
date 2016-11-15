@@ -1,5 +1,5 @@
 <template>
-    <swiper :list="list" auto></swiper>
+    <div></div>
 </template>
 
 <script>

@@ -22,7 +22,7 @@
                     @foreach($follows as $follow)
                         <tr>
                             <td>
-                                <img class="headimgurl" alt="{{$follow->nickname}}" src="{{$follow->headimgurl}}"/>
+                                <img class="head-img-url" alt="{{$follow->nickname}}" src="{{$follow->headimgurl}}"/>
                             </td>
                             <td>{{$follow->nickname}}</td>
                             <td>{{$follow->sex}}</td>
