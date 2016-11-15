@@ -3,47 +3,25 @@
 </style>
 
 <template>
-    <swiper :list="banner" auto></swiper>
     <router-view></router-view>
-    <tabbar>
-        <tabbar-item>
-            <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_button.png">
-            <span slot="label">Wechat</span>
-        </tabbar-item>
-        <tabbar-item show-dot>
-            <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_msg.png">
-            <span slot="label">Message</span>
-        </tabbar-item>
-        <tabbar-item selected>
-            <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_article.png">
-            <span slot="label">Explore</span>
-        </tabbar-item>
-        <tabbar-item>
-            <img slot="icon" src="https://o84lhz5xo.qnssl.com/master/src/assets/demo/icon_nav_cell.png">
-            <span slot="label">News</span>
-        </tabbar-item>
-    </tabbar>
+    <navbar></navbar>
 </template>
 
 <script>
-    import Swiper from 'vux/dist/components/swiper'
-    import Tabbar from 'vux/dist/components/tabbar'
-    import TabbarItem from 'vux/dist/components/tabbar-item'
+    import Navbar from './components/Navbar.vue';
 
     export default{
         components:{
-            Swiper,Tabbar,TabbarItem
+            Navbar
         },
         replace: false,
         data(){
             return{
-                user:'',
-                banner:[],
+                user:''
             }
         },
         created(){
             this.fetchUser();
-            this.fetchBanner();
         },
         methods:{
             fetchUser:function(){
@@ -57,18 +35,6 @@
                         this.user = JSON.parse(localStorage.getItem('userInfo'));
                     });
                 }
-            },
-            fetchBanner:function(){
-                let self = this;
-                this.$http.get('/api/banners').then(function(response){
-                    response.data.forEach(function(item){
-                        let obj = {title:'',img:'',url:''};
-                        obj.title = item.title;
-                        obj.img = item.img_url;
-                        obj.url = item.redirect_url;
-                        self.banner.push(obj);
-                    });
-                });
             }
         }
     }

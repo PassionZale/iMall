@@ -6,7 +6,7 @@ export default function (router) {
     router.map({
         '/': {
             name: 'index',
-            component:require('./components/Index.vue')
+            component:require('./components/Swiper.vue')
         }
     });
 }
