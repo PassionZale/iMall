@@ -44,7 +44,12 @@ module.exports = {
     },
     devtool: '#eval-source-map',
     plugins: [
-        new webpack.OldWatchingPlugin()
+        new webpack.OldWatchingPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ]
 };
 
