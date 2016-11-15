@@ -109,26 +109,26 @@
                         </li>
                     </ul>
                 </li>
-                <li class="metismenu-item">
+                <li class="metismenu-item {{request()->is('admin/shop/*') ? 'active' : ''}}">
                     <a href="">
                         <span class="sidebar-nav-item-icon fa fa-shopping-bag fa-lg"></span>
                         <span class="sidebar-nav-item">店铺管理</span>
                         <span class="fa arrow fa-fw"></span>
                     </a>
                     <ul>
-                        <li>
+                        <li class="{{request()->is('admin/shop/config') ? 'active' : ''}}">
                             <a href="">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 商铺配置
                             </a>
                         </li>
-                        <li>
-                            <a href="">
+                        <li class="{{request()->is('admin/shop/banner*') ? 'active' : ''}}">
+                            <a href="{{url('admin/shop/banner')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 轮播图
                             </a>
                         </li>
-                        <li>
+                        <li class="{{request()->is('admin/shop/partner') ? 'active' : ''}}">
                             <a href="">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 合作伙伴

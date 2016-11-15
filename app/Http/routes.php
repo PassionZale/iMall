@@ -20,6 +20,10 @@ Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],fun
         Route::resource('follow', 'WechatFollowController', ['except' => ['create']]);
         Route::get('refresh','WechatFollowController@refresh');
     });
+    // 店铺管理
+    Route::group(['prefix'=>'shop'],function(){
+        Route::resource('banner','ShopBannerController');
+    });
 });
 
 // DEBUG

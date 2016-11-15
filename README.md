@@ -9,6 +9,10 @@
 3. node:v6.2.0
 4. npm:3.8.9
 
+## PHP 扩展
+1. open_ssl
+2. fileinfo
+
 ## Composer 、NPM配置
 ``` shell
 #启动composer中国镜像服务
