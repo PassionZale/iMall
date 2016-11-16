@@ -1,23 +1,24 @@
 <template>
     <tabbar>
         <tabbar-item selected>
-            <img slot="icon" src="/images/icon/nav-index-icon.png">
+            <span slot="icon" class="nav-index"></span>
             <span slot="label">首页</span>
         </tabbar-item>
         <tabbar-item>
-            <img slot="icon" src="/images/icon/nav-category-icon.png">
+            <span slot="icon" class="nav-category"></span>
             <span slot="label">全部产品</span>
         </tabbar-item>
         <tabbar-item badge="9">
-            <img slot="icon" src="/images/icon/nav-cart-icon.png">
+            <span slot="icon" class="nav-cart"></span>
             <span slot="label">购物车</span>
         </tabbar-item>
         <tabbar-item>
-            <img slot="icon" src="/images/icon/nav-usercenter-icon.png">
+            <span slot="icon" class="nav-usercenter"></span>
             <span slot="label">账户中心</span>
         </tabbar-item>
     </tabbar>
 </template>
+
 <script>
     import Tabbar from 'vux/dist/components/tabbar'
     import TabbarItem from 'vux/dist/components/tabbar-item'
@@ -32,5 +33,7 @@
             Tabbar, TabbarItem, Badge
         }
     }
+
+
 
 </script>
