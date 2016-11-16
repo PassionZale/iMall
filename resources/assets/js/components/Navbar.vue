@@ -44,7 +44,7 @@
                     case 'index':
                         this.indexNav = 0;
                         break;
-                    case 'cateogry':
+                    case 'category':
                         this.indexNav = 1;
                         break;
                     case 'cart':
@@ -54,7 +54,7 @@
                         this.indexNav = 3;
                         break;
                     default:
-                        this.indexNav = 0;
+                        this.indexNav = -1;
                         break;
                 }
             },
