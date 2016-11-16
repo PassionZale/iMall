@@ -6,7 +6,7 @@ export default function (router) {
     router.map({
         '/index': {
             name: 'index',
-            component:require('./components/Index.vue')
+            component:require('./components/Index/Banner.vue')
         },
         '/category':{
             name:'category',
