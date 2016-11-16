@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>Cart.vue</div>
+        <div>UserCenter.vue</div>
     </div>
 </template>
 
