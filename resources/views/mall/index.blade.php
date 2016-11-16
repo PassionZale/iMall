@@ -20,12 +20,12 @@
     <!-- Styles -->
     <link href="{{asset('css/mall.css')}}" rel="stylesheet">
 
+    <!-- JavaScripts -->
+    <script src="{{ asset('js/lib/jquery/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/mall/app.js') }}"></script>
+
 </head>
 <body>
-
-<!-- JavaScripts -->
-<script src="{{ asset('js/lib/jquery/jquery-2.1.1.min.js') }}"></script>
-<script src="{{ asset('js/mall/app.js') }}"></script>
 
 </body>
 </html>
