@@ -1,6 +1,3 @@
-<style>
-@import '~vux/dist/vux.css';
-</style>
 
 <template>
     <router-view></router-view>

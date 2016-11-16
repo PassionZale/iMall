@@ -19,7 +19,7 @@ class CreateShopBannerTable extends Migration
             // img url
             $table->string('img_url')->nullable();
             // rediret url
-            $table->string('redirect_url')->default(':javascript;');
+            $table->string('redirect_url')->nullable();
             // 排序
             $table->integer('sort')->default(0);
             // 是否显示

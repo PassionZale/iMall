@@ -1,9 +1,11 @@
 import Vue from 'vue'
+import Mint from 'mint-ui'
 import Resource from 'vue-resource'
 import Router from 'vue-router'
 import routerMap from './router'
 import App from './App.vue'
 
+Vue.use(Mint);
 Vue.use(Router);
 Vue.use(Resource);
 
