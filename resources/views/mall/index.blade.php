@@ -17,10 +17,6 @@
     <script src="//cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
     <![endif]-->
 
-    <!-- Fonts -->
-    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
     <!-- Styles -->
     <link href="{{asset('css/mall.css')}}" rel="stylesheet">
 
@@ -29,7 +25,6 @@
 
 <!-- JavaScripts -->
 <script src="{{ asset('js/lib/jquery/jquery-2.1.1.min.js') }}"></script>
-<script src="{{ asset('js/lib/jquery-drag/jquery.drag.min.js') }}"></script>
 <script src="{{ asset('js/mall/app.js') }}"></script>
 
 </body>
