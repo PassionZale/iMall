@@ -13,7 +13,7 @@
         components:{
             Swiper
         },
-        ready(){
+        created(){
             this.fetchBanner();
         },
         methods:{
