@@ -14,8 +14,7 @@ Vue.http.options.emulateHTTP = true;
 // laravel csrf token
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
 const router = new Router({
-    history: false,
-    root: 'mall'
+    history: false
 });
 
 routerMap(router);

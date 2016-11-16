@@ -20,8 +20,6 @@
     <!-- Styles -->
     <link href="{{asset('css/mall.css')}}" rel="stylesheet">
 
-
-
 </head>
 <body>
     <!-- JavaScripts -->
