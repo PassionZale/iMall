@@ -1,6 +1,6 @@
 <template>
-    <div style="background-image: url(&quot;/uploads/banner/5OStC0jgzM.png&quot;);"></div>
-    <swiper :list="banner" auto></swiper>
+    <div style="background-image: url('/uploads/banner/5OStC0jgzM.png');"></div>
+    <!--<swiper :list="banner" auto></swiper>-->
 </template>
 
 <script>
