@@ -1,0 +1,53 @@
+.mint-tabbar {
+  & > .mint-tab-item.is-selected {
+    color: #09bb07;
+    .nav-index {
+      background-image: url("/images/icon/nav-index-active.png");
+    }
+    .nav-category {
+      background-image: url("/images/icon/nav-category-active.png");
+    }
+    .nav-cart {
+      background-image: url("/images/icon/nav-cart-active.png");
+    }
+    .nav-usercenter {
+      background-image: url("/images/icon/nav-usercenter-active.png");
+    }
+  }
+}
+
+.mint-tab-item {
+  color: #333;
+  text-decoration: none;
+}
+
+.nav-index {
+  background-image: url("/images/icon/nav-index-icon.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.nav-category {
+  background-image: url("/images/icon/nav-category-icon.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.nav-cart {
+  background-image: url("/images/icon/nav-cart-icon.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.nav-usercenter {
+  background-image: url("/images/icon/nav-usercenter-icon.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.mint-badge {
+  position: absolute;
+  top: 0;
+}
+
+
