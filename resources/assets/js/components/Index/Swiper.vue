@@ -4,25 +4,10 @@
             <template v-for="banner in banners">
                 <div class="swiper-slide">
                     <a href="{{banner.redirect_url}}">
-                        <img src="{{banner.img_url}}"/>
+                        <img :src="banner.img_url"/>
                     </a>
                 </div>
             </template>
-            <!--<div class="swiper-slide">-->
-                <!--<a href="#">-->
-                    <!--<img src="/uploads/banner/NFrqXGHtTu.png"/>-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--<div class="swiper-slide">-->
-                <!--<a href="#">-->
-                    <!--<img src="/uploads/banner/5OStC0jgzM.png"/>-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--<div class="swiper-slide">-->
-                <!--<a href="#">-->
-                    <!--<img src="/uploads/banner/Fy6LDCyxxf.png"/>-->
-                <!--</a>-->
-            <!--</div>-->
         </div>
         <div class="swiper-pagination"></div>
     </div>
@@ -44,28 +29,28 @@ img{
                 banners:''
             }
         },
+        created(){
+           this.fetchBanner();
+        },
         ready(){
-            this.fetchBanner();
+            this.$nextTick(function(){
+                var swiper = new Swiper('.swiper-container',{
+                    autoplay:4000,
+                    loop: true,
+                    resizeReInit : true,
+                    pagination: '.swiper-pagination'
+                 });
+            });
         },
         methods:{
             fetchBanner:function(){
                 let self = this;
                 self.$http.get('/api/banners').then(function(response){
-                    self.banners = response.data;
-                    self.$nextTick(function(){
-                        self.initSwiper();
-                    });
+                    self.$set('banners',response.data);
                 });
-            },
-            initSwiper:function(){
-                let swiper = new Swiper('.swiper-container',{
-                    autoplay:4000,
-                    loop: true,
-                    resizeReInit : true,
-                    pagination: '.swiper-pagination'
-                  });
             }
         }
     }
+
 
 </script>
