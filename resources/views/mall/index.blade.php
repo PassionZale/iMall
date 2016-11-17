@@ -20,12 +20,13 @@
 
     <!-- Styles -->
     {{--<link href="{{asset('css/mall.css')}}" rel="stylesheet">--}}
+    <link href="//cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css" rel="stylesheet">
     <link href="https://unpkg.com/mint-ui@1.0.2/lib/style.css" rel="stylesheet">
 </head>
 <body>
     <!-- JavaScripts -->
     <script src="{{ asset('js/lib/jquery/jquery-2.1.1.min.js') }}"></script>
-    <script src="//cdn.bootcss.com/swipe/2.0.0/swipe.min.js"></script>
+    <script src="//cdn.bootcss.com/Swiper/3.4.0/js/swiper.min.js"></script>
     <script src="{{ asset('js/mall/app.js') }}"></script>
 </body>
 </html>

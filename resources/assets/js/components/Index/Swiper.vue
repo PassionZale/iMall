@@ -1,39 +1,35 @@
 <template>
-    <div id='slider' class='swipe'>
-        <div class='swipe-wrap'>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
             <template v-for="banner in banners">
-                <div>
+                <div class="swiper-slide">
                     <a href="{{banner.redirect_url}}">
-                        <img :src="banner.img_url">
+                        <img :src="banner.img_url"/>
                     </a>
                 </div>
             </template>
         </div>
+        <div class="swiper-pagination"></div>
     </div>
 </template>
 <style scoped>
-.swipe {
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
+.swiper-container{
+    width:100%;
+    height:180px;
 }
-.swipe-wrap {
-  width:100%;
-  overflow: hidden;
-  position: relative;
-}
-.swipe-wrap > div {
-  float:left;
-  width:100%;
-  position: relative;
+img{
+    width:100%;
+    height:auto;
 }
 </style>
 <script>
     export default{
         data(){
             return{
-                banners:[]
+                banners:''
             }
+        },
+        components:{
         },
         ready(){
             this.fetchBanner();
@@ -42,23 +38,21 @@
             fetchBanner:function(){
                 let self = this;
                 self.$http.get('/api/banners').then(function(response){
-                    response.data.forEach(function(item){
-                        self.banners.push(item);
-                    });
+                    self.banners = response.data;
                     self.$nextTick(function(){
-                        window.mySwipe = new Swipe(document.getElementById('slider'), {
-                            startSlide: 2,
-                            speed: 400,
-                            auto: 3000,
-                            continuous: true,
-                            disableScroll: false,
-                            stopPropagation: false,
-                            callback: function(index, elem) {},
-                            transitionEnd: function(index, elem) {}
-                        });
+                        self.initSwiper();
                     });
                 });
+            },
+            initSwiper:function(){
+                let swiper = new Swiper('.swiper-container',{
+                    autoplay:4000,
+                    loop: true,
+                    resizeReInit : true,
+                    pagination: '.swiper-pagination'
+                  });
             }
         }
     }
+
 </script>
