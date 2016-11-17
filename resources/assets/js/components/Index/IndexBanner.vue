@@ -42,7 +42,9 @@ img{
                             autoplay:4000,
                             loop: true,
                             resizeReInit : true,
-                            pagination: '.swiper-pagination'
+                            pagination: '.swiper-pagination',
+                            observer:true,
+                            observeParents:true
                          });
                     });
                 });
