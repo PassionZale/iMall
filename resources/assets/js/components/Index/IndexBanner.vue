@@ -1,4 +1,5 @@
 <template>
+	<p v-for="banner in banners">{{banner.id}}<p>
     <div class="swiper-container">
         <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="banner in banners">
@@ -34,16 +35,16 @@ img{
             fetchBanner:function(){
                 this.$http.get('/api/banners').then(function(response){
                     this.$set('banners',response.data);
-                    this.$nextTick(function(){
-                        var swiper = new Swiper('.swiper-container',{
-                            autoplay:4000,
-                            loop: true,
-                            resizeReInit : true,
-                            pagination: '.swiper-pagination',
-                            observer:true,
-                            observeParents:true
-                         });
-                    });
+					setInterval(function(){
+							var swiper = new Swiper('.swiper-container',{
+								autoplay:4000,
+								loop: true,
+								resizeReInit : true,
+								pagination: '.swiper-pagination',
+								observer:true,
+								observeParents:true
+							 });
+						},3000);
                 });
             }
         }
