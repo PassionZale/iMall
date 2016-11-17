@@ -6,6 +6,10 @@
 <script>
     import Swiper from './Index/Swiper.vue'
     export default{
+        data(){
+            return {
+            }
+        },
         components:{
             Swiper
         }

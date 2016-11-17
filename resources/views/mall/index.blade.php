@@ -5,6 +5,7 @@
     <title>iMall</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="app-mobile-web-app-capable" content="yes">
     <meta id="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="Zhang Lei">
     <meta name="description" content="微信商城：iMall,基于Laravel5.2和vue.js">
@@ -24,7 +25,7 @@
 <body>
     <!-- JavaScripts -->
     <script src="{{ asset('js/lib/jquery/jquery-2.1.1.min.js') }}"></script>
-    {{--<script src="//cdn.bootcss.com/Swiper/3.4.0/js/swiper.min.js"></script>--}}
+    <script src="//cdn.bootcss.com/swipe/2.0.0/swipe.min.js"></script>
     <script src="{{ asset('js/mall/app.js') }}"></script>
 </body>
 </html>
