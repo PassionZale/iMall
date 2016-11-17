@@ -10,17 +10,17 @@
             <!--</template>-->
             <div class="swiper-slide">
                 <a href="#">
-                    <img :src="/uploads/banner/NFrqXGHtTu.png"/>
+                    <img src="/uploads/banner/NFrqXGHtTu.png"/>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#">
-                    <img :src="/uploads/banner/5OStC0jgzM.png"/>
+                    <img src="/uploads/banner/5OStC0jgzM.png"/>
                 </a>
             </div>
             <div class="swiper-slide">
                 <a href="#">
-                    <img :src="/uploads/banner/Fy6LDCyxxf.png"/>
+                    <img src="/uploads/banner/Fy6LDCyxxf.png"/>
                 </a>
             </div>
         </div>
