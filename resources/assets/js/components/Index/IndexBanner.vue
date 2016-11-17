@@ -1,13 +1,11 @@
 <template>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <template v-for="banner in banners">
-                <div class="swiper-slide">
+                <div class="swiper-slide" v-for="banner in banners">
                     <a href="{{banner.redirect_url}}">
                         <img :src="banner.img_url"/>
                     </a>
                 </div>
-            </template>
         </div>
         <div class="swiper-pagination"></div>
     </div>
