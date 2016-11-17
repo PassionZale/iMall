@@ -1,5 +1,4 @@
 <template>
-    <div>Index.vue</div>
     <swiper></swiper>
 </template>
 
