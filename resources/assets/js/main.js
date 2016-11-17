@@ -10,13 +10,15 @@ Vue.use(Router);
 Vue.use(Resource);
 
 Vue.config.debug = true;
-Vue.http.options.emulateJSON = true;
-Vue.http.options.emulateHTTP = true;
+Vue.config.devtools = true;
+// Vue.http.options.emulateJSON = true;
+// Vue.http.options.emulateHTTP = true;
 
 // laravel csrf token
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
 const router = new Router({
-    history: false
+    history: false,
+    mode: 'html5'
 });
 
 routerMap(router);
