@@ -19,7 +19,7 @@
     <![endif]-->
 
     <!-- Styles -->
-    <link href="//cdn.bootcss.com/normalize/5.0.0/normalize.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css" rel="stylesheet">
     <link href="https://unpkg.com/mint-ui@1.0.2/lib/style.css" rel="stylesheet">
     <link href="//cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css" rel="stylesheet">
     <link href="{{asset('css/mall.css')}}" rel="stylesheet">
