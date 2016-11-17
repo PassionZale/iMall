@@ -29,8 +29,6 @@ img{
                 banners:''
             }
         },
-        components:{
-        },
         ready(){
             this.fetchBanner();
         },
