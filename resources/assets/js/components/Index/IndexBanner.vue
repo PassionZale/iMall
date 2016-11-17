@@ -2,9 +2,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="banner in banners">
-                    <a href="{{banner.redirect_url}}">
-                        <img :src="banner.img_url"/>
-                    </a>
+					{{banner.id}}
                 </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -34,9 +32,8 @@ img{
         },
         methods:{
             fetchBanner:function(){
-                let self = this;
-                self.$http.get('/api/banners').then(function(response){
-                    self.$set('banners',response.data);
+                this.$http.get('/api/banners').then(function(response){
+                    this.$set('banners',response.data);
                     this.$nextTick(function(){
                         var swiper = new Swiper('.swiper-container',{
                             autoplay:4000,
