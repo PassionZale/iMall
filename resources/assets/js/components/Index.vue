@@ -1,16 +1,16 @@
 <template>
-    <swiper></swiper>
+    <index-banner></index-banner>
 </template>
 
 <script>
-    import Swiper from './Index/Swiper.vue'
+    import IndexBanner from './Index/IndexBanner.vue'
     export default{
         data(){
             return {
             }
         },
         components:{
-            Swiper
+            IndexBanner
         }
     }
 </script>

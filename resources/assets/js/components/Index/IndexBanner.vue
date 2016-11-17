@@ -13,6 +13,7 @@
     </div>
 </template>
 <style scoped>
+@import '../../../../../public/js/lib/swiper/swiper.min.css';
 .swiper-container{
     width:100%;
     height:180px;
@@ -23,6 +24,7 @@ img{
 }
 </style>
 <script>
+    import swipe from "../../../../../public/js/lib/swiper/swiper.min.js"
     export default{
         data(){
             return{
@@ -30,27 +32,23 @@ img{
             }
         },
         created(){
-           this.fetchBanner();
-        },
-        ready(){
-            this.$nextTick(function(){
-                var swiper = new Swiper('.swiper-container',{
-                    autoplay:4000,
-                    loop: true,
-                    resizeReInit : true,
-                    pagination: '.swiper-pagination'
-                 });
-            });
+            this.fetchBanner();
         },
         methods:{
             fetchBanner:function(){
                 let self = this;
                 self.$http.get('/api/banners').then(function(response){
                     self.$set('banners',response.data);
+                    this.$nextTick(function(){
+                        var swiper = new Swiper('.swiper-container',{
+                            autoplay:4000,
+                            loop: true,
+                            resizeReInit : true,
+                            pagination: '.swiper-pagination'
+                         });
+                    });
                 });
             }
         }
     }
-
-
 </script>
