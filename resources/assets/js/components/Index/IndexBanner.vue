@@ -33,7 +33,7 @@ img{
         methods:{
             fetchBanner:function(){
                 this.$http.get('/api/banners').then(function(response){
-                    this.$set('banners',JSON.parse(response.data));
+                    this.$set('banners',response.data);
 					this.$nextTick(function(){
 						let swiper = new Swiper('.swiper-container',{
 							autoplay:4000,
