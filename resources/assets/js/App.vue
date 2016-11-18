@@ -18,20 +18,9 @@
             }
         },
         created(){
-            this.initUser();
+            this.fetchUser();
         },
         methods:{
-			initUser:function(){
-				alert('initUser');
-			  this.$http.get('/api/userinfo').then((response) => {
-					alert(response.data);
-					this.$set('user',response.data);
-					alert(typeof this.user);
-			  }, (response) => {
-				alert('error');
-			  });
-				alert('finish');
-			},
             fetchUser:function(){
                 let userInfo = {};
                 userInfo = localStorage.getItem(userInfo);
