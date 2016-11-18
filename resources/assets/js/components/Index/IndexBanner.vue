@@ -3,7 +3,7 @@
         <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="banner in banners">
 					<a href="{{banner.redirect_url}}">
-						<img :src="banner.img_url"/>
+						<img :src="banner.img_url" />
 					</a>
                 </div>
         </div>
@@ -11,7 +11,6 @@
     </div>
 </template>
 <style scoped>
-@import '../../../../../public/js/lib/swiper/swiper.min.css';
 .swiper-container{
     width:100%;
     height:180px;
@@ -22,7 +21,6 @@ img{
 }
 </style>
 <script>
-    import swipe from "../../../../../public/js/lib/swiper/swiper.min.js"
     export default{
         data(){
             return{

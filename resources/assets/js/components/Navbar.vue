@@ -33,7 +33,7 @@ export default{
     components:{
         Tabbar, TabItem, Badge
     },
-    ready(){
+    created(){
         this.initRoute();
         this.initCartCount();
     },
