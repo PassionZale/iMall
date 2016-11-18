@@ -29,12 +29,12 @@ Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],fun
 // DEBUG
 Route::get('/wechat/debug','WechatController@debug');
 
-// 与微信服务器交互请求
+// Wechat http main route
 Route::any('/wechat', 'WechatController@serve');
 
 // 微信商城
 Route::group(['prefix'=>'mall','middleware' => ['web', 'wechat.oauth'],'namespace'=>'Mall'],function(){
-    // OAuth2.0 授权 snsapi_userinfo
+    // Wechat OAuth2.0 (type=snsapi_userinfo)
     Route::get('/user', 'IndexController@oauth');
     // 首页
     Route::get('/','IndexController@index');
