@@ -1,6 +1,6 @@
+require('babel-polyfill');
 var path = require('path');
 var webpack = require('webpack');
-require('babel-polyfill');
 
 module.exports = {
     entry: ['babel-polyfill','./resources/assets/js/main.js'],
