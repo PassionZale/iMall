@@ -2,6 +2,7 @@
 <template>
     <router-view></router-view>
     <navbar></navbar>
+    {{user.nickname}}
 </template>
 
 <script>

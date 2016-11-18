@@ -28,9 +28,12 @@ img{
             }
         },
         ready(){
-            this.fetchBanner();
+            this.initBanner();
         },
         methods:{
+            initBanner:function(){
+
+            },
             fetchBanner:function(){
                 this.$http.get('/api/banners').then(function(response){
                     this.$set('banners',response.data);
