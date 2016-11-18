@@ -1,4 +1,3 @@
-require('babel-polyfill');
 import Vue from 'vue'
 import Mint from 'mint-ui'
 import Resource from 'vue-resource'
@@ -10,10 +9,9 @@ Vue.use(Mint);
 Vue.use(Router);
 Vue.use(Resource);
 
-Vue.config.debug = true;
 Vue.config.devtools = true;
-// Vue.http.options.emulateJSON = true;
-// Vue.http.options.emulateHTTP = true;
+Vue.http.options.emulateJSON = true;
+Vue.http.options.emulateHTTP = true;
 
 // laravel csrf token
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
