@@ -1,9 +1,8 @@
-require('babel-polyfill');
 var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: ['babel-polyfill','./resources/assets/js/main.js'],
+    entry: './resources/assets/js/main.js',
     output: {
         path: path.resolve(__dirname, './public/js/mall'),
         publicPath: '/js/',

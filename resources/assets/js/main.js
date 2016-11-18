@@ -1,3 +1,4 @@
+require('babel-polyfill');
 import Vue from 'vue'
 import Mint from 'mint-ui'
 import Resource from 'vue-resource'
