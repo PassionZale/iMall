@@ -12,6 +12,18 @@ Vue.use(Resource);
 Vue.config.devtools = true;
 Vue.http.options.emulateJSON = true;
 Vue.http.options.emulateHTTP = true;
+Vue.http.interceptors.push({
+    response(response) {
+        // 判断是否在微信内置浏览器中
+        let ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger') {
+            // 若response.data为String类型，将其格式化成JSON类型
+            if (typeof response.data === "string") {
+                response.data = JSON.parse(response.data)
+            }
+        }
+    },
+});
 
 // laravel csrf token
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
