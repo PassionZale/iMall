@@ -21,6 +21,7 @@ img{
 }
 </style>
 <script>
+    import axios from 'axios'
     export default{
         data(){
             return{
@@ -32,9 +33,11 @@ img{
         },
         methods:{
             fetchBanner:function(){
-                this.$http.get('/api/banners').then(function(response){
-                    this.$set('banners',response.data);
-					this.$nextTick(function(){
+                let self = this;
+                axios.get('/api/banners').then(function(response){
+                    console.log(response);
+                    self.$set('banners',response.data);
+                    self.$nextTick(function(){
 						let swiper = new Swiper('.swiper-container',{
 							autoplay:4000,
 							loop: true,
