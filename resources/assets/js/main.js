@@ -11,7 +11,7 @@ Vue.use(Router);
 Vue.config.devtools = true;
 Vue.prototype.$http = axios;
 
-axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');;
+axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-token').getAttribute('content');
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const router = new Router({

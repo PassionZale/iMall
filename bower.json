@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery.pep": "^0.6.8"
+    "jquery.pep": "^0.6.8",
+    "materialize": "^0.97.8"
   }
 }

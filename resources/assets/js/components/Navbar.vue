@@ -37,6 +37,13 @@ export default{
         this.initRoute();
         this.initCartCount();
     },
+    watch:{
+        '$route.name':{
+            handler:function(val,oldVal){
+                this.$set('selected',val);
+            }
+        }
+    },
     methods:{
         initRoute:function(){
             this.$set('selected',this.$route.name);

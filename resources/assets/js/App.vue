@@ -1,6 +1,5 @@
 <template>
     <router-view></router-view>
-    <p>{{user.nickname}}</p>
     <navbar></navbar>
 </template>
 
