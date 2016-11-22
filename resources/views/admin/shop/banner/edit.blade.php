@@ -47,5 +47,5 @@
 @endsection
 
 @section('scriptTag')
-    <i id="scriptTag">{{asset('js/admin/shop/bannerEdit.js')}}</i>
+    <script src="{{asset('js/admin/shop/bannerEdit.js')}}"></script>
 @endsection

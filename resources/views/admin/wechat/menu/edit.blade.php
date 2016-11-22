@@ -11,7 +11,7 @@
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
                     <label>菜单排序：</label>
-                    <input value="{{$menu->sort}}" name="sort" type="text" class="form-control"
+                    <input value="{{$menu->sort}}" name="sort" type="number" class="form-control"
                            placeholder="值越小越靠前显示,默认为0">
                 </div>
                 <div class="form-group">

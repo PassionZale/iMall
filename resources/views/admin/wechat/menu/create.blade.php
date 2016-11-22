@@ -10,7 +10,7 @@
                 {{csrf_field()}}
                 <div class="form-group">
                     <label>菜单排序：</label>
-                    <input name="sort" type="text" class="form-control" placeholder="值越小越靠前显示,默认为0" autofocus>
+                    <input name="sort" type="number" class="form-control" placeholder="值越小越靠前显示,默认为0" autofocus>
                 </div>
                 <div class="form-group">
                     <label>一级菜单：</label>

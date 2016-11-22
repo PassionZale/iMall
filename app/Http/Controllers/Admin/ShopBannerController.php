@@ -19,7 +19,7 @@ class ShopBannerController extends Controller
     public function index()
     {
         $banners = ShopBanner::paginate(10);
-        return view('admin.shop.banner.index')->with(['banners' => $banners]);
+        return view('adminshop.banner.index')->with(['banners' => $banners]);
     }
 
     /**
@@ -29,7 +29,7 @@ class ShopBannerController extends Controller
      */
     public function create()
     {
-        return view('admin.shop.banner.create');
+        return view('shop.banner.create');
     }
 
     /**
@@ -82,7 +82,7 @@ class ShopBannerController extends Controller
     {
         $banner = ShopBanner::find($id);
         if($banner){
-            return view('admin.shop.banner.edit')->with(['banner'=>$banner]);
+            return view('shop.banner.edit')->with(['banner'=>$banner]);
         }else{
             return redirect()->to('admin/shop/banner')->withError('对应轮播图不存在！');
         }
