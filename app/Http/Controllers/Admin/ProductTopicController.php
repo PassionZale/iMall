@@ -75,8 +75,6 @@ class ProductTopicController extends Controller
                 ->resize(100, 100)
                 ->save('.' . $filePath . $fileName);
             $topic->topic_img = $filePath . $fileName;
-        } else {
-            return redirect()->to('admin/product/topic')->withError('图片不合法！');
         }
         if ($topic->save()) {
             return redirect()->to('admin/product/topic')->withSuccess('新增修改成功！');
