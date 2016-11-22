@@ -51,4 +51,5 @@ Route::group(['prefix' => 'mall', 'middleware' => ['web', 'wechat.oauth'], 'name
 Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], function () {
     Route::get('userinfo', 'UserController@userinfo');
     Route::get('banners', 'ShopController@getBanner');
+    Route::get('topics','ShopController@getTopic');
 });
