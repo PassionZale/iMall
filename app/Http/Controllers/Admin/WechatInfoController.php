@@ -17,7 +17,7 @@ class WechatInfoController extends BaseController
     public function index()
     {
         $info = Wechat::first();
-        return view('wechat.info.index')->with(['info'=>$info]);
+        return view('admin.wechat.info.index')->with(['info'=>$info]);
     }
 
     /**

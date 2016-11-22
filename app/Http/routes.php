@@ -25,6 +25,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         Route::resource('config', 'ShopConfigController', ['except' => ['create', 'edit','show','destroy']]);
         Route::resource('banner', 'ShopBannerController');
     });
+    // 商品管理
+    Route::group(['prefix'=>'product'],function(){
+        Route::resource('topic','ProductTopicController');
+        Route::resource('plate','ProductPlateController');
+        Route::resource('category','ProductCategoryController');
+        Route::resource('commodity','ProductCommodityController');
+    });
 });
 
 // DEBUG

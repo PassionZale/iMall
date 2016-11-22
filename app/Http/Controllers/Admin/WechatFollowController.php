@@ -17,7 +17,7 @@ class WechatFollowController extends BaseController
     public function index()
     {
         $follows = WechatFollow::paginate(10);
-        return view('wechat.follow.index')->with(['follows' => $follows]);
+        return view('admin.wechat.follow.index')->with(['follows' => $follows]);
     }
 
     public function refresh(Request $request)
@@ -39,7 +39,7 @@ class WechatFollowController extends BaseController
             $data['remark'] = $user->remark;
             $data['groupid'] = $user->groupid;
             WechatFollow::where('openid', '=', $openid)->update($data);
-            return view('wechat.follow.index')->withSuccess($follow['nickname'] . '信息更新成功！');
+            return view('admin.wechat.follow.index')->withSuccess($follow['nickname'] . '信息更新成功！');
         }
     }
 

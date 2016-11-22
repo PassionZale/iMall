@@ -46,7 +46,7 @@ class WechatMenuController extends BaseController
             }
         }
 
-        return view('wechat.menu.index')->with(['menus' => $menus]);
+        return view('admin.wechat.menu.index')->with(['menus' => $menus]);
     }
 
     /**
@@ -58,7 +58,7 @@ class WechatMenuController extends BaseController
     {
         // 查询全部一级菜单（parent_button = 0）
         $parent_menu = WechatMenu::where('parent_button', '=', 0)->get();
-        return view('wechat.menu.create')->with(['parent_menu' => $parent_menu]);
+        return view('admin.wechat.menu.create')->with(['parent_menu' => $parent_menu]);
     }
 
     /**
@@ -156,7 +156,7 @@ class WechatMenuController extends BaseController
     {
         $menu = WechatMenu::findOrFail($id);
         $parent_menu = WechatMenu::where('parent_button', '=', 0)->get();
-        return view('wechat.menu.edit')->with(['menu' => $menu,'parent_menu'=>$parent_menu]);
+        return view('admin.wechat.menu.edit')->with(['menu' => $menu,'parent_menu'=>$parent_menu]);
     }
 
     /**

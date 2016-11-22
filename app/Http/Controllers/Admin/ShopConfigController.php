@@ -13,7 +13,7 @@ class ShopConfigController extends Controller
     public function index()
     {
         $configs = ShopConfig::first();
-        return view('shop.config.index')->with(['configs'=>$configs]);
+        return view('admin.shop.config.index')->with(['configs'=>$configs]);
     }
 
     public function store(Request $request)
