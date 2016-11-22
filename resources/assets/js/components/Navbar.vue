@@ -1,4 +1,5 @@
 <template>
+    <div id="nav-hot-fix"></div>
     <mt-tabbar :selected.sync="selected" :fixed="true">
         <mt-tab-item v-link="{name:'index'}" id="index">
             <i slot="icon" class="nav-index"></i>
