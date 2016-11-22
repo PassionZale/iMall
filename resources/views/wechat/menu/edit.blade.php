@@ -55,5 +55,5 @@
 @endsection
 
 @section('scriptTag')
-    <i id="scriptTag">{{asset('js/admin/wechat/menuEdit.js')}}</i>
+    <script src="{{asset('js/admin/wechat/menuEdit.js')}}"></script>
 @endsection

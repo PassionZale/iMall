@@ -46,5 +46,5 @@
 @endsection
 
 @section('scriptTag')
-    <i id="scriptTag">{{asset('js/admin/wechat/followIndex.js')}}</i>
+    <script src="{{asset('js/admin/wechat/followIndex.js')}}"></script>
 @endsection

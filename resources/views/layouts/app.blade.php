@@ -25,9 +25,6 @@
     <link href="//cdn.bootcss.com/metisMenu/2.5.2/metisMenu.min.css" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
-    <!-- JavaScripts -->
-    <script data-main="{{ asset('js/admin-frame.js') }}" src="{{ asset('js/require.min.js') }}"></script>
-
 </head>
 <body id="app-layout">
 <nav class="navbar navbar-default navbar-static-top">
@@ -210,7 +207,12 @@
     </div>
 </div>
 
+<script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="///cdn.bootcss.com/metisMenu/2.5.2/metisMenu.min.js"></script>
+<script>
+    $('#menu').metisMenu({toggle: false});
+</script>
 @yield('scriptTag')
-
 </body>
 </html>

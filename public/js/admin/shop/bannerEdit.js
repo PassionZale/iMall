@@ -1,13 +1,10 @@
-requirejs(['jquery', 'bootstrap', 'metisMenu'], function ($) {
-    $(function () {
-        $('#menu').metisMenu({toggle: false});
+$(function () {
 
-        $('img').on('click',function(){
-            $('#file').get(0).click();
-        });
+    $('img').on('click', function () {
+        $('#file').get(0).click();
+    });
 
-        $('#file').on('change',function(){
-            $(this).removeClass('hidden').siblings('img').addClass('hidden');
-        });
+    $('#file').on('change', function () {
+        $(this).removeClass('hidden').siblings('img').addClass('hidden');
     });
 });

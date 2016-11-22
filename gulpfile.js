@@ -24,5 +24,5 @@ gulp.task('mall-sass',function(){
 
 // gulp watch
 gulp.task('watchsass',function () {
-    gulp.watch('resources/assets/sass/*.scss',['admin-sass','mall-sass']);
+    return gulp.watch('resources/assets/sass/*.scss',['admin-sass','mall-sass']);
 });
