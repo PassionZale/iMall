@@ -11,36 +11,37 @@ Route::auth();
 // 控制台
 Route::get('/', 'Admin\HomeController@index');
 
-Route::group(['prefix' => 'admin','middleware'=>'auth','namespace'=>'Admin'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin'], function () {
     // 公众号管理
-    Route::group(['prefix'=>'wechat'],function (){
+    Route::group(['prefix' => 'wechat'], function () {
         Route::resource('info', 'WechatInfoController', ['except' => ['create', 'edit']]);
         Route::resource('menu', 'WechatMenuController');
-        Route::post('pushMenu','WechatMenuController@pushMenu');
+        Route::post('pushMenu', 'WechatMenuController@pushMenu');
         Route::resource('follow', 'WechatFollowController', ['except' => ['create']]);
-        Route::get('refresh','WechatFollowController@refresh');
+        Route::get('refresh', 'WechatFollowController@refresh');
     });
     // 店铺管理
-    Route::group(['prefix'=>'shop'],function(){
-        Route::resource('banner','ShopBannerController');
+    Route::group(['prefix' => 'shop'], function () {
+        Route::resource('config', 'ShopConfigController', ['except' => ['create', 'edit','show','destroy']]);
+        Route::resource('banner', 'ShopBannerController');
     });
 });
 
 // DEBUG
-Route::get('/wechat/debug','WechatController@debug');
+Route::get('/wechat/debug', 'WechatController@debug');
 
 // Wechat http main route
 Route::any('/wechat', 'WechatController@serve');
 
 // 微信商城
-Route::group(['prefix'=>'mall','middleware' => ['web', 'wechat.oauth'],'namespace'=>'Mall'],function(){
+Route::group(['prefix' => 'mall', 'middleware' => ['web', 'wechat.oauth'], 'namespace' => 'Mall'], function () {
     // Wechat OAuth2.0 (type=snsapi_userinfo)
     Route::get('/user', 'IndexController@oauth');
     // 首页
-    Route::get('/','IndexController@index');
+    Route::get('/', 'IndexController@index');
 });
 
-Route::group(['prefix'=>'api','middleware'=>'web','namespace'=>'Api'],function(){
-    Route::get('userinfo','UserController@userinfo');
-    Route::get('banners','ShopController@getBanner');
+Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], function () {
+    Route::get('userinfo', 'UserController@userinfo');
+    Route::get('banners', 'ShopController@getBanner');
 });

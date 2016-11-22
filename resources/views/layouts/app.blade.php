@@ -114,7 +114,7 @@
                     </a>
                     <ul>
                         <li class="{{request()->is('admin/shop/config') ? 'active' : ''}}">
-                            <a href="">
+                            <a href="{{url('admin/shop/config')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 商铺配置
                             </a>
@@ -123,12 +123,6 @@
                             <a href="{{url('admin/shop/banner')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 轮播图
-                            </a>
-                        </li>
-                        <li class="{{request()->is('admin/shop/partner') ? 'active' : ''}}">
-                            <a href="">
-                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
-                                合作伙伴
                             </a>
                         </li>
                     </ul>
