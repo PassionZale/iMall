@@ -9,11 +9,13 @@
 
 ![iMall Qrcode](http://oewvb9bk1.bkt.clouddn.com/iMall.jpg "iMall Qrcode")
 
-account: whouu@qq.com
+**可以直接注册一个账号进行浏览**
 
-pwd: wow111111
+**不需要配置公众号信息，此功能将移除，替换为配置文件**
 
 **iMall 功能陆续开发中，浏览后台请勿删除任何数据**
+
+:wink: :kissing_heart: :yum: :joy:
 
 ## 环境要求
 1. PHP≥5.59
