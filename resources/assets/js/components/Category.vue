@@ -1,5 +1,4 @@
 <template>
-    <mt-search :value.sync="searchKey"></mt-search>
     <div id="categories-content-left">
         <ul>
             <li v-for="category in categories"
@@ -19,7 +18,6 @@
     </div>
 </template>
 <script>
-    import { Search } from 'mint-ui';
     export default{
         data(){
             return {
@@ -28,9 +26,6 @@
                 subCategories:'',
                 activeCategory:''
             }
-        },
-        components:{
-            Search
         },
         ready(){
             this.fetchCategories();

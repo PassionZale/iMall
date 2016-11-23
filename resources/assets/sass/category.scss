@@ -1,6 +1,6 @@
 #categories-content-left{
   position: fixed;
-  top: 62px;
+  top: 0px;
   left: 0;
   bottom: 52px;
   width: 25%;
@@ -37,9 +37,9 @@
 }
 #categories-content-right{
   position: fixed;
-  top: 60px;
+  top: 0px;
   right: 0;
-  bottom: 52px;
+  bottom: 55px;
   width: 75%;
   background-color: #fff;
   overflow-y: auto;
