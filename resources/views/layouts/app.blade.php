@@ -86,12 +86,12 @@
                         <span class="fa arrow fa-fw"></span>
                     </a>
                     <ul>
-                        <li class="{{request()->is('admin/wechat/info') ? 'active' : ''}}">
-                            <a href="{{url('admin/wechat/info')}}">
-                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
-                                基本信息
-                            </a>
-                        </li>
+                        {{--<li class="{{request()->is('admin/wechat/info') ? 'active' : ''}}">--}}
+                            {{--<a href="{{url('admin/wechat/info')}}">--}}
+                                {{--<span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>--}}
+                                {{--基本信息--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                         <li class="{{request()->is('admin/wechat/menu*') ? 'active' : ''}}">
                             <a href="{{url('admin/wechat/menu')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
