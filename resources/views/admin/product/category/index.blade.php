@@ -55,7 +55,5 @@
 @endsection
 
 @section('scriptTag')
-    {{--<link href="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" rel="stylesheet">--}}
-    {{--<script src="//cdn.bootcss.com/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>--}}
     <script src="{{asset('js/admin/product/categoryIndex.js')}}"></script>
 @endsection

@@ -7,10 +7,31 @@
             <a href="{{url('admin/product/commodity/create')}}" class="btn btn-primary">
                 <i class="fa fa-btn fa-plus"></i>新增
             </a>
+            <div class="row tree-wrapper">
+                <div class="col-md-2">
+                    <div id="tree"></div>
+                </div>
+                <div class="col-md-10">
+                        <table class="table table-responsive table-hover">
+                            <thead>
+                            <tr>
+                                <th>图片</th>
+                                <th>名称</th>
+                                <th>排序</th>
+                                <th>类型</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
 
 @section('scriptTag')
-    <script src=""></script>
+    <script src="{{asset('js/admin/product/commodityIndex.js')}}"></script>
 @endsection

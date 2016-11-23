@@ -5,6 +5,8 @@
 
 [iMall Fronted](http://imall.lovchun.com/mall "iMall 微信商城首页")
 
+[Laravel Vue Blog](https://git.oschina.net/nir_passion/LVBlog "基于Laravel Vue的个人博客")
+
 微信接口测试公众号
 
 ![iMall Qrcode](http://oewvb9bk1.bkt.clouddn.com/iMall.jpg "iMall Qrcode")

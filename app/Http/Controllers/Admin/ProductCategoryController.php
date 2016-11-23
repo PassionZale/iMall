@@ -14,13 +14,24 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $categories = ProductCategory::paginate(6);
-        return view('admin.product.category.index')->with(['categories'=>$categories]);
+        return view('admin.product.category.index')->with(['categories' => $categories]);
+    }
+
+    public function treeData()
+    {
+        $data = array();
+        $praentCategories = ProductCategory::where('parent_id', '=', 0)->get();
+        foreach ($praentCategories as $key => $item) {
+            $data[$key]['parent_category'] = $item;
+            $data[$key]['sub_categories'] = ProductCategory::where('parent_id', '=', $item->id)->get();
+        }
+        return response()->json($data);
     }
 
     public function create()
     {
-        $parentCategories = ProductCategory::where('parent_id','=','0')->get();
-        return view('admin.product.category.create')->with(['parentCategories'=>$parentCategories]);
+        $parentCategories = ProductCategory::where('parent_id', '=', '0')->get();
+        return view('admin.product.category.create')->with(['parentCategories' => $parentCategories]);
     }
 
     public function store(Request $request)
@@ -39,15 +50,15 @@ class ProductCategoryController extends Controller
         }
         $type = $request->input('type');
         $parent_id = $request->input('parent_id');
-        if($type == 2 && $parent_id != ''){
+        if ($type == 2 && $parent_id != '') {
             $category->type = 2;
             $category->parent_id = $parent_id;
-        }else{
+        } else {
             $category->type = 1;
         }
-        if($category->save()){
+        if ($category->save()) {
             return redirect()->to('admin/product/category')->withSuccess('新增分类成功！');
-        }else{
+        } else {
             return redirect()->to('admin/product/category')->withError('新增分类失败！');
         }
     }
@@ -60,9 +71,9 @@ class ProductCategoryController extends Controller
     public function edit($id)
     {
         $category = ProductCategory::findOrFail($id);
-        $parentCategories = ProductCategory::where('parent_id','=','0')->get();
+        $parentCategories = ProductCategory::where('parent_id', '=', '0')->get();
         return view('admin/product/category/edit')
-            ->with(['category'=>$category,'parentCategories'=>$parentCategories]);
+            ->with(['category' => $category, 'parentCategories' => $parentCategories]);
     }
 
     public function update(Request $request, $id)
@@ -81,15 +92,15 @@ class ProductCategoryController extends Controller
         }
         $type = $request->input('type');
         $parent_id = $request->input('parent_id');
-        if($type == 2 && $parent_id != ''){
+        if ($type == 2 && $parent_id != '') {
             $category->type = 2;
             $category->parent_id = $parent_id;
-        }else{
+        } else {
             $category->type = 1;
         }
-        if($category->save()){
+        if ($category->save()) {
             return redirect()->to('admin/product/category')->withSuccess('修改分类成功！');
-        }else{
+        } else {
             return redirect()->to('admin/product/category')->withError('修改分类失败！');
         }
     }

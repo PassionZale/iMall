@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         Route::resource('plate','ProductPlateController');
         Route::resource('category','ProductCategoryController');
         Route::resource('commodity','ProductCommodityController');
+        // Ajax Route
+        Route::get('getTreeData','ProductCategoryController@treeData');
     });
 });
 
