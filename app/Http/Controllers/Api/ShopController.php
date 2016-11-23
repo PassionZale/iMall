@@ -45,8 +45,8 @@ class ShopController extends Controller
         $parentCategories = ProductCategory::where('parent_id','=','0')->get();
         $categories = array();
         foreach($parentCategories as $key=>$parent){
-            $categories[]['parent_category'] = $parent;
-            $categories[]['sub_categories'] = ProductCategory::where('parent_id','=',$parent->id)->get();
+            $categories[$key]['parent_category'] = $parent;
+            $categories[$key]['sub_categories'] = ProductCategory::where('parent_id','=',$parent->id)->get();
         }
         return response()->json($categories);
     }
