@@ -6,82 +6,98 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Image;
+use App\ProductCategory;
 
 class ProductCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('admin.product.category.index');
+        $categories = ProductCategory::paginate(6);
+        return view('admin.product.category.index')->with(['categories'=>$categories]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $parentCategories = ProductCategory::where('parent_id','=','0')->get();
+        return view('admin.product.category.create')->with(['parentCategories'=>$parentCategories]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $category = new ProductCategory();
+        $category->category_sort = $request->input('category_sort');
+        $category->category_name = $request->input('category_name');
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $filePath = '/uploads/category/';
+            $fileName = str_random(10) . '.png';
+            Image::make($request->file('file'))
+                ->encode('png')
+                ->resize(150, 150)
+                ->save('.' . $filePath . $fileName);
+            $category->category_img = $filePath . $fileName;
+        }
+        $type = $request->input('type');
+        $parent_id = $request->input('parent_id');
+        if($type == 2 && $parent_id != ''){
+            $category->type = 2;
+            $category->parent_id = $parent_id;
+        }else{
+            $category->type = 1;
+        }
+        if($category->save()){
+            return redirect()->to('admin/product/category')->withSuccess('新增分类成功！');
+        }else{
+            return redirect()->to('admin/product/category')->withError('新增分类失败！');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $category = ProductCategory::findOrFail($id);
+        $parentCategories = ProductCategory::where('parent_id','=','0')->get();
+        return view('admin/product/category/edit')
+            ->with(['category'=>$category,'parentCategories'=>$parentCategories]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $category = ProductCategory::findOrFail($id);
+        $category->category_sort = $request->input('category_sort');
+        $category->category_name = $request->input('category_name');
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
+            $filePath = '/uploads/category/';
+            $fileName = str_random(10) . '.png';
+            Image::make($request->file('file'))
+                ->encode('png')
+                ->resize(150, 150)
+                ->save('.' . $filePath . $fileName);
+            $category->category_img = $filePath . $fileName;
+        }
+        $type = $request->input('type');
+        $parent_id = $request->input('parent_id');
+        if($type == 2 && $parent_id != ''){
+            $category->type = 2;
+            $category->parent_id = $parent_id;
+        }else{
+            $category->type = 1;
+        }
+        if($category->save()){
+            return redirect()->to('admin/product/category')->withSuccess('修改分类成功！');
+        }else{
+            return redirect()->to('admin/product/category')->withError('修改分类失败！');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $category = ProductCategory::findOrFail($id);
+        $category->delete();
+        return redirect()->to('admin/product/category')->withSuccess('删除分类成功！');
     }
 }
