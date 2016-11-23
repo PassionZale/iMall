@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\ShopBanner;
 use App\ProductTopic;
 use App\ProductPlate;
+use App\ProductCategory;
 
 class ShopController extends Controller
 {
@@ -37,6 +38,17 @@ class ShopController extends Controller
             ->orderBy('id', 'asc')
             ->get();
         return response()->json($topics);
+    }
+
+    public function getCategories()
+    {
+        $parentCategories = ProductCategory::where('parent_id','=','0')->get();
+        $categories = array();
+        foreach($parentCategories as $key=>$parent){
+            $categories[]['parent_category'] = $parent;
+            $categories[]['sub_categories'] = ProductCategory::where('parent_id','=',$parent->id)->get();
+        }
+        return response()->json($categories);
     }
 
 }

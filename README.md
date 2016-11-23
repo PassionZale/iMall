@@ -1,7 +1,19 @@
 # iMall
 基于Laravel5.2，Vue.js1.0的微信商城
 
-![演示](http://oewvb9bk1.bkt.clouddn.com/imall_start.gif "iMall")
+[iMall Backend](http://imall.lovchun.com, "iMall 后台管理首页")
+
+[iMall Fronted](http://imall.lovchun.com/mall, "iMall 微信商城首页")
+
+微信接口测试公众号
+
+![iMall Qrcode](http://oewvb9bk1.bkt.clouddn.com/iMall.jpg "iMall Qrcode")
+
+account: whouu@qq.com
+
+pwd: wow111111
+
+**iMall 功能陆续开发中，浏览后台请勿删除任何数据**
 
 ## 环境要求
 1. PHP≥5.59
@@ -53,5 +65,6 @@ gulp mixsass
 
 >人生不是接力跑，是马拉松，努力会有回报
 
-
 >加油，年轻没有失败
+
+>这个项目记录了一个SPA项目从无到有的全部commits
