@@ -33,11 +33,11 @@ $(function () {
         }
     ];
 
-    $('#tree').treeview({
-        data: tree,
-        color: "#000000",
-        backColor: "#FFFFFF",
-        selectable: true,
-
-    });
+    // $('#tree').treeview({
+    //     data: tree,
+    //     color: "#000000",
+    //     backColor: "#FFFFFF",
+    //     selectable: true,
+    //
+    // });
 });
