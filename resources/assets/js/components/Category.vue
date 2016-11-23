@@ -1,4 +1,5 @@
 <template>
+    <mt-search :value.sync="searchKey"></mt-search>
     <div id="categories-content-left">
         <ul>
             <li v-for="category in categories"

@@ -1,6 +1,6 @@
 #categories-content-left{
   position: fixed;
-  top: 0;
+  top: 62px;
   left: 0;
   bottom: 52px;
   width: 25%;
@@ -37,7 +37,7 @@
 }
 #categories-content-right{
   position: fixed;
-  top: 0;
+  top: 60px;
   right: 0;
   bottom: 52px;
   width: 75%;
@@ -46,6 +46,7 @@
   overflow-x: hidden;
   ul{
     list-style:none;
+    margin:0;
     padding:0 5px;
     position: relative;
     font-size: 12px;
