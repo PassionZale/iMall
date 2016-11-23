@@ -62,7 +62,19 @@ npm install
 #执行以下命令
 npm install npm install node-sass@3.11.2 /usr/share/nginx/html/iMall/node_modules/node-sass
 #编译sass
-gulp mixsass
+gulp admin-sass
+gulp mall-sasss
+```
+
+## 组件开发
+开发阶段，我们需要实时编译*.vue，*.sass等文件，想要npm执行多个进程，可以使用concurrently这个工具
+``` shell
+npm install -g concurrently
+concurrently "npm run taskA" "npm run taskB"
+```
+拿本项目来说，可以这样：
+``` shell
+concurrently "webpack --watch" "gulp watchsass"
 ```
 
 >人生不是接力跑，是马拉松，努力会有回报
