@@ -1,9 +1,9 @@
 # iMall
 基于Laravel5.2，Vue.js1.0的微信商城
 
-[iMall Backend](http://imall.lovchun.com, "iMall 后台管理首页")
+[iMall Backend](http://imall.lovchun.com "iMall 后台管理首页")
 
-[iMall Fronted](http://imall.lovchun.com/mall, "iMall 微信商城首页")
+[iMall Fronted](http://imall.lovchun.com/mall "iMall 微信商城首页")
 
 微信接口测试公众号
 
