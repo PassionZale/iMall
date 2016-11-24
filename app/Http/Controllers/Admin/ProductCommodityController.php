@@ -65,6 +65,21 @@ class ProductCommodityController extends Controller
         }
     }
 
+    public function editorUpload(Request $request)
+    {
+        if ($request->hasFile('editorFile') && $request->file('editorFile')->isValid()) {
+            $filePath = '/uploads/editor/';
+            $fileName = str_random(10) . '.png';
+            Image::make($request->file('editorFile'))
+                ->encode('png')
+                ->save('.' . $filePath . $fileName);
+            return $filePath . $fileName;
+        } else {
+            return "error|上传失败！";
+        }
+
+    }
+
     public function show($id)
     {
         //

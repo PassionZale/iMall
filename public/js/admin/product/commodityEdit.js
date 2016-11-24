@@ -21,4 +21,34 @@ $(function () {
         $(this).removeClass('hidden').siblings('img').addClass('hidden');
     });
 
+    var editor = new wangEditor('editor');
+    editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+        if (item === 'source') {
+            return null;
+        }
+        if(item === 'bgcolor'){
+            return null;
+        }
+        if(item === '|'){
+            return null;
+        }
+        if (item === 'emotion') {
+            return null;
+        }
+        if(item === 'location'){
+            return null;
+        }
+        if(item === 'insertcode'){
+            return null;
+        }
+        return item;
+    });
+    editor.config.menuFixed = false;
+    editor.config.uploadImgUrl = '/admin/product/editorUpload';
+    editor.config.uploadParams = {
+        _token: $('input[name="_token"]').val()
+    };
+    editor.config.uploadImgFileName = 'editorFile';
+    editor.create();
+
 });

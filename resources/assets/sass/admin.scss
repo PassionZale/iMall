@@ -17,5 +17,10 @@
   textarea {
     font-size: 10px;
     color:gray;
+    &#editor{
+      width: 100%;
+      min-height:300px;
+    }
   }
+
 }

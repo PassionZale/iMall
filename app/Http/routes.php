@@ -33,6 +33,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         Route::resource('commodity','ProductCommodityController');
         // Ajax Route
         Route::get('getTreeData','ProductCategoryController@treeData');
+        // 富文本编辑器上传图片
+        Route::post('editorUpload','ProductCommodityController@editorUpload');
     });
 });
 

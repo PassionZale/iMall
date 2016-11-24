@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-group">
                     <label>商品详情：</label>
-                    <textarea name="commodity_detail_info" class="form-control">{{$commodity->commodity_detail_info}}</textarea>
+                    <textarea id="editor" name="commodity_detail_info" class="form-control">{{$commodity->commodity_detail_info}}</textarea>
                 </div>
                 <div class="form-group">
                     <label>原价：</label>
@@ -103,5 +103,7 @@
 @endsection
 
 @section('scriptTag')
+    <link href="//cdn.bootcss.com/wangeditor/2.1.20/css/wangEditor.min.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/wangeditor/2.1.20/js/wangEditor.min.js"></script>
     <script src="{{asset('js/admin/product/commodityEdit.js')}}"></script>
 @endsection
