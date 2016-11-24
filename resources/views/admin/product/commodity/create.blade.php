@@ -16,11 +16,11 @@
                 </div>
                 <div class="form-group">
                     <label>图片：</label>
-                    <input name="file" type="file" class="form-control" required>
+                    <input name="file" type="file" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>编号：</label>
-                    <input name="commodity_number" type="text" class="form-control" placeholder="" required>
+                    <input name="commodity_number" type="text" class="form-control" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>所属专题：</label>
@@ -59,15 +59,15 @@
                 </div>
                 <div class="form-group">
                     <label>原价：</label>
-                    <input name="commodity_original_price" type="text" class="form-control" placeholder="" required>
+                    <input name="commodity_original_price" type="text" class="form-control" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>现价：</label>
-                    <input name="commodity_current_price" type="text" class="form-control" placeholder="" required>
+                    <input name="commodity_current_price" type="text" class="form-control" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>库存：</label>
-                    <input name="commodity_stock_number" type="text" class="form-control" placeholder="" required>
+                    <input name="commodity_stock_number" type="text" class="form-control" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>销量：</label>
