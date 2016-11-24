@@ -19,7 +19,7 @@ class ShopBannerController extends Controller
     public function index()
     {
         $banners = ShopBanner::paginate(10);
-        return view('adminshop.banner.index')->with(['banners' => $banners]);
+        return view('admin.shop.banner.index')->with(['banners' => $banners]);
     }
 
     /**
