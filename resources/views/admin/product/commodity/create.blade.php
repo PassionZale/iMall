@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label>所属专题：</label>
                     <select class="form-control" name="topic_id">
-                        <option value="0">无</option>
+                        <option value="0" selected>无</option>
                         @foreach($topics as $topic)
                             <option value="{{$topic->id}}}">{{$topic->topic_title}}</option>
                         @endforeach
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label>所属板块：</label>
                     <select class="form-control" name="plate_id">
-                        <option value="0">无</option>
+                        <option value="0" selected>无</option>
                         @foreach($plates as $plate)
                             <option value="{{$plate->id}}}">{{$plate->plate_title}}</option>
                         @endforeach
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label>所属分类：</label>
                     <select class="form-control" name="category_id">
-                        <option value="0">无</option>
+                        <option value="0" selected>无</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}}">{{$category->category_name}}</option>
                         @endforeach
