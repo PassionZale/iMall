@@ -1,0 +1,32 @@
+#empty-cart-container{
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  .empty-cart-wrapper{
+    position: absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    text-align: center;
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    h4{
+      color:#777;
+      margin: 10px 0;
+    }
+    p{
+      color: #707070;
+      font-size: 12px;
+    }
+    a{
+      font-size:12px;
+      text-decoration: none;
+      padding: 6px 24px;
+      color:#707070;
+      border:1px solid #707070;
+      border-radius: 6px;
+    }
+  }
+}
