@@ -2,10 +2,20 @@
 @import 'sidebar.scss';
 @import 'table.scss';
 
-.img-thumbnail{
+.img-thumbnail {
   max-width: 200px;
-  height:100px;
+  height: 100px;
 }
-.tree-wrapper{
-  margin-top:15px;
+
+.tree-container {
+  margin-top: 15px;
+  font-size: 10px;
+}
+
+.form-small-text {
+  font-size: 10px;
+  textarea {
+    font-size: 10px;
+    color:gray;
+  }
 }

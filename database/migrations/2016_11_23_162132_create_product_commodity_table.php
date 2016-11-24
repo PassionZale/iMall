@@ -26,7 +26,7 @@ class CreateProductCommodityTable extends Migration
             $table->float('commodity_current_price')->default(0.00);
             // 商品库存
             $table->integer('commodity_stock_number')->default(0);
-            // 商品出售数
+            // 商品销量
             $table->integer('commodity_sold_number')->default(0);
             // 商品详情
             $table->text('commodity_detail_info')->nullable();

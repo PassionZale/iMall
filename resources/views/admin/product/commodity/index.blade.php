@@ -7,7 +7,7 @@
             <a href="{{url('admin/product/commodity/create')}}" class="btn btn-primary">
                 <i class="fa fa-btn fa-plus"></i>新增
             </a>
-            <div class="row tree-wrapper">
+            <div class="row tree-container">
                 <div class="col-md-2">
                     <div id="tree"></div>
                 </div>

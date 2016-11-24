@@ -17,9 +17,8 @@ $(function () {
     function initTree(data){
         $('#tree').treeview({
             data: data,
-            color: "#000000",
-            backColor: "#FFFFFF",
             selectable: true,
+            levels:2,
         });
     }
 
