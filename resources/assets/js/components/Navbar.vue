@@ -42,10 +42,11 @@ export default{
     watch:{
         '$route.name':{
             handler:function(val,oldVal){
-                if(val === 'commodity'){
-                    this.active = false;
+                var activeRouteNames = ['index','category','cart','usercenter'];
+                if(activeRouteNames.indexOf(val) >= 0){
+                    this.$set('active',true);
                 }else{
-                    this.active = true;
+                    this.$set('active',false);
                 }
                 this.$set('selected',val);
             }
@@ -64,4 +65,5 @@ export default{
         }
     }
 }
+
 </script>

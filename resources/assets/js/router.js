@@ -22,8 +22,13 @@ export default function (router) {
         },
         '/commodity':{
             name:'commodity',
-            component:require('./components/Commodity.vue')
-
+            component:require('./components/Commodity.vue'),
+            subRoutes:{
+                '/:hashid/topic':{
+                    name:'topic',
+                    component:require('./components/Commodity/topic.vue')
+                }
+            }
         }
     });
 }

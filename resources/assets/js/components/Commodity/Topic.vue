@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div>Commodity Template</div>
-        <router-view></router-view>
+        <div>Commodity Topic</div>
     </div>
 </template>
 <style>
