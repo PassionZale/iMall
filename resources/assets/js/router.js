@@ -16,9 +16,14 @@ export default function (router) {
             name:'cart',
             component:require('./components/Cart.vue')
         },
-        'usercenter':{
+        '/usercenter':{
             name:'usercenter',
             component:require('./components/UserCenter.vue')
+        },
+        '/commodity':{
+            name:'commodity',
+            component:require('./components/Commodity.vue')
+
         }
     });
 }

@@ -1,6 +1,8 @@
 <template>
     <div class="plate-wrapper">
-        <img :src="plate.plate_img" v-for="plate in plates">
+        <a v-link="{name:'commodity'}">
+            <img :src="plate.plate_img" v-for="plate in plates">
+        </a>
     </div>
 </template>
 <style scoped>

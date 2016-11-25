@@ -1,6 +1,6 @@
 <template>
-    <div id="nav-hot-fix"></div>
-    <mt-tabbar :selected.sync="selected" :fixed="true">
+    <div id="nav-hot-fix" v-show="active"></div>
+    <mt-tabbar :selected.sync="selected" :fixed="true" v-show="active">
         <mt-tab-item v-link="{name:'index'}" id="index">
             <i slot="icon" class="nav-index"></i>
             首页
@@ -28,7 +28,8 @@ export default{
     data(){
         return {
             selected:'',
-            cartCount:0
+            cartCount:0,
+            active:true
         }
     },
     components:{
@@ -41,6 +42,11 @@ export default{
     watch:{
         '$route.name':{
             handler:function(val,oldVal){
+                if(val === 'commodity'){
+                    this.active = false;
+                }else{
+                    this.active = true;
+                }
                 this.$set('selected',val);
             }
         }
