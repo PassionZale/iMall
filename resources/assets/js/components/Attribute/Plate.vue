@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>Commodity Topic</div>
+        <div>Attribute Plate</div>
     </div>
 </template>
 <style>

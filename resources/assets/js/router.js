@@ -20,13 +20,21 @@ export default function (router) {
             name:'usercenter',
             component:require('./components/UserCenter.vue')
         },
-        '/commodity':{
-            name:'commodity',
-            component:require('./components/Commodity.vue'),
+        '/attr':{
+            name:'attribute',
+            component:require('./components/Attribute.vue'),
             subRoutes:{
                 '/:hashid/topic':{
-                    name:'topic',
-                    component:require('./components/Commodity/topic.vue')
+                    name:'aTopic',
+                    component:require('./components/Attribute/Topic.vue')
+                },
+                '/:hashid/plate':{
+                    name:'aPlate',
+                    component:require('./components/Attribute/Plate.vue')
+                },
+                '/:hashid/category':{
+                    name:'aCategory',
+                    component:require('./components/Attribute/Category.vue')
                 }
             }
         }

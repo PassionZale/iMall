@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>Commodity Template</div>
+        <div>Attribute Vue</div>
         <router-view></router-view>
     </div>
 </template>
