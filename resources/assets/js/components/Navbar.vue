@@ -41,20 +41,14 @@ export default{
     },
     watch:{
         '$route.name':{
-            handler:function(val,oldVal){
-                var activeRouteNames = ['index','category','cart','usercenter'];
-                if(activeRouteNames.indexOf(val) >= 0){
-                    this.$set('active',true);
-                }else{
-                    this.$set('active',false);
-                }
-                this.$set('selected',val);
+            handler:function(val){
+                this.routeHandler(val)
             }
         }
     },
     methods:{
         initRoute:function(){
-            this.$set('selected',this.$route.name);
+            this.routeHandler(this.$route.name);
         },
         initCartCount:function(){
             localStorage.setItem('cartCount',8);
@@ -62,8 +56,16 @@ export default{
             if(count){
                 this.$set('cartCount',count);
             }
+        },
+        routeHandler:function(val){
+            let activeRouteNames = ['index','category','cart','usercenter'];
+            if(activeRouteNames.indexOf(val) >= 0){
+                this.$set('active',true);
+            }else{
+                this.$set('active',false);
+            }
+            this.$set('selected',val);
         }
     }
 }
-
 </script>
