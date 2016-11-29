@@ -1,19 +1,46 @@
 <template>
-    <div>
-        <div>Attribute Topic</div>
-    </div>
+    <section id="empty-data-container" v-show="empty">
+        <div class="empty-data-wrapper">
+            <img src="/images/common/empty.png"/>
+            <h4>没有找到相关商品T.T</h4>
+            <p>老板太懒了，先去其他位置逛逛吧</p>
+            <a v-link="{name:'category'}">去逛逛</a>
+        </div>
+    </section>
 </template>
-<style>
 
-</style>
 <script>
+    import { Indicator } from 'mint-ui';
     export default{
-        data(){
-            return{
-                msg:'hello vue'
+        props:{
+            sortKey:{
+                type:String,
+                default:''
             }
         },
-        components:{
+        data(){
+            return{
+                data:'',
+                empty:false
+            }
+        },
+        ready(){
+            this.fetchCommodies();
+        },
+        methods:{
+            fetchCommodies:function(){
+                Indicator.open();
+                let vm = this;
+                vm.$http.post('/api/commodities/topic',{
+                    topic_id : vm.$route.params.hashid
+                }).then(function(response){
+                    vm.$set('data',response.data);
+                    vm.$nextTick(function(){
+                        Indicator.close();
+                        vm.data == '' ? vm.$set('empty',true) : vm.$set('empty',false);
+                    });
+                });
+            }
         }
     }
 </script>

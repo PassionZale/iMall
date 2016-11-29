@@ -1,7 +1,45 @@
-// 去除浏览器表单焦点outline样式
-input,select,textarea,button:focus{
-  outline: 0 none !important;
+// 商城样式
+body {
+  font-family: 'Microsoft YaHei','\5FAE\8F6F\96C5\9ED1','Hiragino Sans GB', tahoma,arial,sans-serif;
+  background-color: #f4f6f8;
+  width: 100%;
+  height:100%;
 }
 @import "navbar.scss";
 @import 'category.scss';
 @import "cart.scss";
+@import 'attribute.scss';
+
+#empty-data-container{
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  .empty-data-wrapper{
+    position: absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+    text-align: center;
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    h4{
+      color:#777;
+      margin: 10px 0;
+    }
+    p{
+      color: #707070;
+      font-size: 12px;
+    }
+    a{
+      font-size:12px;
+      text-decoration: none;
+      padding: 6px 24px;
+      color:#707070;
+      border:1px solid #707070;
+      border-radius: 6px;
+    }
+  }
+}

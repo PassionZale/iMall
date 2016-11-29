@@ -59,5 +59,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::get('topics','ShopController@getTopics');
     Route::get('plates','ShopController@getPlates');
     Route::get('categories','ShopController@getCategories');
-    Route::post('commodities/{$id}/topic','ShopController@getCommodityByTopic');
+    Route::post('commodities/topic','ShopController@getCommodityByTopic');
+    Route::post('commodities/plate','ShopController@getCommodityByPlate');
+    Route::post('commodities/cateogry','ShopController@getCommodityByCategory');
 });

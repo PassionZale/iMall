@@ -1,0 +1,26 @@
+#sequence-container{
+  width:100%;
+  background-color: #ffffff;
+  ul{
+    width: 100%;
+    margin:0;
+    padding:5px 10px;
+    list-style-type: none;
+    li{
+      cursor: pointer;
+      display: inline-block;
+      font-size:14px;
+      width: 30%;
+      height:24px;
+      line-height: 24px;
+      text-align: center;
+      &:nth-child(2){
+        border-left:1px solid #d7d7d7;
+        border-right:1px solid #d7d7d7;
+      }
+      &.active{
+        color:#09bb07;
+      }
+    }
+  }
+}

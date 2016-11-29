@@ -51,4 +51,16 @@ class ShopController extends Controller
         return response()->json($categories);
     }
 
+    public function getCommodityByTopic(){
+        return response()->json();
+    }
+
+    public function getCommodityByPlate(){
+        return response()->json();
+    }
+
+    public function getCommodityByCategory(){
+        return response()->json();
+    }
+
 }
