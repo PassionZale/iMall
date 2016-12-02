@@ -53,21 +53,33 @@ class ShopController extends Controller
     }
 
     public function getCommodityByTopic(Request $request){
-        $topic = $request->input('topic_id');
-        $commodities = ProductTopic::findOrFail($topic)->commodities()->get();
-        return response()->json($commodities);
+        $id = $request->input('topic_id');
+        $response = [];
+        $topic = ProductTopic::find($id);
+        if($plate){
+            $response = $topic->commodities()->get();
+        }
+        return response()->json($response);
     }
 
     public function getCommodityByPlate(Request $request){
-        $plate = $request->input('plate_id');
-        $commodities = ProductPlate::findOrFail($plate)->commodities()->get();
-        return response()->json($commodities);
+        $id = $request->input('plate_id');
+        $response = [];
+        $plate = ProductPlate::find($id);
+        if($plate){
+            $response = $plate->commodities()->get();
+        }
+        return response()->json($response);
     }
 
     public function getCommodityByCategory(Request $request){
-        $category = $request->input('category_id');
-        $commodities = ProductPlate::findOrFail($category)->commodities()->get();
-        return response()->json($commodities);
+        $id = $request->input('category_id');
+        $response = [];
+        $category = ProductCategory::find($id);
+        if($category){
+            $response = $category->commodities()->get();
+        }
+        return response()->json($response);
     }
 
 }

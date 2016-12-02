@@ -28,7 +28,7 @@
             fetchCommodies:function(){
                 Indicator.open();
                 let vm = this;
-                vm.$http.post('/api/commodities/cateogry',{
+                vm.$http.post('/api/commodities/category',{
                     category_id : vm.$route.params.hashid
                 }).then(function(response){
                     vm.$set('data',response.data);
