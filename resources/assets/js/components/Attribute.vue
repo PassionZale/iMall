@@ -1,18 +1,16 @@
 <template>
-    <div>
-        <div id="sequence-container">
-            <ul>
-                <li :class="{'active' : sortKey === 'timeDown'}" @click="sortByTime()">新品</li>
-                <li :class="{'active' : sortKey === 'soldDown'}" @click="sortBySold()">畅销</li>
-                <li :class="{'active' : sortKey === 'priceUp' || sortKey === 'priceDown'}" @click="sortByPrice()">
-                    价格&nbsp;
-                    <span v-show="sortKey === 'priceUp'">&and;</span>
-                    <span v-show="sortKey === 'priceDown'">&or;</span>
-                </li>
-            </ul>
-        </div>
-        <router-view :sort-key="sortKey"></router-view>
+    <div id="sequence-container">
+        <ul>
+            <li :class="{'active' : sortKey === 'timeDown'}" @click="sortByTime()">新品</li>
+            <li :class="{'active' : sortKey === 'soldDown'}" @click="sortBySold()">畅销</li>
+            <li :class="{'active' : sortKey === 'priceUp' || sortKey === 'priceDown'}" @click="sortByPrice()">
+                价格&nbsp;
+                <span v-show="sortKey === 'priceUp'">&and;</span>
+                <span v-show="sortKey === 'priceDown'">&or;</span>
+            </li>
+        </ul>
     </div>
+    <router-view :sort-key="sortKey"></router-view>
 </template>
 
 <script>
@@ -39,5 +37,6 @@
             }
         }
     }
+
 
 </script>

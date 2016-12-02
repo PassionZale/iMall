@@ -1,10 +1,12 @@
 <template>
     <empty-data :is-show.sync="empty"></empty-data>
+    <commodity-list :list.sync="data"></commodity-list>
 </template>
 
 <script>
     import { Indicator } from 'mint-ui';
     import EmptyData from '../Common/EmptyData.vue';
+    import CommodityList from '../Common/CommodityList.vue';
     export default{
         props:{
             sortKey:{
@@ -13,11 +15,11 @@
             }
         },
         components:{
-            EmptyData
+            EmptyData,CommodityList
         },
         data(){
             return{
-                data:'',
+                data:[],
                 empty:false
             }
         },
