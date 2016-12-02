@@ -56,7 +56,7 @@ class ShopController extends Controller
         $id = $request->input('topic_id');
         $response = [];
         $topic = ProductTopic::find($id);
-        if($plate){
+        if($topic){
             $response = $topic->commodities()->get();
         }
         return response()->json($response);
