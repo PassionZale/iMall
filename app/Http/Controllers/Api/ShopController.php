@@ -10,6 +10,7 @@ use App\ShopBanner;
 use App\ProductTopic;
 use App\ProductPlate;
 use App\ProductCategory;
+use App\ProductCommodity;
 
 class ShopController extends Controller
 {
@@ -51,16 +52,22 @@ class ShopController extends Controller
         return response()->json($categories);
     }
 
-    public function getCommodityByTopic(){
-        return response()->json();
+    public function getCommodityByTopic(Request $request){
+        $topic = $request->input('topic_id');
+        $commodities = ProductTopic::findOrFail($topic)->commodities()->get();
+        return response()->json($commodities);
     }
 
-    public function getCommodityByPlate(){
-        return response()->json();
+    public function getCommodityByPlate(Request $request){
+        $plate = $request->input('plate_id');
+        $commodities = ProductPlate::findOrFail($plate)->commodities()->get();
+        return response()->json($commodities);
     }
 
-    public function getCommodityByCategory(){
-        return response()->json();
+    public function getCommodityByCategory(Request $request){
+        $category = $request->input('category_id');
+        $commodities = ProductPlate::findOrFail($category)->commodities()->get();
+        return response()->json($commodities);
     }
 
 }
