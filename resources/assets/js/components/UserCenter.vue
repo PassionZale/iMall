@@ -24,7 +24,7 @@
             </mt-cell>
         </div>
         <div class="nav-wrapper">
-            <mt-cell title="意见建议" is-link v-link="{name:'category'}">
+            <mt-cell title="意见建议" is-link v-link="{name:'suggestion'}">
                 <img slot="icon" src="/images/icon/uc-suggestion.png" width="24" height="24">
             </mt-cell>
         </div>

@@ -41,6 +41,10 @@ export default function (router) {
         '/address':{
             name:"address",
             component:require('./components/Address.vue')
+        },
+        '/suggestion':{
+            name:"suggestion",
+            component:require('./components/Suggestion.vue')
         }
     });
 }
