@@ -37,6 +37,10 @@ export default function (router) {
                     component:require('./components/Attribute/Category.vue')
                 }
             }
+        },
+        '/address':{
+            name:"address",
+            component:require('./components/Address.vue')
         }
     });
 }
