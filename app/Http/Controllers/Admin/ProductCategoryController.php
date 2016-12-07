@@ -20,10 +20,16 @@ class ProductCategoryController extends Controller
     public function treeData()
     {
         $data = array();
-        $praentCategories = ProductCategory::where('parent_id', '=', 0)->get();
+        $praentCategories = ProductCategory::where('parent_id', '=', 0)
+            ->orderBy('category_sort', 'asc')
+            ->orderBy('id', 'asc')
+            ->get();
         foreach ($praentCategories as $key => $item) {
             $data[$key]['parent_category'] = $item;
-            $data[$key]['sub_categories'] = ProductCategory::where('parent_id', '=', $item->id)->get();
+            $data[$key]['sub_categories'] = ProductCategory::where('parent_id', '=', $item->id)
+                ->orderBy('category_sort', 'asc')
+                ->orderBy('id', 'asc')
+                ->get();
         }
         return response()->json($data);
     }
