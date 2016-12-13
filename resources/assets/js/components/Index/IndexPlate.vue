@@ -9,7 +9,6 @@
     a{
         display:block;
         width:100%;
-        min-height:10rem;
         position:relative;
     }
     img{
