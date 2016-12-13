@@ -62,4 +62,6 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('commodities/topic','ShopController@getCommodityByTopic');
     Route::post('commodities/plate','ShopController@getCommodityByPlate');
     Route::post('commodities/category','ShopController@getCommodityByCategory');
+    // 意见建议
+    Route::post('suggestion','UserController@suggestion');
 });

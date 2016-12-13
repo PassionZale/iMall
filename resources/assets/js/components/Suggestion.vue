@@ -19,6 +19,8 @@
 <script>
     import { Field } from 'mint-ui';
     import { Button } from 'mint-ui';
+    import { Indicator } from 'mint-ui';
+    import { Toast } from 'mint-ui';
     export default{
         data(){
             return{
@@ -27,7 +29,7 @@
             }
         },
         components:{
-            Field, Button
+            Field, Button, Indicator, Toast
         },
         watch:{
             'suggestion':{
@@ -39,7 +41,21 @@
         },
         methods:{
             submitSuggestion:function(){
-                console.log(this.suggestion);
+                Indicator.open();
+                let vm = this;
+                vm.$http.post('/api/suggestion',{suggestion:vm.suggestion}).then(function(response){
+                    if(response.data.code === 0){
+                        Toast({
+                          message: '操作成功'
+                        });
+                        vm.$router.go('/usercenter');
+                    }else{
+                        Toast({
+                          message: '操作失败'
+                        });
+                    }
+                    Indicator.close();
+                });
             }
         }
     }
