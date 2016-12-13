@@ -1,0 +1,30 @@
+#uc-address-wrapper {
+  background-color: #fff;
+  margin: 10px 0;
+  .add-address-container {
+    padding: 10px 0;
+    border-top: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+    margin-bottom: 10px;
+    text-align: center;
+    .add-address-btn{
+      display: inline-block;
+      padding-left:30px;
+      text-decoration: none;
+      color:#09bb07;
+      background-image: url(/images/common/add.png);
+      background-repeat:no-repeat;
+      background-size:20px 20px;
+      background-position: left center;
+    }
+  }
+}
+.save-address-btn{
+  width:80%;
+  text-align: center;
+  height:40px;
+  line-height: 40px;
+  margin: 0 auto;
+  color:#fff;
+  background-color: #09bb07 ;
+}

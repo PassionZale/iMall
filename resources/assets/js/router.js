@@ -42,6 +42,10 @@ export default function (router) {
             name:"address",
             component:require('./components/Address.vue')
         },
+        '/add-address':{
+            name:"add-address",
+            component:require('./components/AddAddress.vue')
+        },
         '/suggestion':{
             name:"suggestion",
             component:require('./components/Suggestion.vue')

@@ -1,12 +1,14 @@
 <template>
-    <div>
-
-        <div>this is template body</div>
+    <div id="uc-address-wrapper">
+        <div class="add-address-container">
+            <a class="add-address-btn" v-link="{name:'add-address'}">添加新地址</a>
+        </div>
     </div>
 </template>
 
 <script>
-
+    import { Field } from 'mint-ui';
+    import { Button } from 'mint-ui';
     export default{
         data(){
             return{
@@ -14,7 +16,7 @@
             }
         },
         components:{
-
+            Field, Button
         }
     }
 </script>
