@@ -11,7 +11,7 @@
     <div id="categories-content-right">
         <ul>
             <li v-for="sub_category in subCategories" v-link="{name:'aCategory',params:{'hashid':sub_category.id}}">
-                <img :src="sub_category.category_img">
+                <img :src="sub_category.category_img" />
                 <h4>{{sub_category.category_name}}</h4>
             </li>
         </ul>

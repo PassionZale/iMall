@@ -1,5 +1,5 @@
 <template>
-    <div class="plate-wrapper" id="wrapper">
+    <div class="plate-wrapper">
         <a v-link="{name:'aPlate',params:{'hashid':plate.id}}" v-for="plate in plates">
             <img v-lazy="plate.plate_img"/>
         </a>
@@ -18,7 +18,6 @@
         height:auto;
         margin-bottom:10px;
     }
-
 </style>
 <script>
     export default{
