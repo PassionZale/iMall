@@ -1,17 +1,24 @@
 <template>
-    <div class="plate-wrapper">
+    <div class="plate-wrapper" id="wrapper">
         <a v-link="{name:'aPlate',params:{'hashid':plate.id}}" v-for="plate in plates">
-            <img :src="plate.plate_img" />
+            <img v-lazy="plate.plate_img"/>
         </a>
     </div>
 </template>
 <style scoped>
+    a{
+        display:block;
+        width:100%;
+        min-height:10rem;
+        position:relative;
+    }
     img{
         display:block;
         width:100%;
         height:auto;
         margin-bottom:10px;
     }
+
 </style>
 <script>
     export default{
@@ -32,4 +39,5 @@
             }
         }
     }
+
 </script>

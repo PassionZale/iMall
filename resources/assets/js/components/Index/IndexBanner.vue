@@ -3,7 +3,7 @@
         <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="banner in banners">
 					<a href="{{banner.redirect_url}}">
-						<img :src="banner.img_url" />
+						<img :src="banner.img_url"/>
 					</a>
                 </div>
         </div>

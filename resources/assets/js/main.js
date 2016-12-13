@@ -4,9 +4,16 @@ import axios from 'axios'
 import Router from 'vue-router'
 import routerMap from './router'
 import App from './App.vue'
+import VueLazyload from 'vue-lazyload'
 
 Vue.use(Mint);
 Vue.use(Router);
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    loading: 'images/common/loading.gif',
+    error:'images/common/404.png',
+    attempt: 1
+});
 
 Vue.config.devtools = true;
 Vue.prototype.$http = axios;
