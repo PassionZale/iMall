@@ -1,16 +1,11 @@
 <template>
     <div class="plate-wrapper">
         <a v-link="{name:'aPlate',params:{'hashid':plate.id}}" v-for="plate in plates">
-            <img v-lazy="plate.plate_img"/>
+            <img :src="plate.plate_img"/>
         </a>
     </div>
 </template>
 <style scoped>
-    a{
-        display:block;
-        width:100%;
-        position:relative;
-    }
     img{
         display:block;
         width:100%;
