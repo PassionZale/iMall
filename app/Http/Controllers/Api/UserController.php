@@ -37,17 +37,17 @@ class UserController extends Controller
     {
         $wechat = session()->get('wechat.oauth_user');
         $openid = $wechat->id;
-        $follow = WechatFollow::where('openid','=',$openid)->first();
-        if($follow){
+        $follow = WechatFollow::where('openid', '=', $openid)->first();
+        if ($follow) {
             $addresses = $follow->addresses()->get();
             return response()->json([
-                'code'=>0,
-                'message'=>$addresses
+                'code' => 0,
+                'message' => $addresses
             ]);
-        }else{
+        } else {
             return response()->json([
-                'code'=>-1,
-                'message'=>'没有相关地址'
+                'code' => -1,
+                'message' => '没有相关地址'
             ]);
         }
     }
@@ -71,7 +71,7 @@ class UserController extends Controller
         $messages = [
             'name.required' => '收货人还未填写',
             'phone.required' => '手机号码还未填写',
-            'phone.regex'=>'手机号码不合法',
+            'phone.regex' => '手机号码不合法',
             'province.required' => '未选择省',
             'city.required' => '未选择市',
             'address.required' => '详细地址还未填写',
@@ -118,9 +118,27 @@ class UserController extends Controller
 
     }
 
-    public function deleteAddress()
+    public function deleteAddress($id)
     {
-
+        $address = WechatAddress::find($id);
+        if($address){
+            if($address->delete()){
+                return response()->json([
+                    'code' => 0,
+                    'message' => '操作成功'
+                ]);
+            }else{
+                return response()->json([
+                    'code' => -1,
+                    'message' => '请求超时'
+                ]);
+            }
+        }else{
+            return response()->json([
+                'code' => -1,
+                'message' => '该地址不存在'
+            ]);
+        }
     }
 
 }
