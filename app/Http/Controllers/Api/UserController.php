@@ -35,7 +35,21 @@ class UserController extends Controller
 
     public function indexAddress()
     {
-
+        $wechat = session()->get('wechat.oauth_user');
+        $openid = $wechat->id;
+        $follow = WechatFollow::where('openid','=',$openid)->first();
+        if($follow){
+            $addresses = $follow->addresses()->get();
+            return response()->json([
+                'code'=>0,
+                'message'=>$addresses
+            ]);
+        }else{
+            return response()->json([
+                'code'=>-1,
+                'message'=>'没有相关地址'
+            ]);
+        }
     }
 
     public function showAddress($id)

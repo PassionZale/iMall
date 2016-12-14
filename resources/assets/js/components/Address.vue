@@ -11,14 +11,26 @@
 <script>
     import { Button } from 'mint-ui';
     import { Cell } from 'mint-ui';
-
+    import { CellSwipe } from 'mint-ui';
     export default{
         data(){
             return{
+                addresses:''
             }
         },
         components:{
             Cell, Button
+        },
+        ready(){
+            this.fetchAddress();
+        },
+        methods:{
+            fetchAddress:function(){
+                let vm = this;
+                vm.$http.get('/api/address').then(function(response){
+                    console.log(response.data);
+                });
+            }
         }
     }
 </script>
