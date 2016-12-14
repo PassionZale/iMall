@@ -62,11 +62,11 @@
         },
         ready(){
             // 初始化distpicker
-            $('#picker').distpicker();
+            $('#distpicker').distpicker();
         },
         methods:{
             addAddress:function(){
-                
+
             }
         }
     }
