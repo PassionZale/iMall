@@ -40,7 +40,7 @@
     import { Cell } from 'mint-ui';
     import { Indicator } from 'mint-ui';
     import { Switch } from 'mint-ui';
-
+    import { Toast } from 'mint-ui';
     export default{
         data(){
             return{
@@ -52,8 +52,7 @@
                     district:'',
                     address:'',
                     defaulted:false
-                },
-                form_validate:false,
+                }
             }
         },
         components:{
@@ -69,7 +68,12 @@
                 Indicator.open();
                 vm.$http.post('/api/address',vm.form_data).then(function(response){
                     Indicator.close();
-                    console.log(response.data);
+                    Toast({
+                          message: response.data.message
+                    });
+                    if(response.data.code === 0){
+                        vm.$router.go('/address');
+                    }
                 });
             }
         }
