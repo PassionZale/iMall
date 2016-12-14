@@ -1,30 +1,48 @@
-#uc-address-wrapper {
-  background-color: #fff;
+#uc-address-container {
   margin: 10px 0;
-  .add-address-container {
-    padding: 10px 0;
-    border-top: 1px solid #d7d7d7;
-    border-bottom: 1px solid #d7d7d7;
+  .uc-address-part {
+    background-color: #fff;
     margin-bottom: 10px;
-    text-align: center;
-    .add-address-btn{
+    .add-address-btn {
       display: inline-block;
-      padding-left:30px;
+      padding-left: 30px;
       text-decoration: none;
-      color:#09bb07;
+      color: #09bb07;
       background-image: url(/images/common/add.png);
-      background-repeat:no-repeat;
-      background-size:20px 20px;
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
       background-position: left center;
+    }
+    select {
+      display: block;
+      width: 100%;
+      float: left;
+      padding: .5rem .75rem;
+      font-size: 1rem;
+      line-height: 1.25;
+      color: #55595c;
+      background-color: #fff;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 1px solid rgba(0, 0, 0, .15);
+      border-radius: .25rem;
+      text-align: center;
+    }
+    // reset mint-ui
+    .mint-switch-input:checked + .mint-switch-core.mint-switch-core {
+      border-color: #09bb07;
+      background-color: #09bb07;
     }
   }
 }
-.save-address-btn{
-  width:80%;
+
+.save-address-btn {
+  width: 80%;
   text-align: center;
-  height:40px;
+  height: 40px;
   line-height: 40px;
   margin: 0 auto;
-  color:#fff;
-  background-color: #09bb07 ;
+  color: #fff;
+  background-color: #09bb07;
+  border-radius: 8px;
 }

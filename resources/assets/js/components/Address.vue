@@ -1,6 +1,6 @@
 <template>
-    <div id="uc-address-wrapper">
-        <div class="add-address-container">
+    <div id="uc-address-container">
+        <div class="uc-address-part">
             <a class="add-address-btn" v-link="{name:'add-address'}">添加新地址</a>
         </div>
     </div>

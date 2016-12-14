@@ -32,6 +32,7 @@
 <body>
 <!-- JavaScripts -->
 <script src="{{ asset('js/lib/jquery/jquery-2.1.1.min.js') }}"></script>
+<script src="{{ asset('js/lib/distpicker/distpicker.min.js') }}"></script>
 <script src="//cdn.bootcss.com/Swiper/3.4.0/js/swiper.min.js"></script>
 <script src="{{ asset('js/mall/app.js') }}"></script>
 </body>
