@@ -54,7 +54,6 @@
                     defaulted:false
                 },
                 form_validate:false,
-                pickerVisible:false
             }
         },
         components:{
@@ -66,7 +65,12 @@
         },
         methods:{
             addAddress:function(){
-
+                let vm = this;
+                Indicator.open();
+                vm.$http.post('/api/address',vm.form_data).then(function(response){
+                    Indicator.close();
+                    console.log(response.data);
+                });
             }
         }
     }

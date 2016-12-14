@@ -64,4 +64,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('commodities/category','ShopController@getCommodityByCategory');
     // 意见建议
     Route::post('suggestion','UserController@suggestion');
+    // 地址管理
+    Route::get('address','UserController@indexAddress');
+    Route::post('address','UserController@storeAddress');
+    Route::put('address','UserController@updateAddress');
+    Route::delete('address','UserController@deleteAddress');
 });

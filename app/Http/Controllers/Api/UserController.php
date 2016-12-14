@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\WechatSuggestion;
+use App\WechatAddress;
+use App\WechatFollow;
 
 class UserController extends Controller
 {
@@ -28,6 +30,26 @@ class UserController extends Controller
         } else {
             return response()->json(['code' => -1]);
         }
+    }
+
+    public function indexAddress()
+    {
+
+    }
+
+    public function storeAddress()
+    {
+
+    }
+
+    public function updateAddress()
+    {
+
+    }
+
+    public function deleteAddress()
+    {
+
     }
 
 }
