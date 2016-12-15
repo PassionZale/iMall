@@ -29,14 +29,14 @@
         </div>
 
     </div>
-    <div class="save-address-btn" @click="editAddress">
-        保存
+    <div class="edit-address-btn-group">
+        <button class="delete-address-btn" @click="deleteAddress(address)">删除</button>
+        <button class="edit-address-btn" @click="editAddress">保存</button>
     </div>
 </template>
 <script>
     import Vue from 'vue';
     import { Field } from 'mint-ui';
-    import { Button } from 'mint-ui';
     import { Cell } from 'mint-ui';
     import { Indicator } from 'mint-ui';
     import { Switch } from 'mint-ui';
@@ -48,7 +48,7 @@
             }
         },
         components:{
-            Field, Button, Cell, Switch
+            Field, Cell, Switch
         },
         ready(){
             this.fetchAddress();
@@ -86,6 +86,19 @@
                     Indicator.close();
                     Toast({
                           message: response.data.message
+                    });
+                    if(response.data.code === 0){
+                        vm.$router.go('/address');
+                    }
+                });
+            },
+            deleteAddress:function(address){
+                let vm = this;
+                Indicator.open();
+                vm.$http.delete('/api/address/'+address.id).then(function(response){
+                    Indicator.close();
+                    Toast({
+                        message: response.data.message
                     });
                     if(response.data.code === 0){
                         vm.$router.go('/address');

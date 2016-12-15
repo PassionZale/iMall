@@ -36,7 +36,6 @@
 <script>
     import Vue from 'vue';
     import { Field } from 'mint-ui';
-    import { Button } from 'mint-ui';
     import { Cell } from 'mint-ui';
     import { Indicator } from 'mint-ui';
     import { Switch } from 'mint-ui';
@@ -56,7 +55,7 @@
             }
         },
         components:{
-            Field, Button, Cell, Switch
+            Field, Cell, Switch
         },
         ready(){
             // 初始化distpicker

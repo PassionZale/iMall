@@ -10,24 +10,17 @@
              v-link="{name:'edit-address',params:{'hashid':address.id}}"
              :class="address.defaulted === 1 ? 'defaulted-address' : '' ">
             <mt-cell-swipe
-                    :right="[
-                                {
-                                  content: '删除',
-                                  style: { background: 'red', color: '#fff' },
-                                  handler: () => this.deleteAddress(address)
-                                }
-                            ]"
                     :title="address.name"
-                    :label="address.defaulted === 1 ? '【默认地址】' : '' "
+                    :label="address.defaulted === 1 ? '默认地址' : '' "
                     >
-                <p>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</p>
+                <p>{{address.province}} {{address.city}} {{address.district}} </p>
+                <p>{{address.address}}</p>
             </mt-cell-swipe>
         </div>
     </div>
 </template>
 
 <script>
-    import { Button } from 'mint-ui';
     import { CellSwipe } from 'mint-ui';
     import { Indicator } from 'mint-ui';
     import { Toast } from 'mint-ui';
@@ -38,7 +31,7 @@
             }
         },
         components:{
-            CellSwipe, Button, Indicator
+            CellSwipe
         },
         ready(){
             this.fetchAddress();
@@ -59,20 +52,6 @@
                             Indicator.close();
                         });
                     }
-                });
-            },
-            deleteAddress:function(address){
-                let vm = this;
-                Indicator.open();
-                vm.$http.delete('/api/address/'+address.id).then(function(response){
-                    Indicator.close();
-                    if(response.data.code === 0){
-                        vm.addresses.$remove(address);
-                    }
-                    Toast({
-                          message: response.data.message
-                    });
-
                 });
             }
         }
