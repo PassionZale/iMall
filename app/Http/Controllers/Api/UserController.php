@@ -91,8 +91,14 @@ class UserController extends Controller
             $address->district = $request->district;
             $address->address = $request->address;
             $address->defaulted = $request->defaulted;
-            if ($address->save()) {
-                // TODO 将其他地址defaulted设置为FALSE
+            $id = $address->save();
+            if ($id) {
+                if ($address->defaulted) {
+                    // 将其他地址defaulted设置为FALSE
+                    WechatAddress::where('openid', '=', $openid)
+                        ->where('id', '!=', $id)
+                        ->update(['defaulted' => FALSE]);
+                }
                 return response()->json(
                     [
                         'code' => 0,
@@ -150,14 +156,14 @@ class UserController extends Controller
                 'address.required' => '详细地址还未填写',
             ];
             $validator = Validator::make($request->all(), $rules, $messages);
-            if($validator->fails()){
+            if ($validator->fails()) {
                 return response()->json(
                     [
                         'code' => -1,
                         'message' => $validator->errors()->first(),
                     ]
                 );
-            }else{
+            } else {
                 $address->name = $request->name;
                 $address->phone = $request->phone;
                 $address->province = $request->province;
@@ -166,7 +172,12 @@ class UserController extends Controller
                 $address->address = $request->address;
                 $address->defaulted = $request->defaulted;
                 if ($address->save()) {
-                    // TODO 将其他地址defaulted设置为FALSE
+                    if ($address->defaulted) {
+                        // 将其他地址defaulted设置为FALSE
+                        WechatAddress::where('openid', '=', $openid)
+                            ->where('id', '!=', $id)
+                            ->update(['defaulted' => FALSE]);
+                    }
                     return response()->json(
                         [
                             'code' => 0,
