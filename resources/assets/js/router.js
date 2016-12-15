@@ -40,15 +40,15 @@ export default function (router) {
         },
         '/address':{
             name:"address",
-            component:require('./components/Address.vue')
+            component:require('./components/Address/Address.vue')
         },
         '/add-address':{
             name:"add-address",
-            component:require('./components/AddAddress.vue')
+            component:require('./components/Address/AddAddress.vue')
         },
         '/:hashid/edit-address':{
             name:"edit-address",
-            component:require('./components/EditAddress.vue')
+            component:require('./components/Address/EditAddress.vue')
         },
         '/suggestion':{
             name:"suggestion",
