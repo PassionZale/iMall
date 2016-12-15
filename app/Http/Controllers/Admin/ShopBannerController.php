@@ -29,7 +29,7 @@ class ShopBannerController extends Controller
      */
     public function create()
     {
-        return view('shop.banner.create');
+        return view('admin.shop.banner.create');
     }
 
     /**

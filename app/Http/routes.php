@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         Route::resource('plate','ProductPlateController');
         Route::resource('category','ProductCategoryController');
         Route::resource('commodity','ProductCommodityController');
-        // Ajax Route
+        // Ajax Get Tree & Table Data
         Route::get('getTreeData','ProductCategoryController@treeData');
         Route::get('getTableData','ProductCommodityController@tableData');
         // 富文本编辑器上传图片
@@ -66,8 +66,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('suggestion','UserController@suggestion');
     // 地址管理
     Route::get('address','UserController@indexAddress');
-    Route::get('address/{address}','UserController@showAddress');
     Route::post('address','UserController@storeAddress');
+    Route::get('address/{address}','UserController@showAddress');
     Route::put('address/{address}','UserController@updateAddress');
     Route::delete('address/{address}','UserController@deleteAddress');
 });

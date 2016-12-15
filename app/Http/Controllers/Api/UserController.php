@@ -52,10 +52,6 @@ class UserController extends Controller
         }
     }
 
-    public function showAddress($id)
-    {
-
-    }
 
     public function storeAddress(Request $request)
     {
@@ -96,6 +92,7 @@ class UserController extends Controller
             $address->address = $request->address;
             $address->defaulted = $request->defaulted;
             if ($address->save()) {
+                // TODO 将其他地址defaulted设置为FALSE
                 return response()->json(
                     [
                         'code' => 0,
@@ -113,27 +110,102 @@ class UserController extends Controller
         }
     }
 
-    public function updateAddress()
+    public function showAddress($id)
     {
+        $address = WechatAddress::find($id);
+        if ($address) {
+            return response()->json([
+                'code' => 0,
+                'message' => $address
+            ]);
+        } else {
+            return response()->json([
+                'code' => -1,
+                'message' => '没有相关地址'
+            ]);
+        }
+    }
 
+    public function updateAddress(Request $request, $id)
+    {
+        $wechat = session()->get('wechat.oauth_user');
+        $openid = $wechat->id;
+        $address = WechatAddress::find($id);
+        if ($address && $openid === $address->openid) {
+            $rules = [
+                'name' => 'required',
+                'phone' => 'required',
+                'phone' => array('regex:/^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\\d{8}$/'),
+                'province' => 'required',
+                'city' => 'required',
+                'address' => 'required',
+                'defaulted' => 'required|boolean',
+            ];
+            $messages = [
+                'name.required' => '收货人还未填写',
+                'phone.required' => '手机号码还未填写',
+                'phone.regex' => '手机号码不合法',
+                'province.required' => '未选择省',
+                'city.required' => '未选择市',
+                'address.required' => '详细地址还未填写',
+            ];
+            $validator = Validator::make($request->all(), $rules, $messages);
+            if($validator->fails()){
+                return response()->json(
+                    [
+                        'code' => -1,
+                        'message' => $validator->errors()->first(),
+                    ]
+                );
+            }else{
+                $address->name = $request->name;
+                $address->phone = $request->phone;
+                $address->province = $request->province;
+                $address->city = $request->city;
+                $address->district = $request->district;
+                $address->address = $request->address;
+                $address->defaulted = $request->defaulted;
+                if ($address->save()) {
+                    // TODO 将其他地址defaulted设置为FALSE
+                    return response()->json(
+                        [
+                            'code' => 0,
+                            'message' => '操作成功'
+                        ]
+                    );
+                } else {
+                    return response()->json(
+                        [
+                            'code' => -1,
+                            'message' => '请求超时'
+                        ]
+                    );
+                }
+            }
+        } else {
+            return response()->json([
+                'code' => -1,
+                'message' => '没有相关地址'
+            ]);
+        }
     }
 
     public function deleteAddress($id)
     {
         $address = WechatAddress::find($id);
-        if($address){
-            if($address->delete()){
+        if ($address) {
+            if ($address->delete()) {
                 return response()->json([
                     'code' => 0,
                     'message' => '操作成功'
                 ]);
-            }else{
+            } else {
                 return response()->json([
                     'code' => -1,
                     'message' => '请求超时'
                 ]);
             }
-        }else{
+        } else {
             return response()->json([
                 'code' => -1,
                 'message' => '该地址不存在'
