@@ -1,7 +1,21 @@
-<div>
-    <p>{{commodity.commodity_name}}</p>
-</div>
+<template>
+    <div>
+        <p>{{commodity.commodity_name}}</p>
+    </div>
+    <div id="commodity-detail-btn-group">
+        <button>加入购物车</button>
+    </div>
+</template>
 
+<style>
+    #commodity-detail-btn-group{
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:200px;
+        height:50px;
+    }
+</style>
 <script>
     import { Indicator } from 'mint-ui';
     import { Toast } from 'mint-ui';
@@ -34,4 +48,5 @@
             }
         }
     }
+
 </script>
