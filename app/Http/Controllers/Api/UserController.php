@@ -91,12 +91,11 @@ class UserController extends Controller
             $address->district = $request->district;
             $address->address = $request->address;
             $address->defaulted = $request->defaulted;
-            $id = $address->save();
-            if ($id) {
+            if ($address->save()) {
                 if ($address->defaulted) {
                     // 将其他地址defaulted设置为FALSE
-                    WechatAddress::where('openid', '=', $openid)
-                        ->where('id', '!=', $id)
+                    WechatAddress::where('id', '!=', $address->id)
+                        ->where('openid', '=', $address->openid)
                         ->update(['defaulted' => FALSE]);
                 }
                 return response()->json(

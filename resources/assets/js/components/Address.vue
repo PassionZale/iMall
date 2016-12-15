@@ -5,7 +5,7 @@
                 <img src="/images/common/add.png" width="24" height="24">
             </mt-cell>
         </div>
-        <div class="uc-address-part" v-for="address in addresses">
+        <div class="uc-address-part" v-for="address in addresses" v-link="{name:'edit-address',params:{'hashid':address.id}}">
             <mt-cell-swipe
                     :right="[
                                 {
@@ -14,7 +14,9 @@
                                   handler: () => this.deleteAddress(address)
                                 }
                             ]"
-                    :title="address.name">
+                    :title="address.name"
+                    :label="address.defaulted === 1 ? '【默认地址】' : '' "
+                    >
                 <p>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</p>
             </mt-cell-swipe>
         </div>

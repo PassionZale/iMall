@@ -6,7 +6,7 @@
             <mt-field label="手机号码：" placeholder="请填写手机号码" type="tel" :value.sync="form_data.phone"></mt-field>
         </div>
 
-        <div class="uc-address-part" id="distpicker" data-toggle="distpicker">
+        <div class="uc-address-part" id="distpicker-add" data-toggle="distpicker">
             <mt-cell title="省：" class="mint-field">
                 <select id="province-picker" data-province="---- 请选择省 ----" v-model="form_data.province"></select>
             </mt-cell>
@@ -60,7 +60,7 @@
         },
         ready(){
             // 初始化distpicker
-            $('#distpicker').distpicker();
+            $('#distpicker-add').distpicker();
         },
         methods:{
             addAddress:function(){

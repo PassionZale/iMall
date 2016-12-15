@@ -46,6 +46,10 @@ export default function (router) {
             name:"add-address",
             component:require('./components/AddAddress.vue')
         },
+        '/:hashid/edit-address':{
+            name:"edit-address",
+            component:require('./components/EditAddress.vue')
+        },
         '/suggestion':{
             name:"suggestion",
             component:require('./components/Suggestion.vue')
