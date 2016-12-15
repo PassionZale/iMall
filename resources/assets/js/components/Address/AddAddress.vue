@@ -34,7 +34,6 @@
     </div>
 </template>
 <script>
-    import Vue from 'vue';
     import { Field } from 'mint-ui';
     import { Cell } from 'mint-ui';
     import { Indicator } from 'mint-ui';

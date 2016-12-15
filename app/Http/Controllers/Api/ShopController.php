@@ -91,4 +91,19 @@ class ShopController extends Controller
         return response()->json($response);
     }
 
+    public function getCommodity($id){
+        $commodity = ProductCommodity::find($id);
+        if ($commodity && $commodity->commodity_disabled === '已上架') {
+            return response()->json([
+                'code' => 0,
+                'message' => $commodity
+            ]);
+        } else {
+            return response()->json([
+                'code' => -1,
+                'message' => '该商品已下架！'
+            ]);
+        }
+    }
+
 }

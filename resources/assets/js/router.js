@@ -12,6 +12,10 @@ export default function (router) {
             name:'category',
             component:require('./components/Category.vue')
         },
+        '/:hashid/commodity':{
+            name:'commodity',
+            component:require('./components/Commodity/Detail.vue')
+        },
         '/cart':{
             name:'cart',
             component:require('./components/Cart.vue')
