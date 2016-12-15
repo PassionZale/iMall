@@ -30,7 +30,7 @@
 
     </div>
     <div class="save-address-btn" @click="editAddress">
-        确定
+        保存
     </div>
 </template>
 <script>

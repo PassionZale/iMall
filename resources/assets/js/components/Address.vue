@@ -5,7 +5,10 @@
                 <img src="/images/common/add.png" width="24" height="24">
             </mt-cell>
         </div>
-        <div class="uc-address-part" v-for="address in addresses" v-link="{name:'edit-address',params:{'hashid':address.id}}">
+        <div class="uc-address-part"
+             v-for="address in addresses"
+             v-link="{name:'edit-address',params:{'hashid':address.id}}"
+             :class="address.defaulted === 1 ? 'defaulted-address' : '' ">
             <mt-cell-swipe
                     :right="[
                                 {

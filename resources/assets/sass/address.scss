@@ -3,6 +3,10 @@
   .uc-address-part {
     background-color: #fff;
     margin-bottom: 10px;
+    &.defaulted-address{
+      border-top:1px solid #09bb07;
+      border-bottom:1px solid #09bb07;
+    }
     .add-address-btn{
       color:#09bb07;
       text-decoration: none;
