@@ -70,7 +70,7 @@
                           message: response.data.message
                     });
                     if(response.data.code === 0){
-                        vm.$router.go('/address');
+                        window.history.go(-1);
                     }
                 });
             }

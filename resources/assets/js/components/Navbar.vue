@@ -51,7 +51,6 @@ export default{
             this.routeHandler(this.$route.name);
         },
         initCartCount:function(){
-            localStorage.setItem('cartCount',8);
             let count = localStorage.getItem('cartCount');
             if(count){
                 this.$set('cartCount',count);

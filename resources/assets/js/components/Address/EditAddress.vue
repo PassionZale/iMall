@@ -75,7 +75,7 @@
                         Toast({
                           message: response.data.message
                         });
-                        vm.$router.go('/address');
+                        window.history.go(-1);
                     }
                 });
             },
@@ -88,7 +88,7 @@
                           message: response.data.message
                     });
                     if(response.data.code === 0){
-                        vm.$router.go('/address');
+                        window.history.go(-1);
                     }
                 });
             },
@@ -101,7 +101,7 @@
                         message: response.data.message
                     });
                     if(response.data.code === 0){
-                        vm.$router.go('/address');
+                        window.history.go(-1);
                     }
                 });
             }
