@@ -27,6 +27,7 @@
         input, select, textarea, button:focus {
             outline: 0 none !important;
         }
+        a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
     </style>
 </head>
 <body>
