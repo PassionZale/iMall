@@ -135,6 +135,12 @@
                         <span class="fa arrow fa-fw"></span>
                     </a>
                     <ul>
+                        <li class="{{request()->is('admin/product/commodity*') ? 'active' : ''}}">
+                            <a href="{{url('admin/product/commodity')}}">
+                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
+                                商品
+                            </a>
+                        </li>
                         <li class="{{request()->is('admin/product/topic*') ? 'active' : ''}}">
                             <a href="{{url('admin/product/topic')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
@@ -151,12 +157,6 @@
                             <a href="{{url('admin/product/category')}}">
                                 <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
                                 分类
-                            </a>
-                        </li>
-                        <li class="{{request()->is('admin/product/commodity*') ? 'active' : ''}}">
-                            <a href="{{url('admin/product/commodity')}}">
-                                <span class="sidebar-nav-item-icon fa fa-dot-circle-o fa-fw"></span>
-                                商品
                             </a>
                         </li>
                     </ul>
