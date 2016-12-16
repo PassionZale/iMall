@@ -20,13 +20,13 @@ export default function (router) {
             name:'cart',
             component:require('./components/Cart.vue')
         },
-        '/usercenter':{
+        '/usercenter': {
             name:'usercenter',
             component:require('./components/UserCenter.vue')
         },
         '/attr':{
             name:'attribute',
-            component:require('./components/Attribute.vue'),
+            component:require('./components/Attribute/Attribute.vue'),
             subRoutes:{
                 '/:hashid/topic':{
                     name:'aTopic',
@@ -56,7 +56,7 @@ export default function (router) {
         },
         '/suggestion':{
             name:"suggestion",
-            component:require('./components/Suggestion.vue')
+            component:require('./components/Suggestion/Suggestion.vue')
         }
     });
 }
