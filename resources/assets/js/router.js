@@ -14,7 +14,7 @@ export default function (router) {
         },
         '/:hashid/commodity':{
             name:'commodity',
-            component:require('./components/Commodity/Detail.vue')
+            component:require('./components/Commodity/CommodityDetail.vue')
         },
         '/cart':{
             name:'cart',
