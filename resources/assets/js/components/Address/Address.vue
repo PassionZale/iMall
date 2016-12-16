@@ -8,10 +8,10 @@
         <div class="uc-address-part"
              v-for="address in addresses"
              v-link="{name:'edit-address',params:{'hashid':address.id}}"
-             :class="address.defaulted === 1 ? 'defaulted-address' : '' ">
+             :class="address.defaulted == 1 ? 'defaulted-address' : '' ">
             <mt-cell-swipe
                     :title="address.name"
-                    :label="address.defaulted === 1 ? '默认地址' : '' "
+                    :label="address.defaulted == 1 ? '默认地址' : '' "
                     >
                 <p>{{address.province}} {{address.city}} {{address.district}} </p>
                 <p>{{address.address}}</p>

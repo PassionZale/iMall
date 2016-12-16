@@ -62,7 +62,7 @@
                     Indicator.close();
                     if(response.data.code === 0){
                         let address = response.data.message;
-                        address.defaulted === 1 ? address.defaulted = true : address.defaulted = false;
+                        address.defaulted == 1 ? address.defaulted = true : address.defaulted = false;
                         vm.$set('address',address);
                         vm.$nextTick(function(){
                             $("#distpicker-edit").distpicker({
