@@ -40,9 +40,16 @@
     </div>
     <div style="width:100%;height:60px;"></div>
     <div id="btn-groups-container">
-        <div class="cart-wrap"></div>
-        <div class="add-cart-btn">加入购物车</div>
-        <div class="to-pay-btn">立即购买</div>
+        <div class="cart-wrap" v-link="{name:'cart'}">
+            <mt-badge
+                    type="error"
+                    size="small"
+                    v-show="cartCount > 0">
+                {{cartCount}}
+            </mt-badge>
+        </div>
+        <div class="add-cart-btn" @click="addCart">加入购物车</div>
+        <div class="to-pay-btn" @click="toPay">立即购买</div>
     </div>
 </template>
 
@@ -58,17 +65,19 @@
 <script>
     import { Indicator } from 'mint-ui';
     import { Toast } from 'mint-ui';
+    import { Badge } from 'mint-ui';
     export default{
         data(){
             return {
                 commodity:'',
                 sheetVisible:false,
                 detailVisible:true,
-                commodity_num:1
+                commodity_num:1,
+                cartCount:0,
             }
         },
         components:{
-
+            Badge
         },
         ready(){
             this.fetchCommodity();
@@ -87,7 +96,7 @@
                 let itemId = vm.$route.params.hashid;
                 vm.$http.get('/api/commodity/'+itemId).then(function(response){
                     Indicator.close();
-                    if(response.data.code === 0){
+                    if(response.data.code == 0){
                         let commodity = response.data.message;
                         vm.$set('commodity',commodity);
                     }else{
@@ -106,6 +115,24 @@
             },
             detailToggle: function(){
                 this.detailVisible = !this.detailVisible;
+            },
+            addCart: function(){
+                Indicator.open();
+                let vm = this;
+                vm.$http.post('/api/cart',{
+                        commodity_id:vm.commodity.id,commodity_num:vm.commodity_num
+                    }).then(function(response){
+                        Indicator.close();
+                        if(response.data.code == 0){
+                            vm.cartCount = vm.cartCount + 1;
+                        }
+                        Toast({
+                            message: response.data.message
+                        });
+                    });
+            },
+            toPay: function(){
+
             }
         }
     }

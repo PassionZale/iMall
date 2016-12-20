@@ -118,13 +118,13 @@
   display: -webkit-flex;
   display: flex;
   height: 50px;
-  border-top: 1px solid #ddd;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: #fff;
   .cart-wrap {
+    border-top: 1px solid #ddd;
     -webkit-flex: none;
     flex: none;
     width: 50px;
@@ -139,11 +139,14 @@
     color: #fff;
     line-height: 50px;
     text-align: center;
+    cursor: pointer;
   }
   .add-cart-btn {
+    border-top: 1px solid #ff9600;
     background-color: #ff9600;
   }
   .to-pay-btn {
+    border-top: 1px solid #e4393c;
     background-color: #e4393c;
   }
 }

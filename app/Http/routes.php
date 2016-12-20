@@ -22,20 +22,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
     });
     // 店铺管理
     Route::group(['prefix' => 'shop'], function () {
-        Route::resource('config', 'ShopConfigController', ['except' => ['create', 'edit','show','destroy']]);
+        Route::resource('config', 'ShopConfigController', ['except' => ['create', 'edit', 'show', 'destroy']]);
         Route::resource('banner', 'ShopBannerController');
     });
     // 商品管理
-    Route::group(['prefix'=>'product'],function(){
-        Route::resource('topic','ProductTopicController');
-        Route::resource('plate','ProductPlateController');
-        Route::resource('category','ProductCategoryController');
-        Route::resource('commodity','ProductCommodityController');
+    Route::group(['prefix' => 'product'], function () {
+        Route::resource('topic', 'ProductTopicController');
+        Route::resource('plate', 'ProductPlateController');
+        Route::resource('category', 'ProductCategoryController');
+        Route::resource('commodity', 'ProductCommodityController');
         // Ajax Get Tree & Table Data
-        Route::get('getTreeData','ProductCategoryController@treeData');
-        Route::get('getTableData','ProductCommodityController@tableData');
+        Route::get('getTreeData', 'ProductCategoryController@treeData');
+        Route::get('getTableData', 'ProductCommodityController@tableData');
         // 富文本编辑器上传图片
-        Route::post('editorUpload','ProductCommodityController@editorUpload');
+        Route::post('editorUpload', 'ProductCommodityController@editorUpload');
     });
 });
 
@@ -54,21 +54,28 @@ Route::group(['prefix' => 'mall', 'middleware' => ['web', 'wechat.oauth'], 'name
 });
 
 Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], function () {
+    // 获取用户信息
     Route::get('userinfo', 'UserController@userinfo');
+    // 获取首页轮播图、专题、板块数据
     Route::get('banners', 'ShopController@getBanners');
-    Route::get('topics','ShopController@getTopics');
-    Route::get('plates','ShopController@getPlates');
-    Route::get('categories','ShopController@getCategories');
-    Route::post('commodities/topic','ShopController@getCommodityByTopic');
-    Route::post('commodities/plate','ShopController@getCommodityByPlate');
-    Route::post('commodities/category','ShopController@getCommodityByCategory');
-    Route::get('commodity/{commodity}','ShopController@getCommodity');
+    Route::get('topics', 'ShopController@getTopics');
+    Route::get('plates', 'ShopController@getPlates');
+    // 数据分类数据
+    Route::get('categories', 'ShopController@getCategories');
+    // 根据不同条件获取商品数据集合
+    Route::post('commodities/topic', 'ShopController@getCommodityByTopic');
+    Route::post('commodities/plate', 'ShopController@getCommodityByPlate');
+    Route::post('commodities/category', 'ShopController@getCommodityByCategory');
+    // 根据商品ID查询商品详情数据
+    Route::get('commodity/{commodity}', 'ShopController@getCommodity');
+    // 购物车
+    Route::resource('cart', 'CartController', ['except' => ['create', 'edit', 'show']]);
     // 意见建议
-    Route::post('suggestion','UserController@suggestion');
+    Route::post('suggestion', 'UserController@suggestion');
     // 地址管理
-    Route::get('address','UserController@indexAddress');
-    Route::post('address','UserController@storeAddress');
-    Route::get('address/{address}','UserController@showAddress');
-    Route::put('address/{address}','UserController@updateAddress');
-    Route::delete('address/{address}','UserController@deleteAddress');
+    Route::get('address', 'UserController@indexAddress');
+    Route::post('address', 'UserController@storeAddress');
+    Route::get('address/{address}', 'UserController@showAddress');
+    Route::put('address/{address}', 'UserController@updateAddress');
+    Route::delete('address/{address}', 'UserController@deleteAddress');
 });

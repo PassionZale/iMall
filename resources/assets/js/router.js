@@ -44,15 +44,15 @@ export default function (router) {
         },
         '/address':{
             name:"address",
-            component:require('./components/Address/Address.vue')
+            component:require('./components/Address/AddressList.vue')
         },
         '/add-address':{
             name:"add-address",
-            component:require('./components/Address/AddAddress.vue')
+            component:require('./components/Address/AddressAdd.vue')
         },
         '/:hashid/edit-address':{
             name:"edit-address",
-            component:require('./components/Address/EditAddress.vue')
+            component:require('./components/Address/AddressEdit.vue')
         },
         '/suggestion':{
             name:"suggestion",
