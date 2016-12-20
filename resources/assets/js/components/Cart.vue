@@ -1,5 +1,5 @@
 <template>
-    <section id="empty-cart-container" v-if="!cart.count">
+    <section id="empty-cart-container" v-show="emptyVisible">
         <div class="empty-cart-wrapper">
             <img src="/images/common/cart.png"/>
             <h4>购物车快饿扁了T.T</h4>
@@ -10,13 +10,13 @@
 </template>
 
 <script>
+    import { Indicator } from 'mint-ui';
+    import { Toast } from 'mint-ui';
     export default{
         data(){
             return {
-                cart:{
-                    count:0,
-                    data:[]
-                }
+                cart:'',
+                emptyVisible:false
             }
         },
         ready(){
@@ -24,10 +24,18 @@
         },
         methods:{
             fetchCart:function(){
-                // TODO ajax load cart data
-                return false;
+                Indicator.open();
+                let vm = this;
+                vm.$http.get('/api/cart').then(function(response){
+                    Indicator.close();
+                    vm.$set('cart',response.data.message);
+                    if(vm.cart.length){
+                        vm.$set('emptyVisible',false);
+                    }else{
+                        vm.$set('emptyVisible',true);
+                    }
+                });
             }
         }
     }
-
 </script>

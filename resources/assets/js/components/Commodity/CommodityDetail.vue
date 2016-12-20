@@ -110,7 +110,7 @@
             },
             fetchCartCount:function(){
                 let vm = this;
-                vm.$http.get('/api/cart/').then(function(response){
+                vm.$http.get('/api/cart/count').then(function(response){
                     if(response.data.code == 0){
                         vm.$set('cartCount',response.data.message);
                     }
