@@ -21,8 +21,4 @@ class ProductCommodity extends Model
         return $this->belongsTo('App\ProductCategory','category_id');
     }
 
-    public function cart(){
-        return $this->hasOne('App\WechatCart','id','commodity_id');
-    }
-
 }
