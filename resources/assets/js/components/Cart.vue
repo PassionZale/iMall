@@ -1,4 +1,7 @@
 <template>
+    <section id="cart-container">
+
+    </section>
     <section id="empty-cart-container" v-show="emptyVisible">
         <div class="empty-cart-wrapper">
             <img src="/images/common/cart.png"/>

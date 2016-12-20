@@ -134,7 +134,9 @@
                     }).then(function(response){
                         Indicator.close();
                         if(response.data.code == 0){
-                            vm.cartCount = vm.cartCount + 1;
+                            if(response.data.extra == 'store'){
+                                vm.cartCount = vm.cartCount + 1;
+                            }
                         }
                         Toast({
                             message: response.data.message

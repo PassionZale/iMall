@@ -52,13 +52,26 @@ class CartController extends Controller
                 'message' => '操作异常',
             ]);
         } else {
-            $cart = new WechatCart();
-            $cart->openid = $openid;
-            $cart->commodity_id = $request->commodity_id;
-            $cart->commodity_num = $request->commodity_num;
+            // 查询是否已存在commodity_id的数据
+            $cart = WechatCart::where('openid', '=', $openid)
+                ->where('commodity_id', '=', $request->commodity_id)
+                ->first();
+            if ($cart) {
+                // 若存在，则更新数量
+                $extra = 'update';
+                $cart->commodity_num = $cart->commodity_num + $request->commodity_num;
+            } else {
+                // 若不存在，则录入新数据
+                $extra = 'store';
+                $cart = new WechatCart();
+                $cart->openid = $openid;
+                $cart->commodity_id = $request->commodity_id;
+                $cart->commodity_num = $request->commodity_num;
+            }
             if ($cart->save()) {
                 return response()->json([
                     'code' => 0,
+                    'extra' => $extra,
                     'message' => '操作成功',
                 ]);
             } else {
