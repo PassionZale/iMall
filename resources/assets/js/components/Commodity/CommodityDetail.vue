@@ -99,11 +99,20 @@
                     if(response.data.code == 0){
                         let commodity = response.data.message;
                         vm.$set('commodity',commodity);
+                        vm.fetchCartCount();
                     }else{
                         Toast({
                           message: response.data.message
                         });
                         vm.$router.go('/category');
+                    }
+                });
+            },
+            fetchCartCount:function(){
+                let vm = this;
+                vm.$http.get('/api/cart/').then(function(response){
+                    if(response.data.code == 0){
+                        vm.$set('cartCount',response.data.message);
                     }
                 });
             },
@@ -120,7 +129,8 @@
                 Indicator.open();
                 let vm = this;
                 vm.$http.post('/api/cart',{
-                        commodity_id:vm.commodity.id,commodity_num:vm.commodity_num
+                        commodity_id:vm.commodity.id,
+                        commodity_num:vm.commodity_num
                     }).then(function(response){
                         Indicator.close();
                         if(response.data.code == 0){

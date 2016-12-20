@@ -21,32 +21,47 @@ class CartController extends Controller
 
     public function index()
     {
+        $openid = $this->follow->id;
+        $cart = WechatCart::where('openid', '=', $openid)->get();
+        return response()->json([
+            'code' => 0,
+            'message' => $cart,
+        ]);
+    }
+
+    public function calculateTotal()
+    {
+        $cartCount = WechatCart::where('openid', '=', $this->follow->id)->count();
+        return response()->json([
+            'code' => 0,
+            'message' => $cartCount,
+        ]);
     }
 
     public function store(Request $request)
     {
         $openid = $this->follow->id;
         $rules = [
-            'commodity_id'=>'required',
-            'commodity_num'=>'required|integer|min:1',
+            'commodity_id' => 'required',
+            'commodity_num' => 'required|integer|min:1',
         ];
-        $validator = Validator::make($request->all(),$rules);
-        if($validator->fails()){
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
             return response()->json([
                 'code' => -1,
                 'message' => '操作异常',
             ]);
-        }else{
+        } else {
             $cart = new WechatCart();
             $cart->openid = $openid;
             $cart->commodity_id = $request->commodity_id;
             $cart->commodity_num = $request->commodity_num;
-            if($cart->save()){
+            if ($cart->save()) {
                 return response()->json([
                     'code' => 0,
                     'message' => '操作成功',
                 ]);
-            }else{
+            } else {
                 return response()->json([
                     'code' => -1,
                     'message' => '操作失败',

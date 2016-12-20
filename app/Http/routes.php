@@ -70,6 +70,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::get('commodity/{commodity}', 'ShopController@getCommodity');
     // 购物车
     Route::resource('cart', 'CartController', ['except' => ['create', 'edit', 'show']]);
+    // 获取购物车数据总条数
+    Route::get('cart/count','CartController@calculateTotal');
     // 意见建议
     Route::post('suggestion', 'UserController@suggestion');
     // 地址管理
