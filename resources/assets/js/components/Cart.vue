@@ -1,15 +1,18 @@
 <template>
-    <section id="cart-container">
-
-    </section>
-    <section id="empty-cart-container" v-show="emptyVisible">
+    <div id="cart-container">
+        <section v-for="cart in carts">
+            {{cart.commodity_id}}<br>
+            {{cart.commodity_num}}
+        </section>
+    </div>
+    <div id="empty-cart-container" v-show="emptyVisible">
         <div class="empty-cart-wrapper">
             <img src="/images/common/cart.png"/>
             <h4>购物车快饿扁了T.T</h4>
             <p>主人快给我挑点宝贝吧</p>
             <a v-link="{name:'index'}">去逛逛</a>
         </div>
-    </section>
+    </div>
 </template>
 
 <script>
@@ -18,7 +21,7 @@
     export default{
         data(){
             return {
-                cart:'',
+                carts:'',
                 emptyVisible:false
             }
         },
@@ -31,8 +34,8 @@
                 let vm = this;
                 vm.$http.get('/api/cart').then(function(response){
                     Indicator.close();
-                    vm.$set('cart',response.data.message);
-                    if(vm.cart.length){
+                    vm.$set('carts',response.data.message);
+                    if(vm.carts.length){
                         vm.$set('emptyVisible',false);
                     }else{
                         vm.$set('emptyVisible',true);

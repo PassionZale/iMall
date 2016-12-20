@@ -22,7 +22,9 @@ class CartController extends Controller
     public function index()
     {
         $openid = $this->follow->id;
-        $cart = WechatCart::where('openid', '=', $openid)->get();
+        $cart = WechatCart::with('hasOneCommodity')
+            ->where('openid', '=', $openid)
+            ->get();
         return response()->json([
             'code' => 0,
             'message' => $cart,

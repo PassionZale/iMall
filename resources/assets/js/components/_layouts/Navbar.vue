@@ -57,7 +57,7 @@ export default{
             }
         },
         routeHandler:function(val){
-            let activeRouteNames = ['index','category','cart','usercenter'];
+            let activeRouteNames = ['index','category','usercenter'];
             if(activeRouteNames.indexOf(val) >= 0){
                 this.$set('active',true);
             }else{
