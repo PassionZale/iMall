@@ -1,8 +1,7 @@
 <template>
     <div id="cart-container">
         <section v-for="cart in carts">
-            {{cart.commodity_id}}<br>
-            {{cart.commodity_num}}
+            {{cart.commodity.commodity_name}}
         </section>
     </div>
     <div id="empty-cart-container" v-show="emptyVisible">

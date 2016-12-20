@@ -10,7 +10,7 @@ class WechatCart extends Model
 
     protected $guarded = [];
 
-    public function hasOneCommodity()
+    public function commodity()
     {
         return $this->hasOne('App\ProductCommodity', 'id', 'commodity_id');
     }
