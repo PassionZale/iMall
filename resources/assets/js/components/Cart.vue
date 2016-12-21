@@ -75,11 +75,11 @@
             },
             minusClick: function(cart){
                 if(cart.commodity_num > 1){
-                    cart.commodity_num = (cart.commodity_num - 1);
+                    cart.commodity_num = (parseInt(cart.commodity_num) - 1);
                 };
             },
             plusClick: function(cart){
-                cart.commodity_num = (cart.commodity_num + 1);
+                cart.commodity_num = (parseInt(cart.commodity_num) + 1);
             },
             toggleSelect: function(cart){
                 cart.selected = !cart.selected;
