@@ -174,4 +174,32 @@
       border: 1px solid #e4393c;
     }
   }
+  .total-result {
+    display: inline-block;
+    width: calc(100% - 110px);
+    height: 50px;
+    line-height: 25px;
+    text-align: right;
+    p{
+      margin:0;
+      font-size:10px;
+      color:#666;
+      &.total-price{
+        font-size:16px;
+        color:#e4393c;
+      }
+    }
+  }
+  .to-pay-btn {
+    float:right;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 700;
+    border-top: 1px solid #e4393c;
+    background-color: #e4393c;
+  }
 }

@@ -37,6 +37,13 @@
            :class="selecteAll ? 'selected' : '' "
             @click="selectAll(carts)">
         </i>
+        <div class="total-result">
+            <p class="total-price">总计：&yen;269.00</p>
+            <p>（不含运费）</p>
+        </div>
+        <div class="to-pay-btn">
+            去结算
+        </div>
     </div>
 
 
