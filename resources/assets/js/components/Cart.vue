@@ -1,9 +1,10 @@
 <template>
     <div id="cart-container">
         <section class="cart-wrap"
-                 v-for="(cart, index) in carts">
+                 v-for="cart in carts">
             <i class="select-one-btn"
-                @click="toggleSelect(index)">
+               :class="cart.selected ? 'selected' : '' "
+                @click="toggleSelect(cart)">
             </i>
             <a class="img-wrap" v-link="{name:'commodity',params:{hashid:cart.commodity.id}}">
                 <img :src="cart.commodity.commodity_img"/>
@@ -60,8 +61,12 @@
                 let vm = this;
                 vm.$http.get('/api/cart').then(function(response){
                     Indicator.close();
-                    vm.$set('carts',response.data.message);
-                    if(vm.carts.length){
+                    let data = response.data.message;
+                    if(data.length){
+                        for(var i in data){
+                          data[i].selected=false;
+                        }
+                        vm.$set('carts',data);
                         vm.$set('emptyVisible',false);
                     }else{
                         vm.$set('emptyVisible',true);
@@ -76,12 +81,8 @@
             plusClick: function(cart){
                 cart.commodity_num = cart.commodity_num + 1;
             },
-            toggleSelect: function(index){
-                if(this.selected.indexOf(index) == 0){
-                    this.selected.$remove(index);
-                }else{
-                    this.selected.push(index);
-                }
+            toggleSelect: function(cart){
+                cart.selected = !cart.selected;
             }
         }
     }

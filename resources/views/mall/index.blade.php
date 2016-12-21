@@ -24,10 +24,10 @@
     <link href="//cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css" rel="stylesheet">
     <link href="{{asset('css/mall.css')}}" rel="stylesheet">
     <style>
-        input, select, textarea, button:focus {
+        input,i, select, textarea, button:focus {
             outline: 0 none !important;
         }
-        a,button,input,li,span{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+        a,i,button,input,li,span{-webkit-tap-highlight-color:rgba(255,0,0,0);}
     </style>
 </head>
 <body>
