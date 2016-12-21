@@ -83,10 +83,10 @@
     }
     .price-wrap {
       margin-left: 40px;
-      height:42px;
+      height: 42px;
       .commodity-result {
-        height:100%;
-        font-size:12px;
+        height: 100%;
+        font-size: 12px;
         max-width: 50%;
         line-height: 42px;
         overflow: hidden;
@@ -143,6 +143,35 @@
           text-align: center;
         }
       }
+    }
+  }
+}
+
+#pay-container {
+  background-color: #fff;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #ddd;
+  .select-all-btn {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    &.selected {
+      background-image: url(/images/icon/cart-selected-icon.png);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center center;
+      border: 1px solid #e4393c;
     }
   }
 }

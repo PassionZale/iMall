@@ -23,7 +23,7 @@
                               :class=" cart.commodity_num > 1 ? 'active' : '' "
                               @click="minusClick(cart)">
                         </span>
-                    <input class="num" type="tel" value="{{cart.commodity_num}}">
+                    <input class="num" type="tel" value="{{cart.commodity_num}}" disabled>
                     <span class="plus-btn active"
                           @click="plusClick(cart)">
                     </span>
@@ -31,6 +31,15 @@
             </div>
         </section>
     </div>
+
+    <div id="pay-container">
+        <i class="select-all-btn"
+           :class="selecteAll ? 'selected' : '' "
+            @click="selectAll(carts)">
+        </i>
+    </div>
+
+
     <div id="empty-cart-container" v-if="emptyVisible">
         <div class="empty-cart-wrapper">
             <img src="/images/common/cart.png"/>
@@ -48,7 +57,7 @@
         data(){
             return {
                 carts:'',
-                selected:[],
+                selecteAll:true,
                 emptyVisible:false
             }
         },
@@ -64,7 +73,7 @@
                     let data = response.data.message;
                     if(data.length){
                         for(var i in data){
-                          data[i].selected=false;
+                          data[i].selected=true;
                         }
                         vm.$set('carts',data);
                         vm.$set('emptyVisible',false);
@@ -83,6 +92,32 @@
             },
             toggleSelect: function(cart){
                 cart.selected = !cart.selected;
+                if(!cart.selected){
+                    this.selecteAll = false;
+                }else{
+                    let selected = 0;
+                    let count = this.carts.length;
+                    for(var i in this.carts){
+                        if(this.carts[i].selected){
+                            selected ++;
+                        }
+                    }
+                    if(count == selected){
+                        this.selecteAll = true;
+                    }
+                }
+            },
+            selectAll: function(carts){
+                this.selecteAll = !this.selecteAll;
+                if(this.selecteAll){
+                    for(var i in carts){
+                        carts[i].selected=true;
+                    }
+                }else{
+                    for(var i in carts){
+                        carts[i].selected=false;
+                    }
+                }
             }
         }
     }
