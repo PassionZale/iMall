@@ -12,11 +12,11 @@
             </a>
             <div class="price-wrap">
                 <span class="commodity-result">
-                    <span>&yen;{{cart.commodity.commodity_current_price}}</span>
+                    <span>&yen;{{cart.commodity.commodity_current_price | calculatePrice}}</span>
                     *
                     <span class="num">{{cart.commodity_num}}</span>
                     =
-                    <span class="price">&yen;{{cart.commodity.commodity_current_price * cart.commodity_num}}</span>
+                    <span class="price">&yen;{{cart.commodity.commodity_current_price * cart.commodity_num | calculatePrice}}</span>
                 </span>
                 <div class="commodity-num">
                         <span class="minus-btn"
@@ -38,7 +38,7 @@
             @click="selectAll(carts)">
         </i>
         <div class="total-result">
-            <p class="total-price">总计：&yen;269.00</p>
+            <p class="total-price">总计：&yen;{{totalPrice | calculatePrice}}</p>
             <p>（不含运费）</p>
         </div>
         <div class="to-pay-btn">
@@ -65,6 +65,7 @@
             return {
                 carts:'',
                 selecteAll:true,
+                totalPrice:0,
                 emptyVisible:false
             }
         },

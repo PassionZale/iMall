@@ -82,13 +82,6 @@
         ready(){
             this.fetchCommodity();
         },
-        filters:{
-            rnTransform:function(value){
-                if(value){
-                    return value.replace(/\r\n/g, "<br/>");
-                }
-            }
-        },
         methods:{
             fetchCommodity:function(){
                 Indicator.open();

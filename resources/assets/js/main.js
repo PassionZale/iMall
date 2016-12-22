@@ -8,6 +8,22 @@ import App from './App.vue'
 Vue.use(Mint);
 Vue.use(Router);
 
+/**
+ * 价格转换为0.00的浮点数
+ */
+Vue.filter('calculatePrice',function(value){
+    return parseFloat(value).toFixed(2);
+});
+
+/**
+ * 商品详情换行
+ */
+Vue.filter('rnTransform',function(value){
+    if(value){
+        return value.replace(/\r\n/g, "<br/>");
+    }
+});
+
 Vue.config.devtools = true;
 Vue.prototype.$http = axios;
 
