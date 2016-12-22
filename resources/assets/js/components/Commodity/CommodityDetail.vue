@@ -137,7 +137,9 @@
                     });
             },
             toPay: function(){
-
+                let commodity = this.commodity.id+ '-' + this.commodity_num;
+                let order = {from:'default',commodity:commodity};
+                this.$route.router.go({name:'order-settle',query:order});
             }
         }
     }

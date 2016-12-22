@@ -41,7 +41,7 @@
                 let vm = this;
                 Indicator.open();
                 vm.$http.get('/api/address').then(function(response){
-                    if(response.data.code === -1){
+                    if(response.data.code == -1){
                         Indicator.close();
                         Toast({
                           message: response.data.code
