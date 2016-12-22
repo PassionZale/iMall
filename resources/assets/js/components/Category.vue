@@ -27,7 +27,7 @@
                 activeCategory:''
             }
         },
-        ready(){
+        created(){
             this.fetchCategories();
         },
         methods:{

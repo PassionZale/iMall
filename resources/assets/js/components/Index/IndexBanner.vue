@@ -27,7 +27,7 @@ img{
                 banners:''
             }
         },
-        ready(){
+        created(){
             this.fetchBanner();
         },
         methods:{

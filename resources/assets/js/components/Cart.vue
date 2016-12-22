@@ -12,11 +12,11 @@
             </a>
             <div class="price-wrap">
                 <span class="commodity-result">
-                    <span>&yen;{{cart.commodity.commodity_current_price | calculatePrice}}</span>
+                    <span>&yen;{{cart.commodity.commodity_current_price | transformPrice}}</span>
                     *
                     <span class="num">{{cart.commodity_num}}</span>
                     =
-                    <span class="price">&yen;{{cart.commodity.commodity_current_price * cart.commodity_num | calculatePrice}}</span>
+                    <span class="price">&yen;{{cart.commodity.commodity_current_price * cart.commodity_num | transformPrice}}</span>
                 </span>
                 <div class="commodity-num">
                         <span class="minus-btn"
@@ -30,6 +30,10 @@
                 </div>
             </div>
         </section>
+        <section class="remove-wrap">
+            <a>清空全部商品</a>
+            <a>清空已选商品</a>
+        </section>
     </div>
 
     <div id="pay-container">
@@ -38,14 +42,13 @@
             @click="selectAll(carts)">
         </i>
         <div class="total-result">
-            <p class="total-price">总计：&yen;{{totalPrice | calculatePrice}}</p>
+            <p class="total-price">总计：&yen;{{totalPrice | transformPrice}}</p>
             <p>（不含运费）</p>
         </div>
         <div class="to-pay-btn">
             去结算
         </div>
     </div>
-
 
     <div id="empty-cart-container" v-if="emptyVisible">
         <div class="empty-cart-wrapper">
@@ -65,11 +68,11 @@
             return {
                 carts:'',
                 selecteAll:true,
-                totalPrice:0,
-                emptyVisible:false
+                emptyVisible:false,
+                totalPrice:0
             }
         },
-        ready(){
+        created(){
             this.fetchCart();
         },
         methods:{
@@ -85,6 +88,9 @@
                         }
                         vm.$set('carts',data);
                         vm.$set('emptyVisible',false);
+                        vm.$nextTick(function(){
+                            vm.calculatePrice();
+                        });
                     }else{
                         vm.$set('emptyVisible',true);
                     }
@@ -93,10 +99,12 @@
             minusClick: function(cart){
                 if(cart.commodity_num > 1){
                     cart.commodity_num = (parseInt(cart.commodity_num) - 1);
+                    this.calculatePrice();
                 };
             },
             plusClick: function(cart){
                 cart.commodity_num = (parseInt(cart.commodity_num) + 1);
+                this.calculatePrice();
             },
             toggleSelect: function(cart){
                 cart.selected = !cart.selected;
@@ -114,6 +122,7 @@
                         this.selecteAll = true;
                     }
                 }
+                this.calculatePrice();
             },
             selectAll: function(carts){
                 this.selecteAll = !this.selecteAll;
@@ -126,6 +135,17 @@
                         carts[i].selected=false;
                     }
                 }
+                this.calculatePrice();
+            },
+            calculatePrice: function(){
+                let price = 0;
+                for(var i in this.carts){
+                    let self = this.carts[i];
+                    if(self.selected){
+                        price += self.commodity.commodity_current_price * self.commodity_num;
+                    }
+                }
+                this.$set('totalPrice',price);
             }
         }
     }

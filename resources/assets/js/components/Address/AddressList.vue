@@ -33,7 +33,7 @@
         components:{
             CellSwipe
         },
-        ready(){
+        created(){
             this.fetchAddress();
         },
         methods:{

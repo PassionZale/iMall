@@ -20,7 +20,7 @@
                 plates:''
             }
         },
-        ready(){
+        created(){
             this.fetchPlates();
         },
         methods:{

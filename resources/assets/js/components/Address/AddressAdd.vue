@@ -56,7 +56,7 @@
         components:{
             Field, Cell, Switch
         },
-        ready(){
+        created(){
             // 初始化distpicker
             $('#distpicker-add').distpicker();
         },

@@ -11,7 +11,7 @@ Vue.use(Router);
 /**
  * 价格转换为0.00的浮点数
  */
-Vue.filter('calculatePrice',function(value){
+Vue.filter('transformPrice',function(value){
     return parseFloat(value).toFixed(2);
 });
 

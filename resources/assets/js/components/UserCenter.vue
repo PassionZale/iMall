@@ -42,7 +42,7 @@
         components:{
             Cell
         },
-        ready(){
+        created(){
             this.initHeader();
         },
         methods:{

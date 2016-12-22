@@ -23,7 +23,7 @@
         components:{
             Navbar, TabItem
         },
-        ready(){
+        created(){
             this.fetchTopic();
         },
         methods:{

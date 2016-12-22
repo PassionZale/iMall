@@ -50,7 +50,7 @@
         components:{
             Field, Cell, Switch
         },
-        ready(){
+        created(){
             this.fetchAddress();
         },
         methods:{

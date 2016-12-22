@@ -23,7 +23,7 @@
                 empty:false
             }
         },
-        ready(){
+        created(){
             this.fetchCommodies();
         },
         methods:{
