@@ -54,6 +54,10 @@ export default function (router) {
             name:"edit-address",
             component:require('./components/Address/AddressEdit.vue')
         },
+        '/ordersettle':{
+            'name':'order-settle',
+            component:require('./components/Order/OrderSettle.vue')
+        },
         '/suggestion':{
             name:"suggestion",
             component:require('./components/Suggestion/Suggestion.vue')

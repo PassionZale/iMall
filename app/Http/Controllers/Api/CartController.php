@@ -43,6 +43,14 @@ class CartController extends Controller
         ]);
     }
 
+    public function emptyCart(){
+        WechatCart::where('openid','=',$this->follow->id)->delete();
+        return response()->json([
+            'code' => 0,
+            'message' => '操作成功',
+        ]);
+    }
+
     public function store(Request $request)
     {
         $openid = $this->follow->id;
