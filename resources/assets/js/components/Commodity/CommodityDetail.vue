@@ -3,8 +3,8 @@
     <div id="commodity-container">
         <p class="name">{{commodity.commodity_name}}</p>
         <p class="price">
-            &yen;{{commodity.commodity_current_price}}&emsp;
-            <del>&yen;{{commodity.commodity_original_price}}</del>
+            &yen;{{commodity.commodity_current_price | calculatePrice}}&emsp;
+            <del>&yen;{{commodity.commodity_original_price | calculatePrice}}</del>
             <span>剩余：{{commodity.commodity_stock_number}}件</span>
         </p>
     </div>
