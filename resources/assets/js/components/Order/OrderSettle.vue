@@ -10,6 +10,7 @@
 <script>
     import { Indicator } from 'mint-ui';
     import { Toast } from 'mint-ui';
+    import { MessageBox } from 'mint-ui';
     export default{
         data(){
             return {
@@ -24,21 +25,24 @@
         methods:{
             initOrder: function(){
                 Indicator.open();
-                this.fetchAddress();
-                let query = this.$route.query;
-                this.$set('from',query.from);
-                query.from == 'cart' ? this.fetchGoodsFromCart(query.cartIds,query.commodities)
-                                        : this.fetchGoods(query.commodity);
-                Indicator.close();
+                let vm  = this;
+                vm.fetchAddress();
+                let query = vm.$route.query;
+                vm.$set('from',query.from);
+                query.from == 'cart' ? vm.fetchGoodsFromCart(query.cartIds,query.commodities)
+                                     : vm.fetchGoods(query.commodity);
             },
             fetchAddress: function(){
                 let vm = this;
                 vm.$http.get('/api/address').then(function(response){
                     if(response.data.code == 0){
                         vm.$set('addresses',response.data.message);
-                        vm.$nextTick(function(){
-                            Indicator.close();
-                        });
+                        if(vm.addresses.length == 0){
+                            MessageBox.confirm('还未建立收货地址，马上去新建?').then(action => {
+                                vm.$router.go('/add-address');
+                            });
+                        }
+                        Indicator.close();
                     }
                 });
             },
