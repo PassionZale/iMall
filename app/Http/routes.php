@@ -68,6 +68,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('commodities/category', 'ShopController@getCommodityByCategory');
     // 根据商品ID查询商品详情数据
     Route::get('commodity/{commodity}', 'ShopController@getCommodity');
+    Route::get('commodities/{commodity}','ShopController@getCommodities');
     // 购物车
     Route::resource('cart', 'CartController', ['except' => ['create', 'edit', 'show']]);
     // 获取购物车数据总条数
@@ -80,5 +81,6 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('address', 'UserController@storeAddress');
     Route::get('address/{address}', 'UserController@showAddress');
     Route::put('address/{address}', 'UserController@updateAddress');
+    Route::get('default/address','UserController@defaultAddress');
     Route::delete('address/{address}', 'UserController@deleteAddress');
 });

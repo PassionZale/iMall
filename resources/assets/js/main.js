@@ -24,6 +24,18 @@ Vue.filter('rnTransform',function(value){
     }
 });
 
+/**
+ * 手机号隐私处理
+ */
+Vue.filter('transformPhone',function(value){
+    if(value){
+        let phone = value;
+        let phone_head = phone.substring(0,3);
+        let phone_foot = phone.substr(7,4);
+        return phone_head + '****' + phone_foot;
+    }
+});
+
 Vue.config.devtools = true;
 Vue.prototype.$http = axios;
 

@@ -52,7 +52,6 @@ class UserController extends Controller
         }
     }
 
-
     public function storeAddress(Request $request)
     {
         $rules = [
@@ -219,6 +218,40 @@ class UserController extends Controller
             return response()->json([
                 'code' => -1,
                 'message' => '该地址不存在'
+            ]);
+        }
+    }
+
+    public function defaultAddress(){
+        $follow = session()->get('wechat.oauth_user');
+        $openid = $follow->id;
+        // 查询该粉丝是否建立过收货地址
+        $addresses = WechatAddress::where('openid','=',$openid)->get();
+        if($addresses){
+            $default_address = [];
+            foreach($addresses as $address){
+                if($address['defaulted'] == 1){
+                    $default_address = $address;
+                    break;
+                }
+            }
+            if(count($default_address) > 0){
+                // 存在默认地址，则返回默认地址
+                return response()->json([
+                    'code' => 0,
+                    'message' => $default_address
+                ]);
+            }else{
+                // 不存在默认地址，则返回第一条地址数据
+                return response()->json([
+                    'code' => 0,
+                    'message' => $addresses[0]
+                ]);
+            }
+        }else{
+            return response()->json([
+                'code' => -1,
+                'message' => '没有相关地址'
             ]);
         }
     }

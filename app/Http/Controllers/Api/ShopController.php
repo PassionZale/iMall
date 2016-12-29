@@ -106,4 +106,7 @@ class ShopController extends Controller
         }
     }
 
+    public function getCommodities($ids){
+
+    }
 }

@@ -54,6 +54,10 @@ export default function (router) {
             name:"edit-address",
             component:require('./components/Address/AddressEdit.vue')
         },
+        '/:hashid/choose-address':{
+            name:"choose-address",
+            component:require('./components/Address/AddressList.vue')
+        },
         '/ordersettle':{
             'name':'order-settle',
             component:require('./components/Order/OrderSettle.vue')

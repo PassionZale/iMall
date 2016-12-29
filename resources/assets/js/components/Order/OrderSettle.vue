@@ -1,10 +1,29 @@
 <template>
     <div id="to-pay-container">
         <div class="address-wrap">
-            收货地址
+            <div class="address-default">
+                <span>收货地址</span>
+                <ul v-show="address != ''"
+                    v-link="{name:'choose-address',params:{'hashid':address.id}}">
+                    <li>
+                        {{address.province}}{{address.city}}{{address.district}}{{address.address}}
+                    </li>
+                    <li>
+                        {{address.name}} {{address.phone | transformPhone}}
+                    </li>
+                </ul>
+                <ul v-show="address == ''"
+                    v-link="{name:'add-address'}">
+                    <li>
+                        您还未新建收货地址
+                    </li>
+                    <li>
+                        点我去管理收货地址
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -16,7 +35,7 @@
             return {
                 from: '',
                 goods: '',
-                addresses:'',
+                address:'',
             }
         },
         created(){
@@ -26,24 +45,24 @@
             initOrder: function(){
                 Indicator.open();
                 let vm  = this;
-                vm.fetchAddress();
+                vm.fetchDefaultAddress();
                 let query = vm.$route.query;
                 vm.$set('from',query.from);
                 query.from == 'cart' ? vm.fetchGoodsFromCart(query.cartIds,query.commodities)
                                      : vm.fetchGoods(query.commodity);
             },
-            fetchAddress: function(){
+            fetchDefaultAddress: function(){
                 let vm = this;
-                vm.$http.get('/api/address').then(function(response){
+                vm.$http.get('/api/default/address').then(function(response){
                     if(response.data.code == 0){
-                        vm.$set('addresses',response.data.message);
-                        if(vm.addresses.length == 0){
+                        vm.$set('address',response.data.message);
+                        if(vm.address == ''){
                             MessageBox.confirm('还未建立收货地址，马上去新建?').then(action => {
                                 vm.$router.go('/add-address');
                             });
                         }
-                        Indicator.close();
                     }
+                    Indicator.close();
                 });
             },
             fetchGoods: function(commodity){
@@ -55,4 +74,5 @@
             }
         }
     }
+
 </script>
