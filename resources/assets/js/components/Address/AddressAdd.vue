@@ -56,9 +56,11 @@
         components:{
             Field, Cell, Switch
         },
-        created(){
+        ready(){
             // 初始化distpicker
-            $('#distpicker-add').distpicker();
+            $(function(){
+                $('#distpicker-add').distpicker();
+            });
         },
         methods:{
             addAddress:function(){

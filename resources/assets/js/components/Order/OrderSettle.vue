@@ -15,10 +15,10 @@
                 <ul v-show="address == ''"
                     v-link="{name:'add-address'}">
                     <li>
-                        您还未新建收货地址
+                        送至...
                     </li>
                     <li>
-                        点我去管理收货地址
+                        还未新建地址，点击新建
                     </li>
                 </ul>
             </div>
@@ -45,8 +45,20 @@
             initOrder: function(){
                 Indicator.open();
                 let vm  = this;
-                vm.fetchDefaultAddress();
                 let query = vm.$route.query;
+                if(query.choosed){
+                    vm.$set('address',{
+                        'id': query.id,
+                        'province':query.province,
+                        'city':query.city,
+                        'district':query.district,
+                        'address':query.address,
+                        'phone':query.phone,
+                        'defaulted':query.defaulted
+                    });
+                }else{
+                    vm.fetchDefaultAddress();
+                }
                 vm.$set('from',query.from);
                 query.from == 'cart' ? vm.fetchGoodsFromCart(query.cartIds,query.commodities)
                                      : vm.fetchGoods(query.commodity);

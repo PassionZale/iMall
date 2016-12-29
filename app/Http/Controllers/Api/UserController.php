@@ -227,7 +227,7 @@ class UserController extends Controller
         $openid = $follow->id;
         // 查询该粉丝是否建立过收货地址
         $addresses = WechatAddress::where('openid','=',$openid)->get();
-        if($addresses){
+        if(count($addresses)){
             $default_address = [];
             foreach($addresses as $address){
                 if($address['defaulted'] == 1){
@@ -235,7 +235,7 @@ class UserController extends Controller
                     break;
                 }
             }
-            if(count($default_address) > 0){
+            if($default_address){
                 // 存在默认地址，则返回默认地址
                 return response()->json([
                     'code' => 0,
@@ -245,13 +245,13 @@ class UserController extends Controller
                 // 不存在默认地址，则返回第一条地址数据
                 return response()->json([
                     'code' => 0,
-                    'message' => $addresses[0]
+                    'message' => $addresses->first()
                 ]);
             }
         }else{
             return response()->json([
-                'code' => -1,
-                'message' => '没有相关地址'
+                'code' => 0,
+                'message' => ''
             ]);
         }
     }

@@ -6,18 +6,31 @@
             </mt-cell>
         </div>
         <div class="uc-address-part"
-             v-for="address in addresses"
-             v-link="{name:'edit-address',params:{'hashid':address.id}}"
-             :class="address.defaulted == 1 ? 'defaulted-address' : '' ">
+             v-for="address in addresses">
             <mt-cell
                     :title="address.name"
-                    :label="address.defaulted == 1 ? '默认地址' : '' ">
-                <p style="font-size:14px;">{{address.province}}{{address.city}}{{address.district}}{{address.address}}</p>
+                    :label="address.defaulted == 1 ? '默认地址' : '' "
+                    >
+                <img v-if="address.id == $route.params.hashid" slot="icon" src="/images/icon/cart-selected-icon.png" width="24" height="24">
+                <img v-else slot="icon" src="/images/icon/cart-unselected-icon.png" width="24" height="24">
+                <p style="font-size:14px;" @click="addressChoose(address)">
+                    {{address.province}}{{address.city}}{{address.district}}{{address.address}}
+                    <a class="edit-address-btn" v-link="{name:'edit-address',params:{'hashid':address.id}}"></a>
+                </p>
             </mt-cell>
         </div>
     </div>
 </template>
-
+<style>
+.edit-address-btn{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background-image:url('/images/icon/address-edit-icon.png');
+    background-repeat:no-repeat;
+    background-size:20px 20px;
+}
+</style>
 <script>
     import { Cell } from 'mint-ui';
     import { Indicator } from 'mint-ui';
@@ -51,6 +64,19 @@
                         });
                     }
                 });
+            },
+            addressChoose: function(address){
+                let choosed = {
+                    'id': address.id,
+                    'province':address.province,
+                    'city':address.city,
+                    'district':address.district,
+                    'address':address.address,
+                    'phone':address.phone,
+                    'defaulted':address.defaulted,
+                    'choosed':'choosed'
+                };
+                this.$route.router.go({name:'order-settle',query:choosed});
             }
         }
     }

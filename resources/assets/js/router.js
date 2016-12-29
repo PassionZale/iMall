@@ -56,7 +56,7 @@ export default function (router) {
         },
         '/:hashid/choose-address':{
             name:"choose-address",
-            component:require('./components/Address/AddressList.vue')
+            component:require('./components/Address/AddressChoose.vue')
         },
         '/ordersettle':{
             'name':'order-settle',
