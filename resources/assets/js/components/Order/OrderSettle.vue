@@ -46,7 +46,7 @@
                 Indicator.open();
                 let vm  = this;
                 let query = vm.$route.query;
-                if(query.choosed){
+                if(query.choosed == 'choosed'){
                     vm.$set('address',{
                         'id': query.id,
                         'province':query.province,
