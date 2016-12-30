@@ -55,14 +55,8 @@
 
 <script>
 
-import {
-    Indicator
-}
-from 'mint-ui';
-import {
-    Toast
-}
-from 'mint-ui';
+import { Indicator } from 'mint-ui';
+import { Toast } from 'mint-ui';
 export default {
     data() {
             return {
@@ -175,7 +169,7 @@ export default {
                     }
                 }
                 let order = {from:'cart',commodities:commodites,cartIds:cartIds};
-                this.$route.router.go({name:'order-settle',query:order});
+                vm.$route.router.go({name:'order-settle',query:order});
             }
         }
 }

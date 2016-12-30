@@ -79,8 +79,7 @@
 
             },
             fetchGoodsFromCart: function(cartIds,commodites){
-                console.log(cartIds);
-                console.log(commodites);
+                let vm = this;
             },
             chooseAddress: function(){
                 this.choosing = !this.choosing;
