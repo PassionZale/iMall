@@ -133,12 +133,11 @@ export default {
             },
             calculatePrice: function() {
                 let price = 0;
-                for (var i in this.carts) {
-                    let self = this.carts[i];
-                    if (self.selected) {
-                        price += self.commodity.commodity_current_price * self.commodity_num;
+                this.carts.forEach(function(value){
+                    if (value.selected) {
+                        price += value.commodity.commodity_current_price * value.commodity_num;
                     }
-                }
+                });
                 this.$set('totalPrice', price);
             },
             removeCarts: function(){

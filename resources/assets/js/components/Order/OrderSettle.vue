@@ -76,7 +76,12 @@
                 });
             },
             fetchGoods: function(commodity){
+                let vm = this;
+                let data = commodity.split('-');
+                let itemId = data[0];
+                vm.$http.get('/api/commodity/'+itemId).then(response=>{
 
+                });
             },
             fetchGoodsFromCart: function(cartIds,commodites){
                 let vm = this;
