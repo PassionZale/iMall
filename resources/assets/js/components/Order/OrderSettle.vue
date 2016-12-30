@@ -43,7 +43,8 @@
         <div id="pay-container">
             <div class="total-result">
                 <p class="total-price">总计：&yen;{{totalPrice | transformPrice}}</p>
-                <p>（不含运费）</p>
+                <p v-if="orderTips">{{orderTips}}</p>
+                <p v-else>（不含运费）</p>
             </div>
             <div class="to-pay-btn"
                  @click="payOrder">
@@ -69,7 +70,9 @@
                 goods: [],
                 address:{},
                 choosing: false,
-                totalPrice:0
+                totalPrice:0,
+                checked_shop_config:false,
+                orderTips:false
             }
         },
         components:{
@@ -146,6 +149,14 @@
                     price += value.commodity_current_price * value.cart_num;
                 });
                 this.$set('totalPrice', price);
+                let shopCacheConfig = localStorage.getItem('shopConfig');
+                let shopConfig = JSON.parse(shopCacheConfig);
+                if(price < shopConfig.config_free){
+                    let tips = '（订单未满￥' + shopConfig.config_free + '，需额外支付邮费￥'+shopConfig.config_freight+'）';
+                    this.$set('orderTips',tips);
+                }else{
+                    this.$set('orderTips','（本次订单免邮费）');
+                }
             },
             payOrder: function(){
                 Toast({

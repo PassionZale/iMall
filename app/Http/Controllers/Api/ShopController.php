@@ -11,6 +11,7 @@ use App\ProductTopic;
 use App\ProductPlate;
 use App\ProductCategory;
 use App\ProductCommodity;
+use App\ShopConfig;
 
 class ShopController extends Controller
 {
@@ -131,5 +132,10 @@ class ShopController extends Controller
                 'message'=>$commodities
             ]
         );
+    }
+
+    public function shopconfig(){
+        $config = ShopConfig::first();
+        return response()->json($config);
     }
 }

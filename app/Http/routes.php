@@ -56,6 +56,8 @@ Route::group(['prefix' => 'mall', 'middleware' => ['web', 'wechat.oauth'], 'name
 Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], function () {
     // 获取用户信息
     Route::get('userinfo', 'UserController@userinfo');
+    // 商铺配置
+    Route::get('shopconfig','ShopController@shopconfig');
     // 获取首页轮播图、专题、板块数据
     Route::get('banners', 'ShopController@getBanners');
     Route::get('topics', 'ShopController@getTopics');
