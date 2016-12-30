@@ -160,13 +160,12 @@ export default {
                 let vm = this;
                 let commodites = '';
                 let cartIds = '';
-                for(var i in vm.carts){
-                    let self = vm.carts[i];
-                    if(self.selected){
-                        commodites += self.commodity.id + '-' + self.commodity_num + ',';
-                        cartIds += self.id + ',';
+                vm.carts.forEach(function(value){
+                    if(value.selected){
+                        commodites += value.commodity.id + '-' + value.commodity_num + ',';
+                        cartIds += value.id + ',';
                     }
-                }
+                });
                 let order = {from:'cart',commodities:commodites,cartIds:cartIds};
                 vm.$route.go({name:'order-settle',query:order});
             }
