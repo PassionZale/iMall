@@ -40,7 +40,7 @@
         data(){
             return {
                 from: '',
-                goods: '',
+                goods: [],
                 address:{},
                 choosing: false
             }
@@ -79,17 +79,34 @@
                 let vm = this;
                 let data = commodity.split('-');
                 let itemId = data[0];
+                let cart_num = data[1];
                 vm.$http.get('/api/commodity/'+itemId).then(response=>{
-
+                    if(response.data.code == 0){
+                        let goods = response.data.message;
+                        goods.cart_num = cart_num;
+                        vm.goods.push(goods);
+                    }else{
+                        Toast({
+                              message: response.data.message
+                        });
+                    }
                 });
             },
-            fetchGoodsFromCart: function(cartIds,commodites){
+            fetchGoodsFromCart: function(cartIds,commodities){
                 let vm = this;
+                vm.$http.get('/api/commodities/'+commodities).then(response=>{
+                    if(response.data.code == 0){
+                        vm.$set('goods',response.data.message);
+                    }else{
+                        Toast({
+                              message: response.data.message
+                        });
+                    }
+                });
             },
             chooseAddress: function(){
                 this.choosing = !this.choosing;
             }
         }
     }
-
 </script>

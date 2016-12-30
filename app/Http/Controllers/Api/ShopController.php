@@ -107,6 +107,29 @@ class ShopController extends Controller
     }
 
     public function getCommodities($ids){
-
+        $ids = explode(',',trim($ids,','));
+        if(!is_array($ids)){
+            return response()->json(
+                [
+                    'code'=>-1,
+                    'message'=>'未查询到商品'
+                ]
+            );
+        }
+        $commodities = [];
+        foreach($ids as $item){
+            $item = explode('-',$item);
+            // 查询商品数据
+            $commodity = ProductCommodity::find($item[0]);
+            // 添加购物车所选商品数量
+            $commodity->cart_num = $item[1];
+            $commodities[] = $commodity;
+        }
+        return response()->json(
+            [
+                'code'=>0,
+                'message'=>$commodities
+            ]
+        );
     }
 }
