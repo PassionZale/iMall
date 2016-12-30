@@ -43,7 +43,8 @@ axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('#csrf-to
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const router = new Router({
-    history: true
+    history: true,
+    mode:'abstract'
 });
 
 routerMap(router);
