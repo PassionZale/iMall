@@ -1,5 +1,5 @@
 <template>
-    <div id="uc-address-container">
+    <div id="uc-address-container" v-show="visible">
         <div class="uc-address-part">
             <mt-cell title="新增地址" v-link="{name:'add-address'}" class="add-address-btn">
                 <img src="/images/common/add.png" width="24" height="24">
@@ -11,7 +11,7 @@
                     :title="address.name"
                     :label="address.defaulted == 1 ? '默认地址' : '' "
                     >
-                <img v-if="address.id == $route.params.hashid" slot="icon" src="/images/icon/cart-selected-icon.png" width="24" height="24">
+                <img v-if="address.id == choosed.id" slot="icon" src="/images/icon/cart-selected-icon.png" width="24" height="24">
                 <img v-else slot="icon" src="/images/icon/cart-unselected-icon.png" width="24" height="24">
                 <p style="font-size:14px;" @click="addressChoose(address)">
                     {{address.province}}{{address.city}}{{address.district}}{{address.address}}
@@ -41,6 +41,22 @@
                 addresses:''
             }
         },
+        props:{
+            visible:{
+                type: Boolean,
+                twoWay: true,
+                default: false
+            },
+            choosed:{
+                type: Object,
+                twoWay: true,
+                default:function(){
+                    return {
+                        data:{}
+                    }
+                }
+            }
+        },
         components:{
             Cell
         },
@@ -66,17 +82,8 @@
                 });
             },
             addressChoose: function(address){
-                let choosed = {
-                    'id': address.id,
-                    'province':address.province,
-                    'city':address.city,
-                    'district':address.district,
-                    'address':address.address,
-                    'phone':address.phone,
-                    'defaulted':address.defaulted,
-                    'choosed':'choosed'
-                };
-                this.$route.router.go({name:'order-settle',query:choosed});
+                this.$set('choosed',address);
+                this.visible = !this.visible;
             }
         }
     }

@@ -1,10 +1,10 @@
 <template>
-    <div id="to-pay-container">
+    <div id="to-pay-container" v-show="!choosing">
         <div class="address-wrap">
             <div class="address-default">
                 <span>收货地址</span>
                 <ul v-show="address != ''"
-                    v-link="{name:'choose-address',params:{'hashid':address.id}}">
+                    @click="chooseAddress">
                     <li>
                         {{address.province}}{{address.city}}{{address.district}}{{address.address}}
                     </li>
@@ -24,19 +24,29 @@
             </div>
         </div>
     </div>
+
+    <address-choose
+            :choosed.sync="address"
+            :visible.sync="choosing">
+    </address-choose>
 </template>
 
 <script>
     import { Indicator } from 'mint-ui';
     import { Toast } from 'mint-ui';
     import { MessageBox } from 'mint-ui';
+    import AddressChoose from '../Address/AddressChoose.vue';
     export default{
         data(){
             return {
                 from: '',
                 goods: '',
-                address:'',
+                address:{},
+                choosing: false
             }
+        },
+        components:{
+            AddressChoose
         },
         created(){
             this.initOrder();
@@ -46,19 +56,7 @@
                 Indicator.open();
                 let vm  = this;
                 let query = vm.$route.query;
-                if(query.choosed == 'choosed'){
-                    vm.$set('address',{
-                        'id': query.id,
-                        'province':query.province,
-                        'city':query.city,
-                        'district':query.district,
-                        'address':query.address,
-                        'phone':query.phone,
-                        'defaulted':query.defaulted
-                    });
-                }else{
-                    vm.fetchDefaultAddress();
-                }
+                vm.fetchDefaultAddress();
                 vm.$set('from',query.from);
                 query.from == 'cart' ? vm.fetchGoodsFromCart(query.cartIds,query.commodities)
                                      : vm.fetchGoods(query.commodity);
@@ -83,6 +81,9 @@
             fetchGoodsFromCart: function(cartIds,commodites){
                 console.log(cartIds);
                 console.log(commodites);
+            },
+            chooseAddress: function(){
+                this.choosing = !this.choosing;
             }
         }
     }
