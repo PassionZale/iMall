@@ -72,7 +72,7 @@ export default {
                 totalPrice: 0
             }
         },
-        created() {
+        ready() {
             this.fetchCart();
         },
         methods: {
