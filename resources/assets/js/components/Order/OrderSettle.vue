@@ -23,8 +23,34 @@
                 </ul>
             </div>
         </div>
+        <div id="cart-container">
+            <section class="cart-wrap" v-for="good in goods">
+                <i class="select-one-btn selected">
+                </i>
+                <a class="img-wrap">
+                    <img :src="good.commodity_img"/>
+                    <p class="name">{{good.commodity_name}}</p>
+                </a>
+                <div class="price-wrap">
+                    <span class="commodity-result">
+                            <span>&yen;{{good.commodity_current_price | transformPrice}}</span> *
+                            <span class="num">{{good.cart_num}}</span> =
+                            <span class="price">&yen;{{good.commodity_current_price * good.cart_num | transformPrice}}</span>
+                    </span>
+                </div>
+            </section>
+        </div>
+        <div id="pay-container">
+            <div class="total-result">
+                <p class="total-price">总计：&yen;{{totalPrice | transformPrice}}</p>
+                <p>（不含运费）</p>
+            </div>
+            <div class="to-pay-btn"
+                 @click="payOrder">
+                去结算
+            </div>
+        </div>
     </div>
-
     <address-choose
             :choosed.sync="address"
             :visible.sync="choosing">
@@ -42,7 +68,8 @@
                 from: '',
                 goods: [],
                 address:{},
-                choosing: false
+                choosing: false,
+                totalPrice:0
             }
         },
         components:{
@@ -85,6 +112,9 @@
                         let goods = response.data.message;
                         goods.cart_num = cart_num;
                         vm.goods.push(goods);
+                        vm.$nextTick(function(){
+                            vm.calculatePrice();
+                        });
                     }else{
                         Toast({
                               message: response.data.message
@@ -97,6 +127,9 @@
                 vm.$http.get('/api/commodities/'+commodities).then(response=>{
                     if(response.data.code == 0){
                         vm.$set('goods',response.data.message);
+                        vm.$nextTick(function(){
+                            vm.calculatePrice();
+                        });
                     }else{
                         Toast({
                               message: response.data.message
@@ -106,7 +139,20 @@
             },
             chooseAddress: function(){
                 this.choosing = !this.choosing;
-            }
+            },
+            calculatePrice: function() {
+                let price = 0;
+                this.goods.forEach(function(value){
+                    price += value.commodity_current_price * value.cart_num;
+                });
+                this.$set('totalPrice', price);
+            },
+            payOrder: function(){
+                Toast({
+                    message: '结算功能正在开发中......'
+                });
+            },
+
         }
     }
 </script>
