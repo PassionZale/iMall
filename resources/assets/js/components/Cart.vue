@@ -168,7 +168,7 @@ export default {
                     }
                 }
                 let order = {from:'cart',commodities:commodites,cartIds:cartIds};
-                vm.$route.router.go({name:'order-settle',query:order});
+                vm.$route.go({name:'order-settle',query:order});
             }
         }
 }
