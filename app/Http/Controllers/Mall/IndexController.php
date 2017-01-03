@@ -18,7 +18,7 @@ class IndexController extends Controller
     public function index()
     {
         $wechat = app('wechat');
-        $js = $app->js;
+        $js = $wechat->js;
         return view('mall.index')->with(['js'=>$js]);
     }
 }
