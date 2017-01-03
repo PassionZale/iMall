@@ -16,6 +16,7 @@
 
 <script>
     import { Indicator } from 'mint-ui';
+    import { Toast } from 'mint-ui';
     export default{
         data(){
             return {
@@ -35,6 +36,15 @@
                     Indicator.close();
                     if(response.data.code == 0){
                         vm.$set('order',response.data.message);
+                        Indicator.open('发起支付中...');
+                        setTimeout(function(){
+                            vm.wechatPay();
+                            Indicator.close();
+                            Toast({
+                              message: '支付成功'
+                            });
+                            // TODO 跳转至其他路由...
+                        },3000);
                     }else{
                         Toast({
                             message: response.data.message
@@ -43,7 +53,7 @@
                 });
             },
             wechatPay: function(){
-
+                // TODO 发起支付请求
             }
         }
     }
