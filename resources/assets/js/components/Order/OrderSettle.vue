@@ -159,6 +159,9 @@
                 }
             },
             payOrder: function(){
+                // post 创建订单
+                // 运费+商品价格=订单总价
+                // redirect OrderPay
                 Toast({
                     message: '结算功能正在开发中......'
                 });

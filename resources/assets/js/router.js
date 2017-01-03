@@ -62,6 +62,10 @@ export default function (router) {
             'name':'order-settle',
             component:require('./components/Order/OrderSettle.vue')
         },
+        '/orderpay':{
+          name:'orderpay',
+          component:require('./components/Order/OrderPay.vue')
+        },
         '/suggestion':{
             name:"suggestion",
             component:require('./components/Suggestion/Suggestion.vue')
