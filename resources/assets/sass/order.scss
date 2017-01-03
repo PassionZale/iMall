@@ -36,3 +36,40 @@
     }
   }
 }
+
+#pay-order-container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .order-title {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .order-content {
+    text-align: left;
+    .amount {
+      color: #e4393c;
+    }
+  }
+  .order-pay-btn {
+    text-align: center;
+    border:1px solid #09bb07;
+    border-radius: 5px;
+    color:#fff;
+    padding:10px 16px;
+    background-color: #09bb07;
+    &.disabled{
+      background-color: #5cb85c;
+      border-color: #4cae4c;
+      pointer-events: none;
+      cursor: not-allowed;
+      filter: alpha(opacity=65);
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      opacity: .65;
+    }
+  }
+}
+

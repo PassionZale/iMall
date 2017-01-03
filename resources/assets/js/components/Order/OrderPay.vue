@@ -1,8 +1,17 @@
 <template>
-    <p>所需运费：{{order.freight_amount | transformPrice}}</p>
-    <p>商品总价：{{order.commodity_amount | transformPrice}}</p>
-    <p>订单编号：{{order.order_number}}</p>
-    <p>订单总价：{{order.order_amount | transformPrice}}</p>
+    <div id="pay-order-container">
+        <div class="order-title">
+            <img src="/images/common/wechat_pay.png"/>
+        </div>
+        <div class="order-content">
+            <p>所需运费：<span class="amount">&yen;{{order.freight_amount | transformPrice}}</span></p>
+            <p>商品总价：<span class="amount">&yen;{{order.commodity_amount | transformPrice}}</span></p>
+            <p>订单总价：<span class="amount">&yen;{{order.order_amount | transformPrice}}</span></p>
+        </div>
+        <div class="order-pay-btn" :class="{'disabled' : !visible}">
+            微信支付
+        </div>
+    </div>
 </template>
 
 <script>
@@ -10,7 +19,8 @@
     export default{
         data(){
             return {
-                order:{}
+                order:{},
+                visible:false
             }
         },
         created(){
@@ -31,6 +41,9 @@
                         });
                     }
                 });
+            },
+            wechatPay: function(){
+
             }
         }
     }
