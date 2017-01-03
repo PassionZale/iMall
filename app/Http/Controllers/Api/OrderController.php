@@ -34,6 +34,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // TODO validator
+        // TODO 弱来源为购物车，需删除购物车
         $order = new WechatOrder;
         $order->openid = $this->follow->id;
         $order->name = $request->name;
@@ -61,12 +62,13 @@ class OrderController extends Controller
         $order->freight_amount = $freight_amount;
         $order->order_amount = $order_amount;
         $order->order_number = $this->build_order_no();
+
         // 记录订单表，并插入订单明细表
         if ($order->save()) {
-            $detail = new WechatOrderDetail;
-            $detail->order_id = $order->id;
-            $detail->openid = $this->follow->id;
             foreach ($goods as $item) {
+                $detail = new WechatOrderDetail;
+                $detail->order_id = $order->id;
+                $detail->openid = $this->follow->id;
                 $detail->commodity_id = $item['id'];
                 $detail->commodity_name = $item['commodity_name'];
                 $detail->commodity_img = $item['commodity_img'];
