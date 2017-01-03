@@ -78,6 +78,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('cart/empty','CartController@emptyCart');
     // 确认订单
     Route::post('order','OrderController@store');
+    Route::get('order/{order}','OrderController@show');
     // 意见建议
     Route::post('suggestion', 'UserController@suggestion');
     // 地址管理

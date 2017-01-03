@@ -28,7 +28,7 @@ class OrderController extends Controller
      */
     private function build_order_no()
     {
-        return date('Ymd').substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
+        return date('Ymd') . substr(implode(NULL, array_map('ord', str_split(substr(uniqid(), 7, 13), 1))), 0, 8);
     }
 
     public function store(Request $request)
@@ -47,12 +47,12 @@ class OrderController extends Controller
         $shop_config = ShopConfig::first();
         // 计算商品总价
         $commodity_amount = 0.00;
-        foreach($goods as $item){
+        foreach ($goods as $item) {
             $commodity_amount += $item['commodity_current_price'] * $item['cart_num'];
         }
         // 若不满足包邮价格，计算所需邮费
         $freight_amount = 0.00;
-        if($shop_config && $commodity_amount < $shop_config->config_free){
+        if ($shop_config && $commodity_amount < $shop_config->config_free) {
             $freight_amount = $shop_config->config_freight;
         }
         // 计算订单总价
@@ -62,11 +62,11 @@ class OrderController extends Controller
         $order->order_amount = $order_amount;
         $order->order_number = $this->build_order_no();
         // 记录订单表，并插入订单明细表
-        if($order->save()){
+        if ($order->save()) {
             $detail = new WechatOrderDetail;
             $detail->order_id = $order->id;
             $detail->openid = $this->follow->id;
-            foreach($goods as $item){
+            foreach ($goods as $item) {
                 $detail->commodity_id = $item['id'];
                 $detail->commodity_name = $item['commodity_name'];
                 $detail->commodity_img = $item['commodity_img'];
@@ -77,13 +77,29 @@ class OrderController extends Controller
                 $detail->save();
             }
             return response()->json([
-                'code'=>0,
-                'message'=>$order->id
+                'code' => 0,
+                'message' => $order->id
+            ]);
+        } else {
+            return response()->json([
+                'code' => -1,
+                'message' => '订单创建失败！'
+            ]);
+        }
+    }
+
+    public function show($id)
+    {
+        $order = WechatOrder::find($id);
+        if ($order) {
+            return response()->json([
+                'code' => 0,
+                'message' => $order
             ]);
         }else{
             return response()->json([
-                'code'=>-1,
-                'message'=>'订单创建失败！'
+                'code' => -1,
+                'message' => '该订单不存在！'
             ]);
         }
     }

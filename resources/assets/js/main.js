@@ -12,7 +12,9 @@ Vue.use(Router);
  * 价格转换为0.00的浮点数
  */
 Vue.filter('transformPrice',function(value){
-    return parseFloat(value).toFixed(2);
+    if(value >= 0){
+        return parseFloat(value).toFixed(2);
+    }
 });
 
 /**
