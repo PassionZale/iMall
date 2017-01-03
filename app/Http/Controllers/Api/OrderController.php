@@ -11,6 +11,7 @@ use App\ProductCommodity;
 use App\WechatOrder;
 use App\WechatOrderDetail;
 use App\ShopConfig;
+use App\WechatCart;
 use Validator;
 
 class OrderController extends Controller
@@ -34,9 +35,10 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // TODO validator
-        // TODO 弱来源为购物车，需删除购物车
+        $openid = $this->follow->id;
+        $from = $request->from;
         $order = new WechatOrder;
-        $order->openid = $this->follow->id;
+        $order->openid = $openid;
         $order->name = $request->name;
         $order->phone = $request->phone;
         $order->province = $request->province;
@@ -68,7 +70,7 @@ class OrderController extends Controller
             foreach ($goods as $item) {
                 $detail = new WechatOrderDetail;
                 $detail->order_id = $order->id;
-                $detail->openid = $this->follow->id;
+                $detail->openid = $openid;
                 $detail->commodity_id = $item['id'];
                 $detail->commodity_name = $item['commodity_name'];
                 $detail->commodity_img = $item['commodity_img'];
@@ -77,6 +79,12 @@ class OrderController extends Controller
                 $detail->commodity_current_price = $item['commodity_current_price'];
                 $detail->buy_number = $item['cart_num'];
                 $detail->save();
+                // 若为购物车订单来源，则删除对应购物车记录
+                if ($from == 'cart') {
+                    WechatCart::where('openid', '=', $openid)
+                        ->where('commodity_id', '=', $item['id'])
+                        ->delete();
+                }
             }
             return response()->json([
                 'code' => 0,
@@ -92,13 +100,15 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        $order = WechatOrder::find($id);
+        $openid = $this->follow->id;
+        $order = WechatOrder::where('id','=',$id)
+                ->where('openid','=',$openid)->first();
         if ($order) {
             return response()->json([
                 'code' => 0,
                 'message' => $order
             ]);
-        }else{
+        } else {
             return response()->json([
                 'code' => -1,
                 'message' => '该订单不存在！'

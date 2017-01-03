@@ -164,13 +164,15 @@
                 });
                 let vm = this;
                 let data = {};
+                // 订单来源
+                data.from = vm.from;
                 // 地址数据
-                data.name = this.address.name;
-                data.phone = this.address.phone;
-                data.province = this.address.province;
-                data.city = this.address.city;
-                data.district = this.address.district;
-                data.address = this.address.address;
+                data.name = vm.address.name;
+                data.phone = vm.address.phone;
+                data.province = vm.address.province;
+                data.city = vm.address.city;
+                data.district = vm.address.district;
+                data.address = vm.address.address;
                 // 商品数据
                 data.commodity = this.goods;
                 // 创建订单
