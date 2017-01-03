@@ -19,6 +19,8 @@ class CreateWechatOrderDetailsTable extends Migration
             $table->integer('order_id');
             // 商品ID
             $table->integer('commodity_id');
+            // 购买数量
+            $table->integer('buy_number');
             // 商品名称
             $table->string('commodity_name');
             // 商品图片

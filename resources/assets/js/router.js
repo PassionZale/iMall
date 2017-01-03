@@ -43,26 +43,26 @@ export default function (router) {
             }
         },
         '/address':{
-            name:"address",
+            name:'address',
             component:require('./components/Address/AddressList.vue')
         },
         '/add-address':{
-            name:"add-address",
+            name:'add-address',
             component:require('./components/Address/AddressAdd.vue')
         },
         '/:hashid/edit-address':{
-            name:"edit-address",
+            name:'edit-address',
             component:require('./components/Address/AddressEdit.vue')
         },
         '/:hashid/choose-address':{
-            name:"choose-address",
+            name:'choose-address',
             component:require('./components/Address/AddressChoose.vue')
         },
         '/ordersettle':{
-            'name':'order-settle',
+            name:'order-settle',
             component:require('./components/Order/OrderSettle.vue')
         },
-        '/orderpay':{
+        '/:hashid/orderpay':{
           name:'orderpay',
           component:require('./components/Order/OrderPay.vue')
         },

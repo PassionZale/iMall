@@ -14,7 +14,7 @@ class CreateWechatOrdersTable extends Migration
     {
         Schema::create('wechat_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->openid('openid');
+            $table->string('openid');
             // 订单编号
             $table->string('order_number');
             // 支付状态
@@ -28,9 +28,9 @@ class CreateWechatOrdersTable extends Migration
             // 配送状态
             $table->enum('ship_status', ['未发货', '已发货', '已收货']);
             // 物流公司
-            $table->string('ship_name');
+            $table->string('ship_name')->nullable();
             // 物流单号
-            $table->string('ship_number');
+            $table->string('ship_number')->nullable();
             // 收货人姓名
             $table->string('name');
             // 收货人联系电话

@@ -43,8 +43,11 @@
         <div id="pay-container">
             <div class="total-result">
                 <p class="total-price">总计：&yen;{{totalPrice | transformPrice}}</p>
-                <p v-if="orderTips">{{orderTips}}</p>
-                <p v-else>（不含运费）</p>
+                <p v-if="freight_amount">
+                    （订单未满￥{{shopConfig.config_free | transformPrice}}，
+                     需额外支付邮费￥{{shopConfig.config_freight | transformPrice}}）
+                </p>
+                <p v-else>（订单已满￥{{shopConfig.config_free | transformPrice}}，无需邮费）</p>
             </div>
             <div class="to-pay-btn"
                  @click="payOrder">
@@ -71,8 +74,8 @@
                 address:{},
                 choosing: false,
                 totalPrice:0,
-                checked_shop_config:false,
-                orderTips:false
+                freight_amount:false,
+                shopConfig:{}
             }
         },
         components:{
@@ -151,20 +154,38 @@
                 this.$set('totalPrice', price);
                 let shopCacheConfig = localStorage.getItem('shopConfig');
                 let shopConfig = JSON.parse(shopCacheConfig);
-                if(price < shopConfig.config_free){
-                    let tips = '（订单未满￥' + shopConfig.config_free + '，需额外支付邮费￥'+shopConfig.config_freight+'）';
-                    this.$set('orderTips',tips);
-                }else{
-                    this.$set('orderTips','（本次订单免邮费）');
-                }
+                this.$set('shopConfig',shopConfig);
+                price < shopConfig.config_free ? this.$set('freight_amount',shopConfig.config_freight)
+                                                : this.$set('freight_amount',false);
             },
             payOrder: function(){
-                // post 创建订单
+                Indicator.open({
+                  text: '订单创建中...'
+                });
+                let vm = this;
+                let data = {};
+                // 地址数据
+                data.name = this.address.name;
+                data.phone = this.address.phone;
+                data.province = this.address.province;
+                data.city = this.address.city;
+                data.district = this.address.district;
+                data.address = this.address.address;
+                // 商品数据
+                data.commodity = this.goods;
+                // 创建订单
+                vm.$http.post('/api/order',data).then(response=>{
+                    Indicator.close();
+                    if(response.data.code == 0){
+                        vm.$route.router.go({name:'orderpay',params:{'hashid':response.data.message}});
+                    }else{
+                        Toast({
+                          message: response.data.message
+                        });
+                    }
+                });
                 // 运费+商品价格=订单总价
                 // redirect OrderPay
-                Toast({
-                    message: '结算功能正在开发中......'
-                });
             },
 
         }

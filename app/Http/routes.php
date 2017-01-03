@@ -76,6 +76,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     // 获取购物车数据总条数
     Route::get('cart/count','CartController@calculateTotal');
     Route::post('cart/empty','CartController@emptyCart');
+    // 确认订单
+    Route::post('order','OrderController@store');
     // 意见建议
     Route::post('suggestion', 'UserController@suggestion');
     // 地址管理
