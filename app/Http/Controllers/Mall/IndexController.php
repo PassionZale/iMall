@@ -22,7 +22,7 @@ class IndexController extends Controller
             $wechat = app('wechat');
             $js = $wechat->js;
         }else{
-            $js = [];
+            $js = FALSE;
         }
         return view('mall.index')->with(['js'=>$js]);
     }

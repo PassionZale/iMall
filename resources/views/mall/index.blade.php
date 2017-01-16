@@ -38,7 +38,9 @@
 <script src="{{ asset('js/mall/app.js') }}"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
-    wx.config(<?php echo $js->config([], FALSE) ?>);
+    <?php if($js){ ?>
+        wx.config(<?php echo $js->config([], FALSE) ?>);
+    <?php }?>
 </script>
 </body>
 </html>
