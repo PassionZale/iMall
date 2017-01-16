@@ -62,6 +62,10 @@ export default function (router) {
             name:'order-settle',
             component:require('./components/Order/OrderSettle.vue')
         },
+        '/:type/orderlist':{
+           name:'order-list',
+            component:require('./components/Order/OrderList.vue')
+        },
         '/:hashid/orderpay':{
           name:'orderpay',
           component:require('./components/Order/OrderPay.vue')
