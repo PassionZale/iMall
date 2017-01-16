@@ -44,17 +44,20 @@
         watch:{
             'order_type':{
                 handler:function(type,old_type){
-                    if(type !== old_type){
-                        this.fetchOrders();
-                    }
+                    this.fetchOrders(type);
                 }
             }
         },
         methods:{
-            fetchOrders:function(){
+            fetchOrders:function(order_type = false){
                 let vm = this;
-                let order_type = vm.$route.params.type;
-                vm.$http.get('/api/orderlist/'+order_type).then(response=>{
+                let type = '';
+                if(!order_type){
+                    type = vm.$route.params.type;
+                }else{
+                    type = order_type;
+                }
+                vm.$http.get('/api/orderlist/'+type).then(response=>{
                     vm.$set('order_data',response.data.message.data);
                     vm.$set('page',response.data.message.last_page);
                 });
