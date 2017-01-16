@@ -51,13 +51,10 @@
         methods:{
             fetchOrders:function(order_type = false){
                 let vm = this;
-                let type = '';
                 if(!order_type){
-                    type = vm.$route.params.type;
-                }else{
-                    type = order_type;
+                    order_type = vm.$route.params.type;
                 }
-                vm.$http.get('/api/orderlist/'+type).then(response=>{
+                vm.$http.get('/api/orderlist/'+order_type).then(response=>{
                     vm.$set('order_data',response.data.message.data);
                     vm.$set('page',response.data.message.last_page);
                 });
