@@ -118,7 +118,7 @@ class OrderController extends Controller
 
     public function index($type){
         $openid = $this->follow->id;
-        $page_size = 5;
+        $page_size = 2;
         switch ($type){
             case 'all':
                 $orders = WechatOrder::where('openid','=',$openid)

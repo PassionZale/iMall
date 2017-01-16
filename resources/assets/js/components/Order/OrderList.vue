@@ -1,42 +1,56 @@
 <template>
-    <mt-navbar class="order-list-part" :selected.sync="order_type">
+    <mt-navbar class="order-list-nav" :selected.sync="order_type" :fixed="true">
         <mt-tab-item id="all" v-link="{name:'order-list',params:{'type':'all'}}">全部订单</mt-tab-item>
         <mt-tab-item id="unpay" v-link="{name:'order-list',params:{'type':'unpay'}}">待付款</mt-tab-item>
         <mt-tab-item id="unreceived" v-link="{name:'order-list',params:{'type':'unreceived'}}">待收货</mt-tab-item>
     </mt-navbar>
-    <ul
-        v-infinite-scroll="loadPageData"
-        infinite-scroll-disabled="loading"
-        infinite-scroll-distance="5">
-        <li v-for="order in order_data" style="height:200px;">
-            {{ order.order_number }}
-        </li>
-    </ul>
+    <div id="order-list-part">
+        <ul
+            v-infinite-scroll="loadMore"
+            infinite-scroll-disabled="loading"
+            infinite-scroll-distance="5">
+            <li v-for="item in list">{{ item }}</li>
+        </ul>
+    </div>
+    <!--<div style="width:100%;text-align:center;color:red;" v-show="loading">加载中...</div>-->
 </template>
 <style scoped>
-.order-list-part > .mint-tab-item.is-selected{
-    color: #09bb07;
-    border-bottom: 3px solid #09bb07;
+.order-list-nav > .mint-tab-item.is-selected{
+  color: #09bb07;
+  border-bottom: 3px solid #09bb07;
 }
 .mint-tab-item {
   color: #333;
   text-decoration: none;
 }
-
+#order-list-part{
+    margin-top:60px;
+}
+li, ul {
+  list-style: none;
+  margin:0;
+}
+li {
+    background:#fff;
+    height: 200px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
 </style>
 <script>
-    import { Navbar, TabItem, InfiniteScroll } from 'mint-ui';
+    import { Navbar, TabItem } from 'mint-ui';
     export default{
         data(){
             return {
                 order_type:this.$route.params.type,
-                order_data:[],
-                page:1,
-                loading:false
+                paginate:{},
+                orders:[],
+                loading:false,
+                list:[1,2,3,4,5]
             }
         },
         components:{
-            Navbar,TabItem,InfiniteScroll
+            Navbar,TabItem
         },
         created(){
             this.fetchOrders();
@@ -55,19 +69,34 @@
                     order_type = vm.$route.params.type;
                 }
                 vm.$http.get('/api/orderlist/'+order_type).then(response=>{
-                    vm.$set('order_data',response.data.message.data);
-                    vm.$set('page',response.data.message.last_page);
+                    vm.$set('paginate',response.data.message);
+                    vm.$set('orders',response.data.message.data);
                 });
             },
             loadPageData:function(){
                 let vm = this;
-                vm.$set('loading',true);
-                let next_page = vm.page;
-                vm.$http.get('/api/orderlist/'+order_type+'?page='+next_page).then(response=>{
-                    vm.order_data = vm.order_data.concat(response.data.message.data);
-                     vm.$set('loading',false);
-                });
-            }
+                let page = vm.paginate.current_page + 1;
+                if(vm.paginate.current_page <= vm.paginate.last_page){
+                    vm.$set('loading',true);
+                    vm.$http.get('/api/orderlist/'+vm.order_type+'?page='+page).then(response=>{
+                        vm.$set('paginate',response.data.message);
+                        vm.orders = vm.orders.concat(response.data.message.data);
+                        vm.$set('loading',false);
+                    });
+                }else{
+                    console.log('已经到底了！');
+                }
+            },
+            loadMore() {
+                  this.loading = true;
+                  setTimeout(() => {
+                    let last = this.list[this.list.length - 1];
+                    for (let i = 1; i <= 10; i++) {
+                      this.list.push(last + i);
+                    }
+                    this.loading = false;
+                  }, 2500);
+                }
         }
     }
 </script>

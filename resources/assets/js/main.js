@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Mint from 'mint-ui'
+import { InfiniteScroll } from 'mint-ui';
 import axios from 'axios'
 import Router from 'vue-router'
 import routerMap from './router'
 import App from './App.vue'
 
 Vue.use(Mint);
+Vue.use(InfiniteScroll);
 Vue.use(Router);
 
 /**
@@ -25,6 +27,27 @@ Vue.filter('rnTransform',function(value){
         return value.replace(/\r\n/g, "<br/>");
     }
 });
+// Vue.directive('data-scroll',function(value){
+//     window.addEventListener('scroll', ()=> {
+//         let scrollTop = document.body.scrollTop;
+//         if(scrollTop + window.innerHeight >= document.body.clientHeight) {
+//             let fnc = value;
+//             fnc();
+//         }
+//     });
+// });
+// Vue.directive('data-scroll',{
+//     params: ['method'],
+//     bind:function(){
+//         let vm = this;
+//         window.addEventListener('scroll', ()=> {
+//             if(document.body.scrollTop + window.innerHeight >= vm.el.clientHeight){
+//                 let func = vm.params.method;
+//                 func();
+//             }
+//         });
+//     }
+// });
 
 /**
  * 手机号隐私处理
