@@ -11,6 +11,6 @@ class WechatAddress extends Model
     protected $guarded = [];
 
     public function follow(){
-        return $this->belongsTo('App\WechatFollow','openid');
+        return $this->belongsTo('App\WechatFollow','openid','openid');
     }
 }

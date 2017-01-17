@@ -22,7 +22,7 @@
         <mt-spinner type="snake" color="#09bb07" :size="15"></mt-spinner>
     </div>
     <div id="data-scroll-end" v-show="isEnd">
-        数据已全部加载完毕&emsp;:)
+        没有更多订单了:)
     </div>
 </template>
 <style scoped>
