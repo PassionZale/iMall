@@ -118,21 +118,24 @@ class OrderController extends Controller
 
     public function index($type){
         $openid = $this->follow->id;
-        $page_size = 2;
+        $page_size = 5;
         switch ($type){
             case 'all':
-                $orders = WechatOrder::where('openid','=',$openid)
+                $orders = WechatOrder::with('details')
+                    ->where('openid','=',$openid)
                     ->orderBy('id','desc')
                     ->paginate($page_size);
                 break;
             case 'unpay':
-                $orders = WechatOrder::where('openid','=',$openid)
+                $orders = WechatOrder::with('details')
+                    ->where('openid','=',$openid)
                     ->where('pay_status','=','未支付')
                     ->orderBy('id','desc')
                     ->paginate($page_size);
                 break;
             case 'unreceived':
-                $orders = WechatOrder::where('openid','=',$openid)
+                $orders = WechatOrder::with('details')
+                    ->where('openid','=',$openid)
                     ->where('pay_status','=','已支付')
                     ->whereIn('ship_status',['未发货','已发货'])
                     ->orderBy('id','desc')

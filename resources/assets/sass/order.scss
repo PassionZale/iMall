@@ -55,12 +55,12 @@
   }
   .order-pay-btn {
     text-align: center;
-    border:1px solid #09bb07;
+    border: 1px solid #09bb07;
     border-radius: 5px;
-    color:#fff;
-    padding:10px 16px;
+    color: #fff;
+    padding: 10px 16px;
     background-color: #09bb07;
-    &.disabled{
+    &.disabled {
       background-color: #5cb85c;
       border-color: #4cae4c;
       pointer-events: none;
@@ -71,5 +71,44 @@
       opacity: .65;
     }
   }
+}
+
+#order-list-part {
+  margin-top: 46px;
+  .order-list-container {
+    margin-top: 15px;
+    background-color: #fff;
+    .title {
+      color: #999;
+    }
+    .order-info {
+      padding: 10px;
+      border-top: 1px solid #d7d7d7;
+    }
+    .order-detail {
+      padding: 10px;
+      overflow: auto;
+      zoom: 1;
+      border-top: 1px solid #d7d7d7;
+      img {
+        width: 75px;
+        height: 75px;
+        float: left;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+#data-scroll-loading {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+#data-scroll-end {
+  width: 100%;
+  text-align: center;
+  color: red;
 }
 

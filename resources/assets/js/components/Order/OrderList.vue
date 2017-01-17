@@ -5,14 +5,23 @@
         <mt-tab-item id="unreceived" v-link="{name:'order-list',params:{'type':'unreceived'}}">待收货</mt-tab-item>
     </mt-navbar>
     <div id="order-list-part" v-data-scroll="loadPageData">
-        <ul>
-            <li v-for="order in orders">{{order.id}} - {{ order.order_number }}</li>
-        </ul>
+        <div class="order-list-container" v-for="order in orders">
+            <div class="order-info">
+                <p v-show="order.pay_status === '未支付'"><span class="title">状态：</span>{{order.pay_status}}</p>
+                <p v-show="order.pay_status === '已支付'"><span class="title">状态：</span>{{order.ship_status}}</p>
+                <p><span class="title">总价：</span>&yen;{{order.order_amount | transformPrice}}</p>
+            </div>
+            <div class="order-detail" v-for="detail in order.details">
+                <img :src="detail.commodity_img" alt="{{detail.commodity_name}}"/>
+                <p>{{detail.commodity_name}}</p>
+                <p class="title">{{detail.buy_number}}件</p>
+            </div>
+        </div>
     </div>
-    <div style="width:15px;height:15px;margin:0 auto;" v-show="isLoading">
+    <div id="data-scroll-loading" v-show="isLoading">
         <mt-spinner type="snake" color="#09bb07" :size="15"></mt-spinner>
     </div>
-    <div style="width:100%;text-align:center;color:red;" v-show="isEnd">
+    <div id="data-scroll-end" v-show="isEnd">
         数据已全部加载完毕&emsp;:)
     </div>
 </template>
@@ -24,19 +33,6 @@
 .mint-tab-item {
   color: #333;
   text-decoration: none;
-}
-#order-list-part{
-    margin-top:60px;
-}
-li, ul {
-  list-style: none;
-  margin:0;
-}
-li {
-    background:#fff;
-    height: 350px;
-    margin-bottom: 20px;
-    border: 1px solid #eee;
 }
 </style>
 <script>
