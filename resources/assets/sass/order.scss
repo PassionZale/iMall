@@ -100,15 +100,84 @@
   }
 }
 
+#order-detail-part {
+  .title {
+    color: #999;
+    width: 80px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .info{
+    color:#09bb07;
+  }
+  .price{
+    color:#ff2a74;
+  }
+  .address {
+    color: #2d78f4;
+    text-decoration: underline;
+  }
+  .order-detail-wrapper {
+    background-color: #fff;
+    margin-bottom: 15px;
+    padding: 0 20px;
+    .detail-container {
+      padding: 15px 0;
+      p{
+        padding:5px 0;
+      }
+      &.underline {
+        border-bottom: 1px solid #d7d7d7;
+      }
+      .commodity-list{
+        padding:5px 0;
+        overflow: auto;
+        zoom: 1;
+        img{
+          width:75px;
+          height:75px;
+          float:left;
+          margin-right:10px;
+        }
+      ul{
+        li{
+          display: inline-block;
+          text-align: left;
+        }
+        li.number{
+          color:#999;
+          float: right;
+        }
+      }
+      }
+      .order-result{
+        zoom:1;
+        overflow: auto;
+        .result-name{
+          float:left;
+          text-align: left;
+        }
+        .result-value{
+          float:right;
+          text-align: right;
+        }
+      }
+      .result-amount{
+        text-align: right;
+      }
+    }
+  }
+}
+
 #data-scroll-loading {
   width: 15px;
   height: 15px;
-  padding:10px;
+  padding: 10px;
   margin: 0 auto;
 }
 
 #data-scroll-end {
-  padding:10px;
+  padding: 10px;
   text-align: center;
   color: #09bb07;
 }

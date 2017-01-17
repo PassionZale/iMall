@@ -5,7 +5,9 @@
         <mt-tab-item id="unreceived" v-link="{name:'order-list',params:{'type':'unreceived'}}">待收货</mt-tab-item>
     </mt-navbar>
     <div id="order-list-part" v-data-scroll="loadPageData">
-        <div class="order-list-container" v-for="order in orders">
+        <div class="order-list-container"
+             v-for="order in orders"
+             v-link="{name:'order-detail',params:{'hashid':order.id}}">
             <div class="order-info">
                 <p v-show="order.pay_status === '未支付'"><span class="title">状态：</span>{{order.pay_status}}</p>
                 <p v-show="order.pay_status === '已支付'"><span class="title">状态：</span>{{order.ship_status}}</p>

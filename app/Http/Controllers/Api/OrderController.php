@@ -101,8 +101,8 @@ class OrderController extends Controller
     public function show($id)
     {
         $openid = $this->follow->id;
-        $order = WechatOrder::where('id','=',$id)
-                ->where('openid','=',$openid)->first();
+        $order = WechatOrder::where('id', '=', $id)
+            ->where('openid', '=', $openid)->first();
         if ($order) {
             return response()->json([
                 'code' => 0,
@@ -116,29 +116,30 @@ class OrderController extends Controller
         }
     }
 
-    public function index($type){
+    public function index($type)
+    {
         $openid = $this->follow->id;
         $page_size = 5;
-        switch ($type){
+        switch ($type) {
             case 'all':
                 $orders = WechatOrder::with('details')
-                    ->where('openid','=',$openid)
-                    ->orderBy('id','desc')
+                    ->where('openid', '=', $openid)
+                    ->orderBy('id', 'desc')
                     ->paginate($page_size);
                 break;
             case 'unpay':
                 $orders = WechatOrder::with('details')
-                    ->where('openid','=',$openid)
-                    ->where('pay_status','=','未支付')
-                    ->orderBy('id','desc')
+                    ->where('openid', '=', $openid)
+                    ->where('pay_status', '=', '未支付')
+                    ->orderBy('id', 'desc')
                     ->paginate($page_size);
                 break;
             case 'unreceived':
                 $orders = WechatOrder::with('details')
-                    ->where('openid','=',$openid)
-                    ->where('pay_status','=','已支付')
-                    ->whereIn('ship_status',['未发货','已发货'])
-                    ->orderBy('id','desc')
+                    ->where('openid', '=', $openid)
+                    ->where('pay_status', '=', '已支付')
+                    ->whereIn('ship_status', ['未发货', '已发货'])
+                    ->orderBy('id', 'desc')
                     ->paginate($page_size);
                 break;
             default:
@@ -148,6 +149,23 @@ class OrderController extends Controller
             'code' => 0,
             'message' => $orders
         ]);
+    }
+
+    public function detail($id)
+    {
+        $order = WechatOrder::find($id);
+        if ($order) {
+            $order = WechatOrder::with('details')->find($id);
+            return response()->json([
+                'code' => 0,
+                'message' => $order
+            ]);
+        } else {
+            return response()->json([
+                'code' => -1,
+                'message' => '订单不存在'
+            ]);
+        }
     }
 
 }

@@ -82,6 +82,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::get('order/{order}','OrderController@show');
     // 获取订单列表（all,unpay,unreceived）
     Route::get('orderlist/{type}','OrderController@index');
+    // 获取订单详情
+    Route::get('orderdetail/{order}','OrderController@detail');
     // 意见建议
     Route::post('suggestion', 'UserController@suggestion');
     // 地址管理
