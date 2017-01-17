@@ -27,6 +27,10 @@ Vue.filter('rnTransform', function (value) {
         return value.replace(/\r\n/g, "<br/>");
     }
 });
+
+/**
+ * 数据列表无限滚动监听
+ */
 Vue.directive('data-scroll', function (value) {
     window.addEventListener('scroll', ()=> {
         let fnc = value;
@@ -58,5 +62,10 @@ const router = new Router({
 });
 
 routerMap(router);
+
+router.beforeEach((transition) => {
+    document.body.scrollTop = 0;
+    transition.next();
+});
 
 router.start(App, 'body');

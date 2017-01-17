@@ -9,11 +9,11 @@
             <li v-for="order in orders">{{order.id}} - {{ order.order_number }}</li>
         </ul>
     </div>
-    <div style="width:100%;text-align:center;color:red;" v-show="isLoading">
-        加载中...
+    <div style="width:15px;height:15px;margin:0 auto;" v-show="isLoading">
+        <mt-spinner type="snake" color="#09bb07" :size="15"></mt-spinner>
     </div>
     <div style="width:100%;text-align:center;color:red;" v-show="isEnd">
-        别拉了，已经到底了！
+        数据已全部加载完毕&emsp;:)
     </div>
 </template>
 <style scoped>
@@ -40,7 +40,7 @@ li {
 }
 </style>
 <script>
-    import { Navbar, TabItem } from 'mint-ui';
+    import { Navbar, TabItem, Spinner, Indicator, Toast } from 'mint-ui';
     export default{
         data(){
             return {
@@ -52,7 +52,7 @@ li {
             }
         },
         components:{
-            Navbar,TabItem
+            Navbar,TabItem,Spinner,Indicator,Toast
         },
         created(){
             this.fetchOrders();
@@ -64,19 +64,26 @@ li {
             fetchOrders:function(){
                 let vm = this;
                 let order_type = vm.$route.params.type;
+                Indicator.open();
                 vm.$http.get('/api/orderlist/'+order_type).then(response=>{
-                    vm.$set('paginate',response.data.message);
-                    vm.$set('orders',response.data.message.data);
+                    Indicator.close();
+                    if(response.data.message.data.length === 0){
+                        Toast({
+                              message: '没有符合的订单数据'
+                        });
+                    }else{
+                        vm.$set('paginate',response.data.message);
+                        vm.$set('orders',response.data.message.data);
+                    }
                 });
             },
             loadPageData:function(){
                 let vm = this;
                 let page = vm.paginate.current_page + 1;
                 let triggerDistance = 100;
-                let distance = document.getElementById('order-list-part').getBoundingClientRect().bottom - window.innerHeight;
-                if(!vm.isLoading && !vm.isEnd && distance < triggerDistance){
+                let distance = document.querySelector("#order-list-part").getBoundingClientRect().bottom - window.innerHeight;
+                if(!vm.isLoading && !vm.isEnd && vm.paginate.data.length && distance < triggerDistance){
                     vm.$set('isLoading',true);
-                    console.log(vm.isLoading);
                     vm.$http.get('/api/orderlist/'+vm.order_type+'?page='+page).then(response=>{
                         if(response.data.message.data.length === 0){
                             vm.$set('isLoading',false);
