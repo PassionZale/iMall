@@ -4,15 +4,17 @@
         <mt-tab-item id="unpay" v-link="{name:'order-list',params:{'type':'unpay'}}">待付款</mt-tab-item>
         <mt-tab-item id="unreceived" v-link="{name:'order-list',params:{'type':'unreceived'}}">待收货</mt-tab-item>
     </mt-navbar>
-    <div id="order-list-part">
-        <ul
-            v-infinite-scroll="loadMore"
-            infinite-scroll-disabled="loading"
-            infinite-scroll-distance="5">
-            <li v-for="item in list">{{ item }}</li>
+    <div id="order-list-part" v-data-scroll="loadPageData">
+        <ul>
+            <li v-for="order in orders">{{order.id}} - {{ order.order_number }}</li>
         </ul>
     </div>
-    <!--<div style="width:100%;text-align:center;color:red;" v-show="loading">加载中...</div>-->
+    <div style="width:100%;text-align:center;color:red;" v-show="isLoading">
+        加载中...
+    </div>
+    <div style="width:100%;text-align:center;color:red;" v-show="isEnd">
+        别拉了，已经到底了！
+    </div>
 </template>
 <style scoped>
 .order-list-nav > .mint-tab-item.is-selected{
@@ -32,7 +34,7 @@ li, ul {
 }
 li {
     background:#fff;
-    height: 200px;
+    height: 350px;
     margin-bottom: 20px;
     border: 1px solid #eee;
 }
@@ -45,8 +47,8 @@ li {
                 order_type:this.$route.params.type,
                 paginate:{},
                 orders:[],
-                loading:false,
-                list:[1,2,3,4,5]
+                isLoading:false,
+                isEnd:false,
             }
         },
         components:{
@@ -55,19 +57,13 @@ li {
         created(){
             this.fetchOrders();
         },
-        watch:{
-            'order_type':{
-                handler:function(type,old_type){
-                    this.fetchOrders(type);
-                }
-            }
+        route:{
+            canReuse:false
         },
         methods:{
-            fetchOrders:function(order_type = false){
+            fetchOrders:function(){
                 let vm = this;
-                if(!order_type){
-                    order_type = vm.$route.params.type;
-                }
+                let order_type = vm.$route.params.type;
                 vm.$http.get('/api/orderlist/'+order_type).then(response=>{
                     vm.$set('paginate',response.data.message);
                     vm.$set('orders',response.data.message.data);
@@ -76,27 +72,23 @@ li {
             loadPageData:function(){
                 let vm = this;
                 let page = vm.paginate.current_page + 1;
-                if(vm.paginate.current_page <= vm.paginate.last_page){
-                    vm.$set('loading',true);
+                let triggerDistance = 100;
+                let distance = document.getElementById('order-list-part').getBoundingClientRect().bottom - window.innerHeight;
+                if(!vm.isLoading && !vm.isEnd && distance < triggerDistance){
+                    vm.$set('isLoading',true);
+                    console.log(vm.isLoading);
                     vm.$http.get('/api/orderlist/'+vm.order_type+'?page='+page).then(response=>{
-                        vm.$set('paginate',response.data.message);
-                        vm.orders = vm.orders.concat(response.data.message.data);
-                        vm.$set('loading',false);
+                        if(response.data.message.data.length === 0){
+                            vm.$set('isLoading',false);
+                            vm.$set('isEnd',true);
+                        }else{
+                            vm.$set('paginate',response.data.message);
+                            vm.orders = vm.orders.concat(response.data.message.data);
+                            vm.$set('isLoading',false);
+                        }
                     });
-                }else{
-                    console.log('已经到底了！');
                 }
-            },
-            loadMore() {
-                  this.loading = true;
-                  setTimeout(() => {
-                    let last = this.list[this.list.length - 1];
-                    for (let i = 1; i <= 10; i++) {
-                      this.list.push(last + i);
-                    }
-                    this.loading = false;
-                  }, 2500);
-                }
+            }
         }
     }
 </script>
