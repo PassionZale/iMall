@@ -65,7 +65,7 @@ npm install
 npm install npm install node-sass@3.11.2 /usr/share/nginx/html/iMall/node_modules/node-sass
 #编译sass
 gulp admin-sass
-gulp mall-sasss
+gulp mall-sass
 ```
 
 ## 组件开发
