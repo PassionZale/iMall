@@ -29,6 +29,11 @@
 1. open_ssl
 2. fileinfo
 
+## TODOS
+1. 对接微信支付
+2. CMS订单管理模块
+3. CMS UI 替换为Inspinia
+
 ## Composer 、NPM配置
 ``` shell
 #启动composer中国镜像服务
