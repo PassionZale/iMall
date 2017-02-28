@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+
     <meta charset="utf-8">
-    <title>iMall</title>
+    <title>iMall | 登录</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Zhang Lei">
@@ -16,143 +18,104 @@
     <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
     <![endif]-->
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
-          integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <link href="{{asset('inspinia/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('inspinia/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+    <link href="{{asset('inspinia/css/plugins/iCheck/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('inspinia/css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('inspinia/css/style.css')}}" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-
-        .navbar-brand {
-            padding: 10px;
-        }
-    </style>
+    <link href="{{asset('css/global.css')}}" rel="stylesheet">
 </head>
-<body id="app-layout">
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<body class="gray-bg">
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <img alt="iMall" src="{{asset('favicon.png')}}"/>
-            </a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">登录</a></li>
-                    <li><a href="{{ url('/register') }}">注册</a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>注销</a></li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container">
+<div class="loginColumns animated fadeInDown">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">登录</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">邮箱：</label>
+        <div class="col-md-6">
+            <h2 class="font-bold">Welcome to iMall</h2>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email"
-                                       value="{{ old('email') }}">
+            <p>
+                Login in. To see it in action.
+            </p>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+            <p>
+                If there is any bug or suggestion,
+            </p>
+
+            <p>
+                please commit your issue @ <a href="https://github.com/PassionZale/iMall/issues" target="_blank">iMall Issues</a>.
+            </p>
+
+            <p>
+                iMall is still developing ,
+            </p>
+
+            <p>
+                please do not delete any data after login.
+            </p>
+
+            <p>
+                The current version of iMall is basic ,
+            </p>
+
+            <p>
+                more features will be developed...
+            </p>
+
+        </div>
+        <div class="col-md-6">
+            <div class="ibox-content">
+                <form class="m-t" role="form" method="POST" action="{{ url('/login') }}">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="请输入邮箱" value="{{old('email')}}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="请输入密码" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="i-checks">
+                            <label>
+                                <input type="checkbox" name="remember" checked>
+                                &nbsp;记住我
+                            </label>
+                            @if(count($errors))
+                                <small class="text-danger">账号或密码错误！</small>
+                            @endif
                         </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary block full-width m-b">登录</button>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">密码：</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" checked> 记住我
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> 登录
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">忘记密码?</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <p class="text-muted text-center">
+                        <small>还没有账号？</small>
+                    </p>
+                    <a class="btn btn-sm btn-white btn-block" href="{{ url('/register') }}">注册账号</a>
+                </form>
             </div>
         </div>
     </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6">
+            Build by <a href="https://github.com/PassionZale/iMall" target="_blank">PassionZale</a>
+        </div>
+        <div class="col-md-6 text-right">
+            <small>© 2016-2017</small>
+        </div>
+    </div>
 </div>
-
-<!-- JavaScripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"
-        integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"
-        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-        crossorigin="anonymous"></script>
-{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+<script src="{{asset('inspinia/js/jquery-2.1.1.js')}}"></script>
+<script src="{{asset('inspinia/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('inspinia/js/plugins/iCheck/icheck.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green'
+        });
+    });
+</script>
 </body>
+
 </html>
