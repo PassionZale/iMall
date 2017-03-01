@@ -5,7 +5,7 @@
 
 [iMall Fronted](http://imall.lovchun.com/mall "iMall 微信商城首页")
 
-[Laravel Vue Blog](https://git.oschina.net/nir_passion/LVBlog "基于Laravel Vue的个人博客")
+[Laravel Vue Blog](https://github.com/PassionZale/LVBlog "基于Laravel Vue的个人博客")
 
 微信接口测试公众号
 
@@ -32,7 +32,7 @@
 ## TODOS
 1. 对接微信支付
 2. CMS订单管理模块
-3. CMS UI 替换为Inspinia
+3. ~~CMS UI 替换为Inspinia~~
 
 ## Composer 、NPM配置
 ``` shell
