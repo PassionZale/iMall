@@ -47,7 +47,7 @@
                                 <td>{{$follow->is_subscribed}}</td>
                                 <td>{{$follow->created_at}}</td>
                                 <td>
-                                    <form method="POST" action="{{url('admin/follow/refresh')}}">
+                                    <form method="POST" action="{{url('admin/wechat/refresh')}}">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="_method" value="PUT">
                                         <input name="openid" value="{{$follow->openid}}" type="hidden">
