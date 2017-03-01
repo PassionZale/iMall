@@ -17,7 +17,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         Route::resource('info', 'WechatInfoController', ['except' => ['create', 'edit']]);
         Route::resource('menu', 'WechatMenuController');
         Route::post('pushMenu', 'WechatMenuController@pushMenu');
-        Route::resource('follow', 'WechatFollowController', ['except' => ['create','store']]);
+        Route::resource('follow', 'WechatFollowController', ['except' => ['create', 'edit', 'show', 'destroy','store']]);
         Route::put('refresh', 'WechatFollowController@refresh');
     });
     // 店铺管理
@@ -37,6 +37,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         // 富文本编辑器上传图片
         Route::post('editorUpload', 'ProductCommodityController@editorUpload');
     });
+    // 订单管理
+    Route::resource('order', 'OrderController', ['except' => ['create']]);
 });
 
 // DEBUG
@@ -57,7 +59,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     // 获取用户信息
     Route::get('userinfo', 'UserController@userinfo');
     // 商铺配置
-    Route::get('shopconfig','ShopController@shopconfig');
+    Route::get('shopconfig', 'ShopController@shopconfig');
     // 获取首页轮播图、专题、板块数据
     Route::get('banners', 'ShopController@getBanners');
     Route::get('topics', 'ShopController@getTopics');
@@ -70,20 +72,20 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('commodities/category', 'ShopController@getCommodityByCategory');
     // 根据商品ID查询商品详情数据
     Route::get('commodity/{commodity}', 'ShopController@getCommodity');
-    Route::get('commodities/{commodity}','ShopController@getCommodities');
+    Route::get('commodities/{commodity}', 'ShopController@getCommodities');
     // 购物车
     Route::resource('cart', 'CartController', ['except' => ['create', 'edit', 'show']]);
     // 获取购物车数据总条数
-    Route::get('cart/count','CartController@calculateTotal');
-    Route::post('cart/empty','CartController@emptyCart');
+    Route::get('cart/count', 'CartController@calculateTotal');
+    Route::post('cart/empty', 'CartController@emptyCart');
     // 创建订单
-    Route::post('order','OrderController@store');
+    Route::post('order', 'OrderController@store');
     // 获取订单数据
-    Route::get('order/{order}','OrderController@show');
+    Route::get('order/{order}', 'OrderController@show');
     // 获取订单列表（all,unpay,unreceived）
-    Route::get('orderlist/{type}','OrderController@index');
+    Route::get('orderlist/{type}', 'OrderController@index');
     // 获取订单详情
-    Route::get('orderdetail/{order}','OrderController@detail');
+    Route::get('orderdetail/{order}', 'OrderController@detail');
     // 意见建议
     Route::post('suggestion', 'UserController@suggestion');
     // 地址管理
@@ -91,6 +93,6 @@ Route::group(['prefix' => 'api', 'middleware' => 'web', 'namespace' => 'Api'], f
     Route::post('address', 'UserController@storeAddress');
     Route::get('address/{address}', 'UserController@showAddress');
     Route::put('address/{address}', 'UserController@updateAddress');
-    Route::get('default/address','UserController@defaultAddress');
+    Route::get('default/address', 'UserController@defaultAddress');
     Route::delete('address/{address}', 'UserController@deleteAddress');
 });
