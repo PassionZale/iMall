@@ -18,7 +18,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'namespace' => 'Admin
         Route::resource('menu', 'WechatMenuController');
         Route::post('pushMenu', 'WechatMenuController@pushMenu');
         Route::resource('follow', 'WechatFollowController', ['except' => ['create','store']]);
-        Route::get('refresh', 'WechatFollowController@refresh');
+        Route::post('refresh', 'WechatFollowController@refresh');
     });
     // 店铺管理
     Route::group(['prefix' => 'shop'], function () {
