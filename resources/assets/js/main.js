@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Mint from 'mint-ui'
-import {InfiniteScroll} from 'mint-ui';
+import {InfiniteScroll,Indicator} from 'mint-ui';
 import axios from 'axios'
 import Router from 'vue-router'
 import routerMap from './router'
@@ -65,6 +65,7 @@ routerMap(router);
 
 router.beforeEach((transition) => {
     document.body.scrollTop = 0;
+    Indicator.close();
     transition.next();
 });
 
