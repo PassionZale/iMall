@@ -10,7 +10,7 @@
                     <a href="#">商品管理</a>
                 </li>
                 <li class="active">
-                    <strong>专题</strong>
+                    <strong>商品</strong>
                 </li>
             </ol>
         </div>
@@ -19,7 +19,7 @@
     <div class="wrapper wrapper-content">
         <div class="ibox">
             <div class="ibox-title">
-                <h5>专题设置</h5>
+                <h5>商品设置</h5>
             </div>
             <div class="ibox-content">
 
