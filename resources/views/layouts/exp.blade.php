@@ -10,7 +10,7 @@
                     <a href="#">商品管理</a>
                 </li>
                 <li class="active">
-                    <strong>板块</strong>
+                    <strong>专题</strong>
                 </li>
             </ol>
         </div>
