@@ -1,35 +1,36 @@
-::-webkit-scrollbar {
-  padding-left: 1px;
-  background-color: #eee;
-  overflow: visible;
-  width: 7px;
-  height: 7px;
-  margin-top: 1px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #34495e;
-  background-clip: padding-box;
-  border: 1px solid transparent;
-  min-height: 15px;
-}
-::-webkit-scrollbar-thumb:vertical:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-::-webkit-scrollbar-thumb:vertical:active {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-::-webkit-scrollbar-button {
-  height: 0;
-  width: 0;
-}
-::-webkit-scrollbar-track {
-  background-clip: padding-box;
-  border: 1px solid #fff;
-}
-::-webkit-scrollbar-corner {
-  background: transparent;
+//后台样式
+@import 'base.scss';
+@import 'table.scss';
+
+.notice{
+  position: fixed;
+  top:0;
+  left:50%;
+  padding:0 40px;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index:9999;
 }
 
-body {
-  font-family: 'Microsoft YaHei','\5FAE\8F6F\96C5\9ED1','Hiragino Sans GB', tahoma,arial,sans-serif;
+.img-thumbnail {
+  max-width: 200px;
+  height: 100px;
+}
+
+.tree-container {
+  margin-top: 15px;
+  font-size: 10px;
+}
+
+.form-small-text {
+  font-size: 10px;
+  textarea {
+    font-size: 10px;
+    color:gray;
+    &#editor{
+      width: 100%;
+      min-height:300px;
+    }
+  }
+
 }
