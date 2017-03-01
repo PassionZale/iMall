@@ -39,7 +39,8 @@ class WechatFollowController extends BaseController
             $data['remark'] = $user->remark;
             $data['groupid'] = $user->groupid;
             WechatFollow::where('openid', '=', $openid)->update($data);
-            return redirect()->to('admin/wechat/follow')->withSuccess($follow['nickname'] . '信息更新成功！');
+            return redirect()->to('admin/wechat/follow')
+                ->withSuccess('粉丝：  '. $follow['nickname'] . '  更新成功！');
         }
     }
 
