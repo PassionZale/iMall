@@ -64,18 +64,11 @@
                     </a>
                 </li>
 
-                <li class="">
+                <li class="{{ request()->is('admin/order*') ? 'active' : '' }}">
                     <a href="{{url('admin/order')}}">
                         <i class="fa fa-align-justify"></i>
                         <span class="nav-label">订单管理</span>
                     </a>
-                    {{--<ul class="nav nav-second-level collapse">--}}
-                        {{--<li class=""><a href="#">待支付</a></li>--}}
-                        {{--<li class=""><a href="#">待发货</a></li>--}}
-                        {{--<li class=""><a href="#">已发货</a></li>--}}
-                        {{--<li class=""><a href="#">已完成</a></li>--}}
-                        {{--<li class=""><a href="#">已关闭</a></li>--}}
-                    {{--</ul>--}}
                 </li>
 
                 <li class="{{request()->is('admin/product/*') ? 'active' : ''}}">
