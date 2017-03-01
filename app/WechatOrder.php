@@ -13,4 +13,8 @@ class WechatOrder extends Model
     public function details(){
         return $this->hasMany('App\WechatOrderDetail','order_id','id');
     }
+
+    public function follow(){
+        return $this->belongsTo('App\WechatFollow','openid','openid');
+    }
 }

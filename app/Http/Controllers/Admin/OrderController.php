@@ -7,16 +7,45 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\WechatOrder;
+use App\WechatOrderDetail;
+
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        return view('admin.order.index');
+        // unpay unship shiped received ''closed''
+        $status = empty($request->input('status')) ? 'unship' : $request->input('status');
+        // 封装查询条件
+        $data = WechatOrder::with('follow')
+            ->where(function ($query) use ($status) {
+                switch ($status) {
+                    case 'unpay':
+                        $query->where('pay_status', '=', '未支付');
+                        break;
+                    case 'shiped':
+                        $query->where('pay_status', '=', '已支付')
+                            ->where('ship_status', '=', '已发货');
+                        break;
+                    case 'received':
+                        $query->where('pay_status', '=', '已支付')
+                            ->where('ship_status', '=', '已收货');
+                        break;
+                    case 'closed':
+                        // TODO 暂未实现关闭订单功能
+                        break;
+                    default:
+                        $query->where('pay_status', '=', '已支付')
+                            ->where('ship_status', '=', '未发货');
+                        break;
+                }
+            })->paginate(5);
+
+        return view('admin.order.index')->with([
+            'data' => $data,
+            'status' => $status,
+        ]);
     }
 
     /**
@@ -32,7 +61,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +72,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -54,7 +83,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -65,8 +94,8 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -77,7 +106,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
