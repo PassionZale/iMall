@@ -4,7 +4,6 @@
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>订单管理</h2>
-            <small class="text-danger"><i>TODO:</i> 此模块暂为静态页面，数据渲染待开发。</small>
         </div>
     </div>
 
