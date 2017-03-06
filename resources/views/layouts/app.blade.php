@@ -42,7 +42,8 @@
                 <li class="nav-header">
                     <div class="profile-element">
                         <span>
-                            <img alt="image" class="img-circle" width="48" height="48" src="{{asset('images/admin/profile.jpg')}}" />
+                            <img alt="image" class="img-circle" width="48" height="48"
+                                 src="{{asset('images/admin/profile.jpg')}}"/>
                         </span>
                         <a href="#">
                             <span class="clear">
@@ -53,7 +54,7 @@
                         </a>
                     </div>
                     <div class="logo-element">
-                        <img alt="image" class="img-circle" width="20" height="20" src="{{asset('favicon.png')}}" />
+                        <img alt="image" class="img-circle" width="20" height="20" src="{{asset('favicon.png')}}"/>
                     </div>
                 </li>
 
@@ -100,8 +101,10 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{request()->is('admin/wechat/menu*') ? 'active' : ''}}"><a href="{{url('admin/wechat/menu')}}">菜单设置</a></li>
-                        <li class="{{request()->is('admin/wechat/follow') ? 'active' : ''}}"><a href="{{url('admin/wechat/follow')}}">粉丝列表</a></li>
+                        <li class="{{request()->is('admin/wechat/menu*') ? 'active' : ''}}"><a
+                                    href="{{url('admin/wechat/menu')}}">菜单设置</a></li>
+                        <li class="{{request()->is('admin/wechat/follow') ? 'active' : ''}}"><a
+                                    href="{{url('admin/wechat/follow')}}">粉丝列表</a></li>
                     </ul>
                 </li>
 
@@ -112,8 +115,10 @@
                         <span class="fa arrow"></span>
                     </a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{request()->is('admin/shop/config') ? 'active' : ''}}"><a href="{{url('admin/shop/config')}}">商铺配置</a></li>
-                        <li class="{{request()->is('admin/shop/banner*') ? 'active' : ''}}"><a href="{{url('admin/shop/banner')}}">轮播图</a></li>
+                        <li class="{{request()->is('admin/shop/config') ? 'active' : ''}}"><a
+                                    href="{{url('admin/shop/config')}}">商铺配置</a></li>
+                        <li class="{{request()->is('admin/shop/banner*') ? 'active' : ''}}"><a
+                                    href="{{url('admin/shop/banner')}}">轮播图</a></li>
                     </ul>
                 </li>
 
@@ -158,8 +163,13 @@
     </div>
 
 </div>
-{{--<script src="{{asset('inspinia/')}}"></script>--}}
+
 <!-- Mainly scripts -->
+<script>
+    window._TOKEN = {_token: '{{csrf_token()}}'};
+    window._PUT_ = {_method: 'PUT'};
+    window._DELETE = {_method: 'delete'};
+</script>
 <script src="{{asset('inspinia/js/jquery-2.1.1.js')}}"></script>
 <script src="{{asset('inspinia/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('inspinia/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>

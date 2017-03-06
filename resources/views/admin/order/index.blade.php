@@ -61,7 +61,7 @@
                                 <td>{{$order->province}} {{$order->city}} {{$order->district}} {{$order->address}}</td>
                                 <td>{{$order->created_at}}</td>
                                 <td>
-                                    <a href="#" class="edit-btn">详情</a>
+                                    <a href="javascript:;" data-order="{{$order->id}}" class="info-btn">查看</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -74,8 +74,58 @@
             </div>
         </div>
     </div>
+
+    <div class="modal inmodal fade" id="orderModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">关闭</span>
+                    </button>
+                    <h4 class="modal-title">订单详情</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive table-hover">
+                        <tr>
+                            <th>订单号：</th>
+                            <td></td>
+                            <th>下单时间：</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>订单总价：</th>
+                            <td></td>
+                            <th>商品总价：</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>支付状态：</th>
+                            <td></td>
+                            <th>配送状态：</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>收货人姓名：</th>
+                            <td></td>
+                            <th>收货人电话：</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>收货人地址：</th>
+                            <td colspan="3"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scriptTag')
-
+    <script src="{{asset('js/admin/order/orderInfo.js')}}"></script>
 @endsection
