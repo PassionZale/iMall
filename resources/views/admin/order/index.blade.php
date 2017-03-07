@@ -87,40 +87,7 @@
                 </div>
                 <div class="modal-body">
                     <table id="data-table" class="table table-responsive table-hover">
-                        <tr>
-                            <th>订单号：</th>
-                            <td class="modal-data-1"></td>
-                            <th>下单时间：</th>
-                            <td class="modal-data-2">${created_at}</td>
-                        </tr>
-                        <tr>
-                            <th>订单总价：</th>
-                            <td class="modal-data-3">&yen; ${order_amount}</td>
-                            <th>商品总价：</th>
-                            <td class="modal-data-4">&yen; ${commodity_amount}</td>
-                        </tr>
-                        <tr>
-                            <th>支付状态：</th>
-                            <td class="modal-data-5">${pay_status}</td>
-                            <th>配送状态：</th>
-                            <td class="modal-data-6">${ship_status}</td>
-                        </tr>
-                        <tr>
-                            <th>物流公司：</th>
-                            <td class="modal-data-7">${ship_name}</td>
-                            <th>物流单号：</th>
-                            <td class="modal-data-8">${ship_number}</td>
-                        </tr>
-                        <tr>
-                            <th>收货人姓名：</th>
-                            <td class="modal-data-9">${name}</td>
-                            <th>收货人电话：</th>
-                            <td class="modal-data-2">${phone}</td>
-                        </tr>
-                        <tr>
-                            <th>收货人地址：</th>
-                            <td class="modal-data-2" colspan="3">${province} ${city} ${district} ${address}</td>
-                        </tr>
+                        
                     </table>
                 </div>
                 <div class="modal-footer">
