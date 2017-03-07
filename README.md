@@ -17,10 +17,8 @@
 
 **iMall 功能陆续开发中，浏览后台请勿删除任何数据**
 
-:wink: :kissing_heart: :yum: :joy:
-
 ## 项目说明
-1. 后端（API）基于："laravel/framework": "5.2.*",
+1. 后端（API）基于："laravel/framework": "5.2.*"
 2. 前端（商城）基于："vue": "^1.0.26"
 3. 商城UI基于："mint-ui": "^1.0.2"
 4. 后端（CMS）基于："Inspinia Admin Template"
