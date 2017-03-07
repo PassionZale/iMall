@@ -19,6 +19,18 @@
 
 :wink: :kissing_heart: :yum: :joy:
 
+## 项目说明
+1. 后端（API）基于："laravel/framework": "5.2.*",
+2. 前端（商城）基于："vue": "^1.0.26"
+3. 商城UI基于："mint-ui": "^1.0.2"
+4. 后端（CMS）基于："Inspinia Admin Template"
+5. 微信SDK采用："overtrue/laravel-wechat": "~3.0"
+
+## 重要提示
+1. 本项目仅为学习Laravel&Vue&Wechat API
+2. 未对接微信支付（测试接口号无法调起微信支付API）
+3. CMS订单模块发货等功能还未开发
+
 ## 环境要求
 1. PHP≥5.59
 2. composer:1.2.1
