@@ -49,11 +49,10 @@
 #启动composer中国镜像服务
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 #启动npm淘宝源
-npm config set registry https://registry.npm.taobao.org
-#如果上一步配置正确这个命令会有字符串response
-npm info underscore
-#接下来，设置node-sass
-npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+npm i -g nrm
+nrm ls          #查看所有npm 源
+nrm use taobao  #use 你想要的那一个
+
 ```
 
 ## 安装步骤
@@ -63,8 +62,8 @@ git clone https://github.com/PassionZale/iMall.git
 cd iMall/
 git update-index --assume-unchanged config/wechat.php
 cp .env.example .env
-#在.env中配置好数据库连接后，继续执行以下步骤
-composer update
+#在.env中配置好数据库连接,并且在wechat.php配置你的公众号信息，继续执行以下步骤
+composer install
 php artisan key:generate
 php artisan migrate
 ```
@@ -73,14 +72,11 @@ php artisan migrate
 ``` shell
 cd iMall/
 npm install
-#若出现以下，且NPM未报错
-> node-sass@3.11.2 install /usr/share/nginx/html/iMall/node_modules/node-sass
-> node scripts/install.js
-#执行以下命令
-npm install npm install node-sass@3.11.2 /usr/share/nginx/html/iMall/node_modules/node-sass
+#此时会依赖.npmrc进行安装node-sass等所有package，若要修改为其他源请修改该文件
 #编译sass
 gulp admin-sass
 gulp mall-sass
+gulp global-sass
 ```
 
 ## 组件开发
