@@ -13,4 +13,5 @@ class WechatAddress extends Model
     public function follow(){
         return $this->belongsTo('App\WechatFollow','openid','openid');
     }
+
 }
