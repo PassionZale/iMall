@@ -38,7 +38,6 @@ class WechatController extends Controller
         $server->setMessageHandler(function ($message) use ($userApi) {
             // 获取当前粉丝openId
             $openid = $message->FromUserName;
-
             if ($message->MsgType == 'event') {
                 switch ($message->Event) {
                     case'subscribe':
@@ -88,7 +87,9 @@ class WechatController extends Controller
                 }
             } else {
                 $user = $userApi->get($openid);
-                return 'Hi,' . $user->nickname . ', iMall还在开发中.';
+                $welcome = "Hi，" . $user->nickname ."\n\n进入商城闲逛一会吧\n\n<a href=\"http://imall.lovchun.com/mall#!/index\">点击进入</a>\n\n页面加载可能会较慢，请稍后...";
+				return $welcome;
+                //return 'Hi,' . $user->nickname . ', iMall还在开发中.';
             }
         });
 
