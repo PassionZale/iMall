@@ -11,7 +11,7 @@
 
 微信接口测试公众号
 
-![iMall Qrcode](https://github.com/PassionZale/iMall/tree/master/public/screenshot/iMall.jpg "iMall Qrcode")
+![iMall Qrcode](https://wx2.sinaimg.cn/orj360/006OyqbNgy1ffv3slj5n0j30by0by3ys.jpg "iMall Qrcode")
 
 微信商城
 
