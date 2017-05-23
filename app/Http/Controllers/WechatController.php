@@ -58,7 +58,10 @@ class WechatController extends Controller
                             $follow['groupid'] = $user->groupid;
                             $follow['is_subscribed'] = 2;
                             WechatFollow::where('openid', '=', $openid)->update($follow);
-                            return '欢迎回来，' . $user->nickname . '。';
+                            // http://imall.lovchun.com/mall#!/index
+                            $welcome = '欢迎回来，'. $user->nickname . '\n' ;
+                            $welcome .= '进入商城闲逛一会吧，<a href="http://imall.lovchun.com/mall#!/index">点击进入</a>';
+                            return $welcome;
                         } else {
                             // 录入数据库
                             $follow = new WechatFollow();
@@ -74,7 +77,9 @@ class WechatController extends Controller
                             $follow->groupid = $user->groupid;
                             $follow->is_subscribed = 2;
                             $follow->save();
-                            return '欢迎，' . $user->nickname . '。';
+                            $welcome = '欢迎，'. $user->nickname . '\n' ;
+                            $welcome .= '进入商城闲逛一会吧，<a href="http://imall.lovchun.com/mall#!/index">点击进入</a>';
+                            return $welcome;
                         }
                         break;
                     case 'unsubscribe':

@@ -94,19 +94,19 @@
                     </ul>
                 </li>
 
-                <li class="{{request()->is('admin/wechat/*') ? 'active' : ''}}">
-                    <a href="#">
-                        <i class="fa fa-wechat"></i>
-                        <span class="nav-label">公众号管理</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="{{request()->is('admin/wechat/menu*') ? 'active' : ''}}"><a
-                                    href="{{url('admin/wechat/menu')}}">菜单设置</a></li>
-                        <li class="{{request()->is('admin/wechat/follow') ? 'active' : ''}}"><a
-                                    href="{{url('admin/wechat/follow')}}">粉丝列表</a></li>
-                    </ul>
-                </li>
+                {{--<li class="{{request()->is('admin/wechat/*') ? 'active' : ''}}">--}}
+                    {{--<a href="#">--}}
+                        {{--<i class="fa fa-wechat"></i>--}}
+                        {{--<span class="nav-label">公众号管理</span>--}}
+                        {{--<span class="fa arrow"></span>--}}
+                    {{--</a>--}}
+                    {{--<ul class="nav nav-second-level collapse">--}}
+                        {{--<li class="{{request()->is('admin/wechat/menu*') ? 'active' : ''}}"><a--}}
+                                    {{--href="{{url('admin/wechat/menu')}}">菜单设置</a></li>--}}
+                        {{--<li class="{{request()->is('admin/wechat/follow') ? 'active' : ''}}"><a--}}
+                                    {{--href="{{url('admin/wechat/follow')}}">粉丝列表</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
 
                 <li class="{{request()->is('admin/shop/*') ? 'active' : ''}}">
                     <a href="#">

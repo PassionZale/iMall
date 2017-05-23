@@ -1,21 +1,40 @@
 # iMall
 基于Laravel5.2，Vue.js1.0的微信商城
 
+喜欢给个star，谢谢。
+
 [iMall Backend](http://imall.lovchun.com "iMall 后台管理首页")
 
-[iMall Fronted](http://imall.lovchun.com/mall "iMall 微信商城首页")
+[iMall Frontend](http://imall.lovchun.com/mall "iMall 微信商城首页")
 
 [Laravel Vue Blog](https://github.com/PassionZale/LVBlog "基于Laravel Vue的个人博客")
 
 微信接口测试公众号
 
-![iMall Qrcode](http://oewvb9bk1.bkt.clouddn.com/iMall.jpg "iMall Qrcode")
+![iMall Qrcode](http://wx2.sinaimg.cn/orj360/006OyqbNgy1ffv3slj5n0j30by0by3ys.jpg "iMall Qrcode")
+
+微信商城
+
+![iMall Frontend](http://wx2.sinaimg.cn/thumb300/006OyqbNgy1ffv3wrqw1rg30ad0ije81.gif "iMall Frontend")
+
+后台CMS
+
+![iMall Backend](http://wx1.sinaimg.cn/mw1024/006OyqbNgy1ffv40gllbgj31h50qndgt.jpg "iMall Backend Login")
+
+![iMall Backend](http://wx2.sinaimg.cn/mw1024/006OyqbNgy1ffv40gne8uj31h60qkmxl.jpg "iMall Backend Regist")
+
+![iMall Backend](http://wx4.sinaimg.cn/mw1024/006OyqbNgy1ffv40h4xlkj31h90qodj5.jpg "iMall Backend Dashboard")
+
+![iMall Backend](http://wx2.sinaimg.cn/mw1024/006OyqbNgy1ffv40hcs3bj31h70qlq5c.jpg "iMall Backend Dashboard")
 
 **可以直接注册一个账号进行浏览**
 
 **不需要配置公众号信息，此功能将移除，替换为配置文件**
 
 **iMall 功能陆续开发中，浏览后台请勿删除任何数据**
+
+>由于公众号菜单总是被人改动，我注释掉了公众号菜单路由以及视图中的公众号菜单设置入口
+>可以在routes.php、app.blade.php中开启
 
 ## 项目说明
 1. 后端（API）基于："laravel/framework": "5.2.*"
