@@ -104,6 +104,7 @@ npm install
 gulp admin-sass
 gulp mall-sass
 gulp global-sass
+npm run build
 ```
 
 ## 组件开发
