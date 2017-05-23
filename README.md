@@ -15,7 +15,7 @@
 
 微信商城
 
-![iMall Frontend](http://wx2.sinaimg.cn/thumb300/006OyqbNgy1ffv3wrqw1rg30ad0ije81.gif "iMall Frontend")
+![iMall Frontend](http://wx2.sinaimg.cn/mw1024/006OyqbNgy1ffv3wrqw1rg30ad0ije81.gif "iMall Frontend")
 
 后台CMS
 
