@@ -1,7 +1,10 @@
 # iMall
 基于Laravel5.2，Vue.js1.0的微信商城
 
-喜欢给个star，谢谢。
+喜欢给个star，谢谢！
+
+由于接口测试号粉丝最多100人，可能关注后会出现微信无法正确推送“subscribe”事件的情况，
+我会定期清空粉丝，以方便访问。
 
 [iMall Backend](http://imall.lovchun.com "iMall 后台管理首页")
 
